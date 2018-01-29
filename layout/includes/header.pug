@@ -1,0 +1,35 @@
+#header
+  #title
+    -let title = config.title
+    -let title_arr = title.split(' ')
+
+    if theme.img.avatar
+      #avatar
+        img(src=theme.img.avatar, alt='avatar')
+    h2
+      a(href=config.root data-pjax)
+        if (Array.isArray(title_arr))
+          !=title_arr.join('<br>')
+        else
+          !=title_arr
+          
+    //p 
+      i(class="fa fa-map-marker")&attributes({'aria-hidden': 'true'})
+      !=theme.header.location 
+  #aboutme
+    p
+      if (Array.isArray(theme.header.slogan))
+        !=theme.header.slogan.join('<br>')
+      else
+        !=theme.header.slogan
+  #navigation
+    each url, label in theme.menu
+      h3
+        a(href=url data-pjax)= label
+  #sns
+    each values, label in theme.sns
+        if values.url
+          a(href=values.url)
+            -let icon = values.icon
+            i(class="fa fa-lg " + icon)&attributes({'aria-hidden': 'true'})
+    

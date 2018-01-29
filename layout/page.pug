@@ -1,0 +1,12 @@
+extends includes/layout.pug
+
+block content
+  div(class="card")
+    div(class="post_title")
+      div
+        h1(href=config.root + page.path)= page.title    
+    div(class="post_content")
+      p
+        !=page.content
+                
+    div(class="post_footer")

@@ -1,0 +1,26 @@
+extends includes/layout.pug
+
+block content
+  div(class="card")
+    div(class="post_title")
+      div
+        h1(href=config.root + page.path)= page.title
+        h4=date(page.date, date_format)
+        if page.tags.length > 0 
+          !=list_tags(page.tags, {show_count: false, class: 'tags', style: 'list', separator: ''})
+          
+    div(class="post_content")
+      p
+        !=page.content
+                
+    div(class="post_footer")
+      if page.github
+        a(class="button" href=page.github)= 'More on Git '
+          i(class="fa fa-github fa-lg")&attributes({'aria-hidden': 'true'})
+      if page.heroku
+        a(class="button" href=page.heroku)= 'More on Heroku '
+          i(class="fa fa-cloud fa-lg")&attributes({'aria-hidden': 'true'})
+
+      
+
+    

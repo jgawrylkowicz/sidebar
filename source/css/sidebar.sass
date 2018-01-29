@@ -1,0 +1,425 @@
+//TODO fix the padding between elements
+
+$line-height: 1.6
+$ratio: 1.414
+$color: rgba(0, 0, 0 , .7)
+
+$content-padding-s: 1em
+$content-padding-m: 1.75em
+$content-padding-l: 2.5em
+$break-m: 768px
+$break-l: 1200px
+$max-card-width: 800px
+
+$base-font-size: 107%
+$step-up-1: 1em * $ratio
+$step-up-2: $step-up-1 * $ratio
+$step-up-3: $step-up-2 * $ratio
+$step-down-1: 1em / $ratio
+$step-down-2: $step-down-1 / $ratio
+
+$card-background: rgb(248,248,248)
+$dark_mode_card: rgba(44,50,58,1)
+
+
+@font-face
+  font-family: 'Colfax'
+  font-style: normal
+  font-weight: 600
+  src: local("Colfax Medium"), url(/fonts/Colfax-Medium.woff) format("woff")
+
+
+@font-face
+  font-family: 'Colfax'
+  font-style: normal
+  font-weight: 400
+  src: local("Colfax Regular"), url(/fonts/Colfax-Regular.woff) format("woff")
+
+
+@font-face
+  font-family: 'Colfax'
+  font-style: normal
+  font-weight: 300
+  src: local("Colfax Light"), url(/fonts/Colfax-Light.woff) format("woff") 
+
+
+\::-moz-selection, ::selection
+  background: rgba(107, 79, 189, 0.4)
+  text-shadow: none
+
+body
+  -moz-osx-font-smoothing: grayscale
+  -webkit-font-smoothing: antialiased
+  background: rgba(41, 50, 60, 0.1)
+  background-attachment: fixed
+  background-size: cover
+  //height: 100vh
+  margin: 0
+  //width: 100%
+  //position: fixed
+  //position fixed and height somehow break the performance on safari
+  text-rendering: optimizeLegibility
+
+html
+  -ms-touch-action: manipulation
+  color: $color
+  font-size: $base-font-size
+  line-height: $line-height
+  display: block
+  height: 100%
+  width: 100%
+  touch-action: manipulation
+
+body, html
+  font-family: 'Colfax', "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif
+  font-weight: 400
+  overflow-x: hidden
+
+code
+  border: none
+  border-bottom-right-radius: 3px
+  border-radius: 0
+  border-top-right-radius: 3px
+  display: block
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace
+  font-size: 13px
+  line-height: 19px
+  overflow: auto
+  padding: 0
+
+a
+  color: inherit
+  text-decoration: none
+
+img
+  max-width: 100%
+
+*, :after, :before
+  -webkit-box-sizing: border-box
+  box-sizing: border-box
+
+h1, h2, h3, h4, h5, h6, ul
+  &:first-of-type
+    padding-top: 0
+    margin-top: 0
+
+h1, h2, h3, h4, h5, h6
+  font-weight: 600
+  letter-spacing: 1px
+
+h1, h2, h3
+  margin: $step-up-1 0 .5em
+  line-height: 1.2
+  letter-spacing: 1px
+  margin-left: -2px
+
+h1
+  font-size: $step-up-3
+
+h2
+  font-size: $step-up-2
+
+h3
+  font-size: $step-up-1
+
+h4
+  font-size: $base-font-size
+
+p
+  font-weight: 300
+
+ul
+  letter-spacing: 1px
+  line-height: $line-height
+
+#main
+  width: 100%
+  overflow: visible
+  z-index: 1
+
+#content, #header
+  display: flex
+  flex-flow: row wrap
+  flex-direction: column
+
+@media screen and (min-width: $break-l)
+  #main
+    padding-bottom: 5rem
+    padding-left: 22rem
+    padding-top: 5rem
+
+#layout
+  height: 100%
+  margin-left: auto
+  margin-right: auto
+  padding: 0 2em
+  width: auto
+  max-width: 1300px
+
+@media screen and (max-width: $break-l)
+  #layout
+    max-width: $max-card-width
+  #sns 
+      display: none
+  #main
+    padding-top: 2em
+  #title
+    display: flex
+    flex-direction: row
+    align-items: center
+    h2
+      margin: 0
+  #avatar
+    padding-right: 1rem
+    img
+      min-width: 4rem
+      width: 5rem
+  #navigation
+    display: flex
+    align-items: baseline
+    justify-content: space-evenly
+
+@media screen and (max-width: $break-m)
+  #layout
+    padding-left: $content-padding-s
+    padding-right: $content-padding-s
+
+#header
+  padding: 1em
+  vertical-align: middle
+  align-items: center
+  z-index: 1
+  max-width: 30rem
+  margin: auto
+  position: relative
+  a
+    transition: color .3s ease
+    &:hover
+      color: black
+  #navigation
+    display: flex
+    width: 100%
+    h1,h2,h3
+      padding: 0
+      margin: 0
+      letter-spacing: 1px
+      line-height: $line-height
+    a
+      transition: color .3s ease-in-out
+      display: inline-block
+      position: relative
+  #sns
+    font-size: $step-up-1
+    padding: 1rem 0
+    a
+      margin: 0 1rem
+      text-decoration: none
+      &:first-child
+        margin-left: 0
+#avatar
+  img
+    border-radius: 120%
+    display: block
+    height: auto
+    margin: auto
+
+@media screen and (min-width: $break-l)
+  #header
+    position: relative
+    align-items: flex-start 
+    margin-right: -26rem
+    padding-top: 3rem
+    position: fixed
+    text-align: left
+    width: 20rem
+    #navigation
+      display: block
+  #avatar
+    padding-bottom: .5em
+    img
+      max-width: 8em
+
+.card
+  box-sizing: border-box
+  display: flex
+  flex-direction: column
+  overflow: hidden
+  position: relative
+  margin-bottom: 5rem
+  min-height: 15rem
+  background: $card-background
+  border-radius: 1em
+  -webkit-box-shadow: 0 1.5rem 3rem 1rem rgba(0, 0, 0, 0.1)
+  box-shadow: 0 1.5rem 3rem 1rem rgba(0, 0, 0, 0.1)
+
+.card-gradient
+  z-index: 3
+  &:hover
+    cursor: pointer
+  &::after
+    -webkit-transition: opacity .3s ease
+    background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(142, 102, 119, 0.15)), color-stop(90%, rgba(255, 175, 189, 0)))
+    background-image: linear-gradient(to top, rgba(142, 102, 119, 0.15) 0%, rgba(255, 175, 189, 0) 90%)
+    bottom: 0
+    content: ''
+    height: 40%
+    left: 0
+    opacity: .4
+    position: absolute
+    transition: opacity .3s ease
+    width: 100%
+    z-index: 2
+  &:hover::after
+    opacity: 1
+
+.post_content, .post_title, .post_footer, .post_thumbnail img
+  width: 100%
+  padding: $content-padding-s
+  @media screen and (min-width: $break-m)
+      padding: $content-padding-m
+  @media screen and (min-width: $break-l)
+      padding: $content-padding-l
+
+.post_content, .post_title, .post_footer, 
+  animation-duration: .4s
+  animation-fill-mode: both
+  animation-name: fade-in
+  animation-timing-function: ease
+  animation-delay: .2s
+
+.post_content
+  padding-bottom: 1em
+  padding-top: 1em
+  position: relative
+  z-index: 4
+  img
+    border: 1px solid rgba(0,0,0,.1)
+
+.post_title
+  position: relative
+  padding-bottom: 0
+  z-index: 9
+  &.thumbnail
+    margin-top: -14em
+    height: 14rem
+    display: flex
+    align-items: flex-end
+    color: white
+    background-image: linear-gradient(to top, rgba(16,16,16,.7) 10%, rgba(16,16,16,0))
+  h1
+    margin-bottom: 0
+
+.post_footer
+  z-index: 10
+  padding-top: 0
+
+.post_thumbnail
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1)
+  img
+    height: auto
+    vertical-align: middle
+
+.tags-list
+  font-size: $step-down-1
+  margin: 0
+  padding: 0
+
+.tags-list-item
+  -webkit-transition: all .3s ease
+  transition: all .3s ease
+  a
+    -webkit-transition: all .3s ease
+    transition: all .3s ease
+    color: lighten($color, 20)
+    text-decoration: none
+    text-transform: uppercase
+    &:hover
+      color: $color
+  -webkit-appearance: none
+  float: left
+  letter-spacing: 1px
+  list-style: none
+  padding: .7em .5em
+  margin-left: 0
+  padding-left: 0
+  text-align: center
+  position: relative
+  z-index: 4
+  &:hover
+    color: $color
+
+.button-wrapper
+  z-index: -1
+  margin-left: auto
+  &:last-of-type
+    padding-bottom: 0
+
+.fade-in
+  animation-duration: .4s
+  animation-fill-mode: both
+  animation-delay: .1s
+  animation-name: fade-in-up
+  animation-timing-function: ease
+ 
+@-webkit-keyframes fade-in-up 
+  from 
+    opacity: 0
+    -webkit-transform: translate3d(0, 1%, 0)
+    transform: translate3d(0, 1%, 0)
+  to 
+    opacity: 1
+    -webkit-transform: none
+    transform: none
+
+@-webkit-keyframes fade-in 
+  from 
+    opacity: 0
+    -webkit-transform: translate3d(0, 0, 0)
+    transform: translate3d(0, 0, 0)
+  to 
+    opacity: 1
+    -webkit-transform: none
+    transform: none
+  
+.button
+  background-image: linear-gradient(-120deg, rgba(107, 79, 189, 1) 0%, #72378c 100%)
+  background-position: 100% 0
+  background-size: 200% auto
+  border-radius: .5rem
+  color: #fff
+  display: inline-block
+  font-size: $base-font-size
+  font-weight: 400
+  letter-spacing: 1px
+  padding: .7em 1.4em
+  margin-right: .5em
+  margin-top: .5em
+  position: relative
+  text-align: center
+  text-decoration: none
+  text-transform: uppercase
+  -webkit-transition: background .3s ease
+  transition: background .3s ease
+  z-index: 4
+  &:hover
+    background-position: 0 0
+    color: #fff
+  &.alt
+    background: rgba(107, 79, 189, 0.2)
+    color: rgba(107, 79, 189, 1)
+  &.alt:hover
+    background: rgba(107, 79, 189, .3)
+
+.container
+  display:flex
+  flex-direction: column
+  margin: auto
+  justify-content: flex-start
+  .item 
+    display: flex
+    flex-direction: row
+    align-items: center
+    i
+      font-size: $step-up-2
+      width: 2em
+

@@ -1,0 +1,31 @@
+extends includes/layout.pug
+
+block content
+  h1= 'Tag: ' + page.tag
+  - page.posts.each(function(article){
+    div(class="card card-gradient")
+      if article.thumbnail
+        -let background = (article.background) ? article.background : theme.thumbnail.default;  
+        div(class="post_thumbnail", style={background: background})
+          img(src=article.thumbnail)
+            
+      -let has_thumbnail = (article.thumbnail) ? 'thumbnail' : ''; 
+      div(class="post_title " + has_thumbnail)
+        div
+          h1
+            a(href=config.root + article.path)= article.title
+          h4=date(article.date, date_format)
+            
+      div(class="post_content")
+        p
+          !=article.excerpt
+                  
+      div(class="post_footer")
+        div(class="button-wrapper")
+        a(class="button" href=config.root + article.path)= 'Read more'
+        if article.link
+            a(class="button alt" href=article.link)
+              i(class="fa fa-github fa-lg")&attributes({'aria-hidden': 'true'})
+      
+      br.clear
+  - })
