@@ -3,6 +3,7 @@
 $line-height: 1.6
 $ratio: 1.414
 $color: rgba(0, 0, 0 , .7)
+$sidebar-width: 19rem 
 
 $content-padding-s: 1em
 $content-padding-m: 1.75em
@@ -132,35 +133,66 @@ ul
   letter-spacing: 1px
   line-height: $line-height
 
+#layout
+  display: grid
+  grid-gap: $content-padding-s
+  grid-template-columns: $sidebar-width 1fr
+  width: 100%
+  margin: auto
+  padding: $content-padding-l
+  max-width: 1300px
+
+@media screen and (max-width: $break-m)
+  #layout
+    padding: $content-padding-s
+
+@media screen and (max-width: $break-l)
+  #layout
+    padding: $content-padding-m
+
 #main
   width: 100%
   overflow: visible
   z-index: 1
 
+@media screen and (min-width: $break-l)
+  #main
+    grid-column-start: 2
+
+#header
+  padding: 1em
+  vertical-align: middle
+  z-index: 1
+  width: 100%
+  a
+    transition: color .3s ease
+    &:hover
+      color: black
+
+@media screen and (max-width: $break-l)
+  #header
+    margin: 0 auto
+    align-items: center
+    max-width: 30rem
+    
+
+@media screen and (min-width: $break-l)
+  #header
+    position: fixed
+    align-items: flex-start 
+    width: $sidebar-width
+  
 #content, #header
   display: flex
   flex-flow: row wrap
   flex-direction: column
 
-@media screen and (min-width: $break-l)
-  #main
-    padding-bottom: 5rem
-    padding-left: 22rem
-    padding-top: 5rem
-
-#layout
-  height: 100%
-  margin-left: auto
-  margin-right: auto
-  padding: 0 2em
-  width: auto
-  max-width: 1300px
-
 @media screen and (max-width: $break-l)
   #layout
     max-width: $max-card-width
+    grid-template-columns: 1fr
   #sns 
-      display: none
+    display: none
   #main
     padding-top: 2em
   #title
@@ -179,43 +211,32 @@ ul
     align-items: baseline
     justify-content: space-evenly
 
-@media screen and (max-width: $break-m)
-  #layout
-    padding-left: $content-padding-s
-    padding-right: $content-padding-s
-
-#header
-  padding: 1em
-  vertical-align: middle
-  align-items: center
-  z-index: 1
-  max-width: 30rem
-  margin: auto
-  position: relative
+#navigation
+  display: flex
+  width: 100%
+  h1,h2,h3
+    padding: 0
+    margin: 0
+    letter-spacing: 1px
+    line-height: $line-height
   a
-    transition: color .3s ease
-    &:hover
-      color: black
+    transition: color .3s ease-in-out
+    display: inline-block
+    position: relative
+
+#sns
+  font-size: $step-up-1
+  padding: 1rem 0
+  a
+    margin: 0 1rem
+    text-decoration: none
+    &:first-child
+      margin-left: 0
+
+@media screen and (min-width: $break-l)
   #navigation
-    display: flex
-    width: 100%
-    h1,h2,h3
-      padding: 0
-      margin: 0
-      letter-spacing: 1px
-      line-height: $line-height
-    a
-      transition: color .3s ease-in-out
-      display: inline-block
-      position: relative
-  #sns
-    font-size: $step-up-1
-    padding: 1rem 0
-    a
-      margin: 0 1rem
-      text-decoration: none
-      &:first-child
-        margin-left: 0
+    flex-direction: column
+
 #avatar
   img
     border-radius: 120%
@@ -224,16 +245,8 @@ ul
     margin: auto
 
 @media screen and (min-width: $break-l)
-  #header
-    position: relative
-    align-items: flex-start 
-    margin-right: -26rem
-    padding-top: 3rem
-    position: fixed
-    text-align: left
-    width: 20rem
-    #navigation
-      display: block
+  #navigation
+    display: block
   #avatar
     padding-bottom: .5em
     img
