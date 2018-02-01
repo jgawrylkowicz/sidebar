@@ -5,14 +5,16 @@ $ratio: 1.414
 $color: rgba(0, 0, 0 , .7)
 $sidebar-width: 19rem 
 
-$content-padding-s: 1em
+$ratio_padding: 1.414
+$content-padding-s: 1em 
 $content-padding-m: 1.75em
 $content-padding-l: 2.5em
+$break-s: 480px
 $break-m: 768px
 $break-l: 1200px
 $max-card-width: 800px
 
-$base-font-size: 107%
+$base-font-size: 112%
 $step-up-1: 1em * $ratio
 $step-up-2: $step-up-1 * $ratio
 $step-up-3: $step-up-2 * $ratio
@@ -142,13 +144,9 @@ ul
   padding: $content-padding-l
   max-width: 1300px
 
-@media screen and (max-width: $break-m)
+@media only screen and (max-width: $break-m) 
   #layout
     padding: $content-padding-s
-
-@media screen and (max-width: $break-l)
-  #layout
-    padding: $content-padding-m
 
 #main
   width: 100%
@@ -181,6 +179,9 @@ ul
     position: fixed
     align-items: flex-start 
     width: $sidebar-width
+    padding-right: 0
+    padding-left: $content-padding-l   // compensate for the fixed position
+    padding-top: $content-padding-l   // compensate for the fixed position
   
 #content, #header
   display: flex
@@ -258,12 +259,20 @@ ul
   flex-direction: column
   overflow: hidden
   position: relative
-  margin-bottom: 5rem
+  margin-bottom: $content-padding-l*$ratio_padding
   min-height: 15rem
   background: $card-background
-  border-radius: 1em
+  border-radius: .5em
   -webkit-box-shadow: 0 1.5rem 3rem 1rem rgba(0, 0, 0, 0.1)
   box-shadow: 0 1.5rem 3rem 1rem rgba(0, 0, 0, 0.1)
+
+@media screen and (max-width: $break-l)
+  .card 
+    margin-bottom: $content-padding-m*$ratio_padding
+
+@media screen and (max-width: $break-m)
+  .card 
+    margin-bottom: $content-padding-s*$ratio_padding
 
 .card-gradient
   z-index: 3
@@ -287,11 +296,11 @@ ul
 
 .post_content, .post_title, .post_footer, .post_thumbnail img
   width: 100%
-  padding: $content-padding-s
+  padding: $content-padding-s * $ratio_padding
   @media screen and (min-width: $break-m)
-      padding: $content-padding-m
+      padding: $content-padding-m * $ratio_padding
   @media screen and (min-width: $break-l)
-      padding: $content-padding-l
+      padding: $content-padding-l * $ratio_padding
 
 .post_content, .post_title, .post_footer, 
   animation-duration: .4s
