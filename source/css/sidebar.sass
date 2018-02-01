@@ -2,7 +2,7 @@
 
 $line-height: 1.6
 $ratio: 1.414
-$color: rgba(0, 0, 0 , .7)
+$color: rgba(0, 0, 0 , .75)
 $sidebar-width: 19rem 
 
 $ratio_padding: 1.414
@@ -144,17 +144,19 @@ ul
   padding: $content-padding-l
   max-width: 1300px
 
-@media only screen and (max-width: $break-m) 
-  #layout
+  @media only screen and (max-width: $break-m) 
     padding: $content-padding-s
-
+  
+  @media screen and (max-width: $break-l)
+    max-width: $max-card-width
+    grid-template-columns: 1fr
+    
 #main
   width: 100%
   overflow: visible
   z-index: 1
 
-@media screen and (min-width: $break-l)
-  #main
+  @media screen and (min-width: $break-l)
     grid-column-start: 2
 
 #header
@@ -167,15 +169,12 @@ ul
     &:hover
       color: black
 
-@media screen and (max-width: $break-l)
-  #header
+  @media screen and (max-width: $break-l)
     margin: 0 auto
     align-items: center
     max-width: 30rem
     
-
-@media screen and (min-width: $break-l)
-  #header
+  @media screen and (min-width: $break-l)
     position: fixed
     align-items: flex-start 
     width: $sidebar-width
@@ -188,29 +187,13 @@ ul
   flex-flow: row wrap
   flex-direction: column
 
-@media screen and (max-width: $break-l)
-  #layout
-    max-width: $max-card-width
-    grid-template-columns: 1fr
-  #sns 
-    display: none
-  #main
-    padding-top: 2em
-  #title
+#title
+  @media screen and (max-width: $break-l)
     display: flex
     flex-direction: row
     align-items: center
     h2
       margin: 0
-  #avatar
-    padding-right: 1rem
-    img
-      min-width: 4rem
-      width: 5rem
-  #navigation
-    display: flex
-    align-items: baseline
-    justify-content: space-evenly
 
 #navigation
   display: flex
@@ -225,6 +208,16 @@ ul
     display: inline-block
     position: relative
 
+  @media screen and (min-width: $break-l)
+    flex-direction: column
+    display: block
+
+  @media screen and (max-width: $break-l)
+    display: flex
+    align-items: baseline
+    justify-content: space-evenly
+
+
 #sns
   font-size: $step-up-1
   padding: 1rem 0
@@ -234,9 +227,8 @@ ul
     &:first-child
       margin-left: 0
 
-@media screen and (min-width: $break-l)
-  #navigation
-    flex-direction: column
+  @media screen and (max-width: $break-l)
+    display: none
 
 #avatar
   img
@@ -245,13 +237,16 @@ ul
     height: auto
     margin: auto
 
-@media screen and (min-width: $break-l)
-  #navigation
-    display: block
-  #avatar
+  @media screen and (min-width: $break-l)
     padding-bottom: .5em
     img
       max-width: 8em
+
+  @media screen and (max-width: $break-l)
+    padding-right: 1rem
+    img
+      min-width: 4rem
+      width: 5rem
 
 .card
   box-sizing: border-box
@@ -259,20 +254,18 @@ ul
   flex-direction: column
   overflow: hidden
   position: relative
-  margin-bottom: $content-padding-l*$ratio_padding
+  margin-bottom: $content-padding-l * $ratio_padding
   min-height: 15rem
   background: $card-background
   border-radius: .5em
   -webkit-box-shadow: 0 1.5rem 3rem 1rem rgba(0, 0, 0, 0.1)
   box-shadow: 0 1.5rem 3rem 1rem rgba(0, 0, 0, 0.1)
 
-@media screen and (max-width: $break-l)
-  .card 
-    margin-bottom: $content-padding-m*$ratio_padding
+  @media screen and (max-width: $break-l)
+    margin-bottom: $content-padding-m * $ratio_padding
 
-@media screen and (max-width: $break-m)
-  .card 
-    margin-bottom: $content-padding-s*$ratio_padding
+  @media screen and (max-width: $break-m)
+    margin-bottom: $content-padding-s * $ratio_padding
 
 .card-gradient
   z-index: 3
@@ -297,8 +290,10 @@ ul
 .post_content, .post_title, .post_footer, .post_thumbnail img
   width: 100%
   padding: $content-padding-s * $ratio_padding
+
   @media screen and (min-width: $break-m)
       padding: $content-padding-m * $ratio_padding
+  
   @media screen and (min-width: $break-l)
       padding: $content-padding-l * $ratio_padding
 
@@ -310,13 +305,15 @@ ul
   animation-delay: .2s
 
 .post_content
-  padding-bottom: 1em
-  padding-top: 1em
+  padding-bottom: $content-padding-m / 2
+  padding-top: $content-padding-m / 2
   position: relative
   z-index: 4
-  img
-    border: 1px solid rgba(0,0,0,.1)
-
+  
+  @media screen and (max-width: $break-m)
+    padding-top: 0
+    padding-bottom: 0
+  
 .post_title
   position: relative
   padding-bottom: 0
@@ -431,6 +428,10 @@ ul
     color: rgba(107, 79, 189, 1)
   &.alt:hover
     background: rgba(107, 79, 189, .3)
+  
+  @media screen and (max-width: $break-m)
+    padding: .5em 1em
+
 
 .container
   display:flex

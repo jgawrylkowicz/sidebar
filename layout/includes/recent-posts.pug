@@ -14,8 +14,7 @@ if page.posts.length > 0
             h4=date(post.date, date_format)
               
         div(class="post_content")
-          p
-            !=post.excerpt
+          !=post.excerpt
                     
         div(class="post_footer")
           a(class="button" data-pjax href=config.root + post.path)= 'Read more'
