@@ -7,18 +7,18 @@ $sidebar-width: 19rem
 
 $ratio_padding: 1.414
 
-$content-padding-xxs: .5em 
-$content-padding-xs: .75em 
+$content-padding-xxs: .75em 
+$content-padding-xs: 1em 
 $content-padding-s: 1.25em 
-$content-padding-m: 1.75em
-$content-padding-l: 2.25em
+$content-padding-m: 1.5em
+$content-padding-l: 2em
 
 $break-xs: 360px
 $break-s: 480px
 $break-m: 768px
 $break-l: 1200px
 
-$base-font-size-xxs: 80%
+$base-font-size-xxs: 75%
 $base-font-size-xs: 85%
 $base-font-size-s: 90%
 $base-font-size: 112%
@@ -159,6 +159,7 @@ ul
   width: 100%
   margin: auto
   max-width: 1300px
+  padding-bottom: 4em !important
 
   @media only screen and (min-width: $break-l)
     padding: $content-padding-l
@@ -300,8 +301,6 @@ ul
 
 .card-gradient
   z-index: 3
-  &:hover
-    cursor: pointer
   &::after
     -webkit-transition: opacity .3s ease
     background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(142, 102, 119, 0.15)), color-stop(90%, rgba(255, 175, 189, 0)))
@@ -344,26 +343,44 @@ ul
   animation-delay: .2s
 
 .post_content
-  padding-bottom: $content-padding-m / 2
-  padding-top: $content-padding-m / 2
   position: relative
   z-index: 4
   
-  @media screen and (max-width: $break-m)
-    padding-top: 0
-    padding-bottom: 0
+  @media screen and (min-width: $break-l)
+    padding-top: $content-padding-l / 2
+    padding-bottom: $content-padding-l / 2
+
+  @media screen and (min-width: $break-m) and (max-width: $break-l)
+    padding-top: $content-padding-m / 2
+    padding-bottom: $content-padding-m / 2
+
+  @media screen and (min-width: $break-s) and (max-width: $break-m)
+    padding-top: $content-padding-s / 2
+    padding-bottom: $content-padding-s / 2
+
+  @media screen  and (min-width: $break-xs) and (max-width: $break-s)
+    padding-top: $content-padding-xs / 2
+    padding-bottom: $content-padding-xs / 2
+
+  @media screen and (max-width: $break-xs)
+    padding-top: $content-padding-xxs / 2
+    padding-bottom: $content-padding-xxs / 2
   
 .post_title
   position: relative
   padding-bottom: 0
-  z-index: 9
+  z-index: 20
   &.thumbnail
-    margin-top: -14em
-    height: 14rem
+    margin-top: -18em
+    height: 18em
     display: flex
     align-items: flex-end
     color: white
-    background-image: linear-gradient(to top, rgba(16,16,16,.7) 10%, rgba(16,16,16,0))
+    background-image: linear-gradient(to top, rgba(41, 50, 60, 0.4) 10%, rgba(41, 50, 60, 0))
+  h1,h4
+    // text shadow does not work well on safari with .card-gradient
+    // text-shadow: 0 1px 15px rgba(41, 50, 60, .5)
+    // -webkit-text-shadow: 0 1px 15px rgba(41, 50, 60, .5)
   h1
     margin-bottom: 0
 
