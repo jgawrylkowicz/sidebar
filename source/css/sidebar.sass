@@ -6,21 +6,31 @@ $color: rgba(0, 0, 0 , .75)
 $sidebar-width: 19rem 
 
 $ratio_padding: 1.414
-$content-padding-s: 1em 
+
+$content-padding-xxs: .5em 
+$content-padding-xs: .75em 
+$content-padding-s: 1.25em 
 $content-padding-m: 1.75em
-$content-padding-l: 2.5em
+$content-padding-l: 2.25em
+
+$break-xs: 360px
 $break-s: 480px
 $break-m: 768px
 $break-l: 1200px
-$max-card-width: 800px
 
+$base-font-size-xxs: 80%
+$base-font-size-xs: 85%
+$base-font-size-s: 90%
 $base-font-size: 112%
+
 $step-up-1: 1em * $ratio
 $step-up-2: $step-up-1 * $ratio
 $step-up-3: $step-up-2 * $ratio
 $step-down-1: 1em / $ratio
 $step-down-2: $step-down-1 / $ratio
 
+$max-card-width: 800px
+$card_border_radius: .75em
 $card-background: rgb(248,248,248)
 $dark_mode_card: rgba(44,50,58,1)
 
@@ -72,6 +82,13 @@ html
   height: 100%
   width: 100%
   touch-action: manipulation
+  @media only screen and (min-width: $break-s) and (max-width: $break-m) 
+    font-size: $base-font-size-s
+  @media only screen and (min-width: $break-xs) and (max-width: $break-s) 
+    font-size: $base-font-size-xs
+  @media only screen and (max-width: $break-xs) 
+    font-size: $base-font-size-xxs
+
 
 body, html
   font-family: 'Colfax', "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif
@@ -141,13 +158,24 @@ ul
   grid-template-columns: $sidebar-width 1fr
   width: 100%
   margin: auto
-  padding: $content-padding-l
   max-width: 1300px
 
-  @media only screen and (max-width: $break-m) 
-    padding: $content-padding-s
+  @media only screen and (min-width: $break-l)
+    padding: $content-padding-l
+
+  @media only screen and (min-width: $break-s)  and (max-width: $break-m) 
+    padding: $content-padding-m
   
-  @media screen and (max-width: $break-l)
+  @media only screen and (min-width: $break-s)  and (max-width: $break-s) 
+    padding: $content-padding-s
+
+  @media only screen and (min-width: $break-xs) and (max-width: $break-s) 
+    padding: $content-padding-xs
+
+  @media only screen and (max-width: $break-xs) 
+    padding: $content-padding-xxs
+
+  @media only screen and (max-width: $break-l)
     max-width: $max-card-width
     grid-template-columns: 1fr
     
@@ -257,15 +285,18 @@ ul
   margin-bottom: $content-padding-l * $ratio_padding
   min-height: 15rem
   background: $card-background
-  border-radius: .5em
+  border-radius: $card_border_radius
   -webkit-box-shadow: 0 1.5rem 3rem 1rem rgba(0, 0, 0, 0.1)
   box-shadow: 0 1.5rem 3rem 1rem rgba(0, 0, 0, 0.1)
 
-  @media screen and (max-width: $break-l)
+  @media screen and (min-width: $break-m) and (max-width: $break-l)
     margin-bottom: $content-padding-m * $ratio_padding
 
-  @media screen and (max-width: $break-m)
+  @media screen  and (min-width: $break-s) and (max-width: $break-m)
     margin-bottom: $content-padding-s * $ratio_padding
+
+  @media screen and (max-width: $break-s)
+    margin-bottom: $content-padding-xs * $ratio_padding
 
 .card-gradient
   z-index: 3
@@ -289,13 +320,21 @@ ul
 
 .post_content, .post_title, .post_footer, .post_thumbnail img
   width: 100%
-  padding: $content-padding-s * $ratio_padding
 
-  @media screen and (min-width: $break-m)
-      padding: $content-padding-m * $ratio_padding
-  
   @media screen and (min-width: $break-l)
-      padding: $content-padding-l * $ratio_padding
+    padding: $content-padding-l * $ratio_padding
+
+  @media screen and (min-width: $break-m) and (max-width: $break-l)
+    padding: $content-padding-m * $ratio_padding
+
+  @media screen and (min-width: $break-s) and (max-width: $break-m)
+    padding: $content-padding-s * $ratio_padding
+
+  @media screen  and (min-width: $break-xs) and (max-width: $break-s)
+    padding: $content-padding-xs * $ratio_padding
+
+  @media screen and (max-width: $break-xs)
+    padding: $content-padding-xxs * $ratio_padding
 
 .post_content, .post_title, .post_footer, 
   animation-duration: .4s

@@ -36,6 +36,15 @@ html {
   height: 100%;
   width: 100%;
   touch-action: manipulation; }
+  @media only screen and (min-width: 480px) and (max-width: 768px) {
+    html {
+      font-size: 90%; } }
+  @media only screen and (min-width: 360px) and (max-width: 480px) {
+    html {
+      font-size: 85%; } }
+  @media only screen and (max-width: 360px) {
+    html {
+      font-size: 80%; } }
 
 body, html {
   font-family: "Colfax", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
@@ -100,16 +109,27 @@ ul {
 
 #layout {
   display: grid;
-  grid-gap: 1em;
+  grid-gap: 1.25em;
   grid-template-columns: 19rem 1fr;
   width: 100%;
   margin: auto;
-  padding: 2.5em;
   max-width: 1300px; }
-  @media only screen and (max-width: 768px) {
+  @media only screen and (min-width: 1200px) {
     #layout {
-      padding: 1em; } }
-  @media screen and (max-width: 1200px) {
+      padding: 2.25em; } }
+  @media only screen and (min-width: 480px) and (max-width: 768px) {
+    #layout {
+      padding: 1.75em; } }
+  @media only screen and (min-width: 480px) and (max-width: 480px) {
+    #layout {
+      padding: 1.25em; } }
+  @media only screen and (min-width: 360px) and (max-width: 480px) {
+    #layout {
+      padding: 0.75em; } }
+  @media only screen and (max-width: 360px) {
+    #layout {
+      padding: 0.5em; } }
+  @media only screen and (max-width: 1200px) {
     #layout {
       max-width: 800px;
       grid-template-columns: 1fr; } }
@@ -142,8 +162,8 @@ ul {
       align-items: flex-start;
       width: 19rem;
       padding-right: 0;
-      padding-left: 2.5em;
-      padding-top: 2.5em; } }
+      padding-left: 2.25em;
+      padding-top: 2.25em; } }
 
 #content, #header {
   display: flex;
@@ -215,18 +235,21 @@ ul {
   flex-direction: column;
   overflow: hidden;
   position: relative;
-  margin-bottom: 3.535em;
+  margin-bottom: 3.1815em;
   min-height: 15rem;
   background: #f8f8f8;
-  border-radius: 0.5em;
+  border-radius: 0.75em;
   -webkit-box-shadow: 0 1.5rem 3rem 1rem rgba(0, 0, 0, 0.1);
   box-shadow: 0 1.5rem 3rem 1rem rgba(0, 0, 0, 0.1); }
-  @media screen and (max-width: 1200px) {
+  @media screen and (min-width: 768px) and (max-width: 1200px) {
     .card {
       margin-bottom: 2.4745em; } }
-  @media screen and (max-width: 768px) {
+  @media screen and (min-width: 480px) and (max-width: 768px) {
     .card {
-      margin-bottom: 1.414em; } }
+      margin-bottom: 1.7675em; } }
+  @media screen and (max-width: 480px) {
+    .card {
+      margin-bottom: 1.0605em; } }
 
 .card-gradient {
   z-index: 3; }
@@ -249,14 +272,22 @@ ul {
     opacity: 1; }
 
 .post_content, .post_title, .post_footer, .post_thumbnail img {
-  width: 100%;
-  padding: 1.414em; }
-  @media screen and (min-width: 768px) {
-    .post_content, .post_title, .post_footer, .post_thumbnail img {
-      padding: 2.4745em; } }
+  width: 100%; }
   @media screen and (min-width: 1200px) {
     .post_content, .post_title, .post_footer, .post_thumbnail img {
-      padding: 3.535em; } }
+      padding: 3.1815em; } }
+  @media screen and (min-width: 768px) and (max-width: 1200px) {
+    .post_content, .post_title, .post_footer, .post_thumbnail img {
+      padding: 2.4745em; } }
+  @media screen and (min-width: 480px) and (max-width: 768px) {
+    .post_content, .post_title, .post_footer, .post_thumbnail img {
+      padding: 1.7675em; } }
+  @media screen and (min-width: 360px) and (max-width: 480px) {
+    .post_content, .post_title, .post_footer, .post_thumbnail img {
+      padding: 1.0605em; } }
+  @media screen and (max-width: 360px) {
+    .post_content, .post_title, .post_footer, .post_thumbnail img {
+      padding: 0.707em; } }
 
 .post_content, .post_title, .post_footer {
   animation-duration: 0.4s;
