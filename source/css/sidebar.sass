@@ -1,17 +1,17 @@
-//TODO fix the padding between elements
+//TODO fix the position and the placeholder of the avatar image 
 
 $line-height: 1.6
-$ratio: 1.414
+$ratio: 1.6
 $color: rgba(0, 0, 0 , .75)
-$sidebar-width: 19rem 
+$sidebar-width: 21rem 
 
 $ratio_padding: 1.414
 
 $content-padding-xxs: .75em 
 $content-padding-xs: 1em 
-$content-padding-s: 1.25em 
-$content-padding-m: 1.5em
-$content-padding-l: 2em
+$content-padding-s: 1.5em 
+$content-padding-m: 2em
+$content-padding-l: 2.5em
 
 $break-xs: 360px
 $break-s: 480px
@@ -21,7 +21,7 @@ $break-l: 1200px
 $base-font-size-xxs: 75%
 $base-font-size-xs: 85%
 $base-font-size-s: 90%
-$base-font-size: 112%
+$base-font-size: 100%
 
 $step-up-1: 1em * $ratio
 $step-up-2: $step-up-1 * $ratio
@@ -30,9 +30,10 @@ $step-down-1: 1em / $ratio
 $step-down-2: $step-down-1 / $ratio
 
 $max-card-width: 800px
-$card_border_radius: .75em
-$card-background: rgb(248,248,248)
-$dark_mode_card: rgba(44,50,58,1)
+$card-border-radius: .75em
+$background-color: rgb(255,255,255)
+$card-background: rgb(255,255,255)
+$dark-mode-card: rgba(44,50,58,1)
 
 
 @font-face
@@ -63,7 +64,7 @@ $dark_mode_card: rgba(44,50,58,1)
 body
   -moz-osx-font-smoothing: grayscale
   -webkit-font-smoothing: antialiased
-  background: rgba(41, 50, 60, 0.1)
+  background: $background-color
   background-attachment: fixed
   background-size: cover
   //height: 100vh
@@ -82,12 +83,17 @@ html
   height: 100%
   width: 100%
   touch-action: manipulation
+  //-webkit-text-size-adjust: 80%
+  //-ms-text-size-adjust: 80%
+  //text-size-adjust: 80%
+  
   @media only screen and (min-width: $break-s) and (max-width: $break-m) 
     font-size: $base-font-size-s
   @media only screen and (min-width: $break-xs) and (max-width: $break-s) 
     font-size: $base-font-size-xs
   @media only screen and (max-width: $break-xs) 
     font-size: $base-font-size-xxs
+    
 
 
 body, html
@@ -133,6 +139,14 @@ h1, h2, h3
   letter-spacing: 1px
   margin-left: -2px
 
+ul
+  list-style-type: none
+  padding: 0
+  margin: 0
+li
+  font-size: $base-font-size
+  text-transform: uppercase
+
 h1
   font-size: $step-up-3
 
@@ -147,10 +161,19 @@ h4
 
 p
   font-weight: 300
+  overflow-wrap: break-word
+  word-wrap: break-word
+  -ms-word-break: break-all
+  word-break: break-word
+  -ms-hyphens: auto
+  -moz-hyphens: auto
+  -webkit-hyphens: auto
+  hyphens: auto
 
 ul
   letter-spacing: 1px
   line-height: $line-height
+  font-weight: 600
 
 #layout
   display: grid
@@ -193,10 +216,21 @@ ul
   vertical-align: middle
   z-index: 1
   width: 100%
+  p
+    margin: 0
+  & > div
+    border-bottom: 1px solid rgba(0, 0, 0, .1)
+    padding: 1.5rem 1rem
+    &:first-child
+      padding-top: 0
+    &:last-child 
+      border-bottom: none
   a
     transition: color .3s ease
     &:hover
       color: black
+  
+  
 
   @media screen and (max-width: $break-l)
     margin: 0 auto
@@ -216,66 +250,69 @@ ul
   flex-flow: row wrap
   flex-direction: column
 
-#title
+#info
+  width: 100%
+  display: flex
+  flex-direction: row
+  align-items: flex-end
+
   @media screen and (max-width: $break-l)
-    display: flex
-    flex-direction: row
     align-items: center
-    h2
-      margin: 0
+    justify-content: center
+    font-size: larger
+
+#title
+  width: 100%
+  padding-left: 1em
+  & > *
+    margin: 0
+  
+  @media screen and (max-width: $break-l)
+    width: auto
+    max-width: 12em
 
 #navigation
-  display: flex
   width: 100%
-  h1,h2,h3
-    padding: 0
-    margin: 0
-    letter-spacing: 1px
-    line-height: $line-height
   a
     transition: color .3s ease-in-out
-    display: inline-block
-    position: relative
+  i 
+    width: 1em
 
   @media screen and (min-width: $break-l)
-    flex-direction: column
-    display: block
+    ul
+      padding-left: .15rem
+    i 
+      width: 1em
+      margin-right: 1em
+    li
+      line-height: 2.5
 
   @media screen and (max-width: $break-l)
-    display: flex
-    align-items: baseline
-    justify-content: space-evenly
-
-
+    ul
+      width: 100%
+      display: flex
+      justify-content: space-evenly
+    i  
+      margin-right: .2rem
 #sns
   font-size: $step-up-1
-  padding: 1rem 0
+  display: flex
+  justify-content: space-between
   a
-    margin: 0 1rem
     text-decoration: none
+    margin: 0 1rem  
     &:first-child
       margin-left: 0
-
-  @media screen and (max-width: $break-l)
-    display: none
+    &:last-child
+      margin-right: 0
 
 #avatar
   img
     border-radius: 120%
     display: block
     height: auto
+    width: 5em
     margin: auto
-
-  @media screen and (min-width: $break-l)
-    padding-bottom: .5em
-    img
-      max-width: 8em
-
-  @media screen and (max-width: $break-l)
-    padding-right: 1rem
-    img
-      min-width: 4rem
-      width: 5rem
 
 .card
   box-sizing: border-box
@@ -286,7 +323,7 @@ ul
   margin-bottom: $content-padding-l * $ratio_padding
   min-height: 15rem
   background: $card-background
-  border-radius: $card_border_radius
+  border-radius: $card-border-radius
   -webkit-box-shadow: 0 1.5rem 3rem 1rem rgba(0, 0, 0, 0.1)
   box-shadow: 0 1.5rem 3rem 1rem rgba(0, 0, 0, 0.1)
 
@@ -389,7 +426,7 @@ ul
   padding-top: 0
 
 .post_thumbnail
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1)
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2)
   img
     height: auto
     vertical-align: middle
@@ -436,7 +473,7 @@ ul
   animation-name: fade-in-up
   animation-timing-function: ease
  
-@-webkit-keyframes fade-in-up 
+@keyframes fade-in-up 
   from 
     opacity: 0
     -webkit-transform: translate3d(0, 1%, 0)
@@ -446,7 +483,7 @@ ul
     -webkit-transform: none
     transform: none
 
-@-webkit-keyframes fade-in 
+@keyframes fade-in 
   from 
     opacity: 0
     -webkit-transform: translate3d(0, 0, 0)

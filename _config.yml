@@ -19,9 +19,15 @@ img:
 
 # main menu navigation
 menu:
-  Home: /
-  About: /about
-  Contact: /contact
+  Home:
+    url: /
+    icon: fa-home
+  About: 
+    url: /about 
+    icon: fa-user
+  Contact: 
+    url: /contact
+    icon: fa-address-book
 
 thumbnail:
   default: 'linear-gradient(120deg, rgba(41, 50, 60, 0.2), rgba(41, 50, 60, 0.1))'

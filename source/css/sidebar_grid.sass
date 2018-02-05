@@ -2,7 +2,7 @@
 
 $line-height: 1.5
 $ratio: 1.414
-$color: rgba(0, 0, 0 , .7)
+$color: #484848
 
 $content-padding-s: 1em
 $content-padding-m: 1.75em
@@ -293,8 +293,8 @@ ul
   &:hover
     cursor: pointer
   &::after
-    -webkit-transition: opacity .3s linear
-    background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(142, 102, 119, 0.15)), color-stop(90%, rgba(255, 175, 189, 0)))
+    -webkit-transition: opacity .3s ease
+    background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(142, 102, 119, 0.3)), color-stop(90%, rgba(255, 175, 189, 0)))
     background-image: linear-gradient(to top, rgba(142, 102, 119, 0.15) 0%, rgba(255, 175, 189, 0) 90%)
     bottom: 0
     content: ''
@@ -302,7 +302,7 @@ ul
     left: 0
     opacity: .4
     position: absolute
-    transition: opacity .3s linear
+    transition: opacity .3s ease
     width: 100%
     z-index: 2
   &:hover::after

@@ -4,7 +4,7 @@ if page.posts.length > 0
         if post.thumbnail
           -let background = (post.background) ? post.background : theme.thumbnail.default;  
           div(class="post_thumbnail", style={background: background})
-            img(src=post.thumbnail)
+            img(src=post.thumbnail width="100%" height="100%")
               
         -let has_thumbnail = (post.thumbnail) ? 'thumbnail' : ''; 
         div(class="post_title " + has_thumbnail)
