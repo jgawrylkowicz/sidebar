@@ -2,18 +2,26 @@
   #info
     #avatar
       img(src=theme.img.avatar, alt='avatar')
-    
     #title
         if theme.img.avatar
           h3
             !=config.title
-        //i(class="fa fa-map-marker")&attributes({'aria-hidden': 'true'})
-          !=theme.header.location 
+          p
+            if (Array.isArray(theme.header.info))
+              !=theme.header.info.join('<br>')
+            else
+              !=theme.header.info
   #aboutme
-    p
-      if (Array.isArray(theme.header.slogan))
-        !=theme.header.slogan.join('<br>')
-      else
+    if (Array.isArray(theme.header.slogan))
+      - let array = theme.header.slogan
+      - first_sentence = theme.header.slogan[0]
+      - array = array.slice(1)
+      h3
+        !=first_sentence
+      p
+        !=array.join('<br>')
+    else
+      h4
         !=theme.header.slogan
   #navigation
     ul
@@ -23,7 +31,12 @@
             i(class="fa fa-lg " + values.icon)&attributes({'aria-hidden': 'true'})
             !=label
   #sns
-    each values, label in theme.sns
-      if values.url
-        a(href=values.url)
-          i(class="fa fa-lg " + values.icon)&attributes({'aria-hidden': 'true'})
+    ul
+      each values, label in theme.sns
+        if values.url
+          li
+            a(href=values.url)
+              i(class="fa fa-lg " + values.icon)&attributes({'aria-hidden': 'true'})
+              !=label 
+ 
+           

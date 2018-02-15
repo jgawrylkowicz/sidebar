@@ -1,480 +1,66 @@
-@charset "UTF-8";
-@font-face {
-  font-family: "Colfax";
-  font-style: normal;
-  font-weight: 600;
-  src: local("Colfax Medium"), url(/fonts/Colfax-Medium.woff) format("woff"); }
-@font-face {
-  font-family: "Colfax";
-  font-style: normal;
-  font-weight: 400;
-  src: local("Colfax Regular"), url(/fonts/Colfax-Regular.woff) format("woff"); }
-@font-face {
-  font-family: "Colfax";
-  font-style: normal;
-  font-weight: 300;
-  src: local("Colfax Light"), url(/fonts/Colfax-Light.woff) format("woff"); }
-::-moz-selection, ::selection {
-  background: rgba(107, 79, 189, 0.4);
-  text-shadow: none; }
+/*
+Error: Invalid CSS after "...255,255,255,0))": expected expression (e.g. 1px, bold), was ";"
+        on line 391 of sidebar.sass
 
-body {
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  background: white;
-  background-attachment: fixed;
-  background-size: cover;
-  margin: 0;
-  text-rendering: optimizeLegibility; }
+386:   padding: 1em 2em
+387: 
+388: .post_excerpt
+389:   border-top: 1px solid rgba(255,255,255,.3)
+390:   p
+391:     -webkit-mask-image: -webkit-linear-gradient(top, rgba(255,255,255,1), rgba(255,255,255,.8) 80%, rgba(255,255,255,0));
+392: 
+393: .post_content, .post_title, .post_footer, 
+394:   animation-duration: .4s
+395:   animation-fill-mode: both
+396:   animation-name: fade-in
 
-html {
-  -ms-touch-action: manipulation;
-  color: rgba(0, 0, 0, 0.75);
-  font-size: 100%;
-  line-height: 1.6;
-  display: block;
-  height: 100%;
-  width: 100%;
-  touch-action: manipulation; }
-  @media only screen and (min-width: 480px) and (max-width: 768px) {
-    html {
-      font-size: 90%; } }
-  @media only screen and (min-width: 360px) and (max-width: 480px) {
-    html {
-      font-size: 85%; } }
-  @media only screen and (max-width: 360px) {
-    html {
-      font-size: 75%; } }
-
-body, html {
-  font-family: "Colfax", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
-  font-weight: 400;
-  overflow-x: hidden; }
-
-code {
-  border: none;
-  border-bottom-right-radius: 3px;
-  border-radius: 0;
-  border-top-right-radius: 3px;
-  display: block;
-  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
-  font-size: 13px;
-  line-height: 19px;
-  overflow: auto;
-  padding: 0; }
-
-a {
-  color: inherit;
-  text-decoration: none; }
-
-img {
-  max-width: 100%; }
-
-*, :after, :before {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box; }
-
-h1:first-of-type, h2:first-of-type, h3:first-of-type, h4:first-of-type, h5:first-of-type, h6:first-of-type, ul:first-of-type {
-  padding-top: 0;
-  margin-top: 0; }
-
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 600;
-  letter-spacing: 1px; }
-
-h1, h2, h3 {
-  margin: 1.6em 0 0.5em;
-  line-height: 1.2;
-  letter-spacing: 1px;
-  margin-left: -2px; }
-
-ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0; }
-
-li {
-  font-size: 100%;
-  text-transform: uppercase; }
-
-h1 {
-  font-size: 4.096em; }
-
-h2 {
-  font-size: 2.56em; }
-
-h3 {
-  font-size: 1.6em; }
-
-h4 {
-  font-size: 100%; }
-
-p {
-  font-weight: 300;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  -ms-word-break: break-all;
-  word-break: break-word;
-  -ms-hyphens: auto;
-  -moz-hyphens: auto;
-  -webkit-hyphens: auto;
-  hyphens: auto; }
-
-ul {
-  letter-spacing: 1px;
-  line-height: 1.6;
-  font-weight: 600; }
-
-#layout {
-  display: grid;
-  grid-gap: 1.5em;
-  grid-template-columns: 21rem 1fr;
-  width: 100%;
-  margin: auto;
-  max-width: 1300px;
-  padding-bottom: 4em !important; }
-  @media only screen and (min-width: 1200px) {
-    #layout {
-      padding: 2.5em; } }
-  @media only screen and (min-width: 480px) and (max-width: 768px) {
-    #layout {
-      padding: 2em; } }
-  @media only screen and (min-width: 480px) and (max-width: 480px) {
-    #layout {
-      padding: 1.5em; } }
-  @media only screen and (min-width: 360px) and (max-width: 480px) {
-    #layout {
-      padding: 1em; } }
-  @media only screen and (max-width: 360px) {
-    #layout {
-      padding: 0.75em; } }
-  @media only screen and (max-width: 1200px) {
-    #layout {
-      max-width: 800px;
-      grid-template-columns: 1fr; } }
-
-#main {
-  width: 100%;
-  overflow: visible;
-  z-index: 1; }
-  @media screen and (min-width: 1200px) {
-    #main {
-      grid-column-start: 2; } }
-
-#header {
-  padding: 1em;
-  vertical-align: middle;
-  z-index: 1;
-  width: 100%; }
-  #header p {
-    margin: 0; }
-  #header > div {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    padding: 1.5rem 1rem; }
-    #header > div:first-child {
-      padding-top: 0; }
-    #header > div:last-child {
-      border-bottom: none; }
-  #header a {
-    transition: color 0.3s ease; }
-    #header a:hover {
-      color: black; }
-  @media screen and (max-width: 1200px) {
-    #header {
-      margin: 0 auto;
-      align-items: center;
-      max-width: 30rem; } }
-  @media screen and (min-width: 1200px) {
-    #header {
-      position: fixed;
-      align-items: flex-start;
-      width: 21rem;
-      padding-right: 0;
-      padding-left: 2.5em;
-      padding-top: 2.5em; } }
-
-#content, #header {
-  display: flex;
-  flex-flow: row wrap;
-  flex-direction: column; }
-
-#info {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end; }
-  @media screen and (max-width: 1200px) {
-    #info {
-      align-items: center;
-      justify-content: center;
-      font-size: larger; } }
-
-#title {
-  width: 100%;
-  padding-left: 1em; }
-  #title > * {
-    margin: 0; }
-  @media screen and (max-width: 1200px) {
-    #title {
-      width: auto;
-      max-width: 12em; } }
-
-#navigation {
-  width: 100%; }
-  #navigation a {
-    transition: color 0.3s ease-in-out; }
-  #navigation i {
-    width: 1em; }
-  @media screen and (min-width: 1200px) {
-    #navigation ul {
-      padding-left: 0.15rem; }
-    #navigation i {
-      width: 1em;
-      margin-right: 1em; }
-    #navigation li {
-      line-height: 2.5; } }
-  @media screen and (max-width: 1200px) {
-    #navigation ul {
-      width: 100%;
-      display: flex;
-      justify-content: space-evenly; }
-    #navigation i {
-      margin-right: 0.2rem; } }
-
-#sns {
-  font-size: 1.6em;
-  display: flex;
-  justify-content: space-between; }
-  #sns a {
-    text-decoration: none;
-    margin: 0 1rem; }
-    #sns a:first-child {
-      margin-left: 0; }
-    #sns a:last-child {
-      margin-right: 0; }
-
-#avatar img {
-  border-radius: 120%;
-  display: block;
-  height: auto;
-  width: 5em;
-  margin: auto; }
-
-.card {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  position: relative;
-  margin-bottom: 3.535em;
-  min-height: 15rem;
-  background: white;
-  border-radius: 0.75em;
-  -webkit-box-shadow: 0 1.5rem 3rem 1rem rgba(0, 0, 0, 0.1);
-  box-shadow: 0 1.5rem 3rem 1rem rgba(0, 0, 0, 0.1); }
-  @media screen and (min-width: 768px) and (max-width: 1200px) {
-    .card {
-      margin-bottom: 2.828em; } }
-  @media screen and (min-width: 480px) and (max-width: 768px) {
-    .card {
-      margin-bottom: 2.121em; } }
-  @media screen and (max-width: 480px) {
-    .card {
-      margin-bottom: 1.414em; } }
-
-.card-gradient {
-  z-index: 3; }
-  .card-gradient::after {
-    -webkit-transition: opacity 0.3s ease;
-    background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(142, 102, 119, 0.15)), color-stop(90%, rgba(255, 175, 189, 0)));
-    background-image: linear-gradient(to top, rgba(142, 102, 119, 0.15) 0%, rgba(255, 175, 189, 0) 90%);
-    bottom: 0;
-    content: "";
-    height: 40%;
-    left: 0;
-    opacity: 0.4;
-    position: absolute;
-    transition: opacity 0.3s ease;
-    width: 100%;
-    z-index: 2; }
-  .card-gradient:hover::after {
-    opacity: 1; }
-
-.post_content, .post_title, .post_footer, .post_thumbnail img {
-  width: 100%; }
-  @media screen and (min-width: 1200px) {
-    .post_content, .post_title, .post_footer, .post_thumbnail img {
-      padding: 3.535em; } }
-  @media screen and (min-width: 768px) and (max-width: 1200px) {
-    .post_content, .post_title, .post_footer, .post_thumbnail img {
-      padding: 2.828em; } }
-  @media screen and (min-width: 480px) and (max-width: 768px) {
-    .post_content, .post_title, .post_footer, .post_thumbnail img {
-      padding: 2.121em; } }
-  @media screen and (min-width: 360px) and (max-width: 480px) {
-    .post_content, .post_title, .post_footer, .post_thumbnail img {
-      padding: 1.414em; } }
-  @media screen and (max-width: 360px) {
-    .post_content, .post_title, .post_footer, .post_thumbnail img {
-      padding: 1.0605em; } }
-
-.post_content, .post_title, .post_footer {
-  animation-duration: 0.4s;
-  animation-fill-mode: both;
-  animation-name: fade-in;
-  animation-timing-function: ease;
-  animation-delay: 0.2s; }
-
-.post_content {
-  position: relative;
-  z-index: 4; }
-  @media screen and (min-width: 1200px) {
-    .post_content {
-      padding-top: 1.25em;
-      padding-bottom: 1.25em; } }
-  @media screen and (min-width: 768px) and (max-width: 1200px) {
-    .post_content {
-      padding-top: 1em;
-      padding-bottom: 1em; } }
-  @media screen and (min-width: 480px) and (max-width: 768px) {
-    .post_content {
-      padding-top: 0.75em;
-      padding-bottom: 0.75em; } }
-  @media screen and (min-width: 360px) and (max-width: 480px) {
-    .post_content {
-      padding-top: 0.5em;
-      padding-bottom: 0.5em; } }
-  @media screen and (max-width: 360px) {
-    .post_content {
-      padding-top: 0.375em;
-      padding-bottom: 0.375em; } }
-
-.post_title {
-  position: relative;
-  padding-bottom: 0;
-  z-index: 20; }
-  .post_title.thumbnail {
-    margin-top: -18em;
-    height: 18em;
-    display: flex;
-    align-items: flex-end;
-    color: white;
-    background-image: linear-gradient(to top, rgba(41, 50, 60, 0.4) 10%, rgba(41, 50, 60, 0)); }
-  .post_title h1 {
-    margin-bottom: 0; }
-
-.post_footer {
-  z-index: 10;
-  padding-top: 0; }
-
-.post_thumbnail {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2); }
-  .post_thumbnail img {
-    height: auto;
-    vertical-align: middle; }
-
-.tags-list {
-  font-size: 0.625em;
-  margin: 0;
-  padding: 0; }
-
-.tags-list-item {
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-  -webkit-appearance: none;
-  float: left;
-  letter-spacing: 1px;
-  list-style: none;
-  padding: 0.7em 0.5em;
-  margin-left: 0;
-  padding-left: 0;
-  text-align: center;
-  position: relative;
-  z-index: 4; }
-  .tags-list-item a {
-    -webkit-transition: all 0.3s ease;
-    transition: all 0.3s ease;
-    color: rgba(51, 51, 51, 0.75);
-    text-decoration: none;
-    text-transform: uppercase; }
-    .tags-list-item a:hover {
-      color: rgba(0, 0, 0, 0.75); }
-  .tags-list-item:hover {
-    color: rgba(0, 0, 0, 0.75); }
-
-.button-wrapper {
-  z-index: -1;
-  margin-left: auto; }
-  .button-wrapper:last-of-type {
-    padding-bottom: 0; }
-
-.fade-in {
-  animation-duration: 0.4s;
-  animation-fill-mode: both;
-  animation-delay: 0.1s;
-  animation-name: fade-in-up;
-  animation-timing-function: ease; }
-
-@keyframes fade-in-up {
-  from {
-    opacity: 0;
-    -webkit-transform: translate3d(0, 1%, 0);
-    transform: translate3d(0, 1%, 0); }
-  to {
-    opacity: 1;
-    -webkit-transform: none;
-    transform: none; } }
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0); }
-  to {
-    opacity: 1;
-    -webkit-transform: none;
-    transform: none; } }
-.button {
-  background-image: linear-gradient(-120deg, #6b4fbd 0%, #72378c 100%);
-  background-position: 100% 0;
-  background-size: 200% auto;
-  border-radius: 0.5rem;
-  color: #fff;
-  display: inline-block;
-  font-size: 100%;
-  font-weight: 400;
-  letter-spacing: 1px;
-  padding: 0.7em 1.4em;
-  margin-right: 0.5em;
-  margin-top: 0.5em;
-  position: relative;
-  text-align: center;
-  text-decoration: none;
-  text-transform: uppercase;
-  -webkit-transition: background 0.3s ease;
-  transition: background 0.3s ease;
-  z-index: 4; }
-  .button:hover {
-    background-position: 0 0;
-    color: #fff; }
-  .button.alt {
-    background: rgba(107, 79, 189, 0.2);
-    color: #6b4fbd; }
-  .button.alt:hover {
-    background: rgba(107, 79, 189, 0.3); }
-  @media screen and (max-width: 768px) {
-    .button {
-      padding: 0.5em 1em; } }
-
-.container {
-  flex-direction: column;
-  margin: auto;
-  justify-content: flex-start; }
-  .container .item {
-    display: flex;
-    flex-direction: row;
-    align-items: center; }
-    .container .item i {
-      font-size: 2.56em;
-      width: 2em; }
-
-/*# sourceMappingURL=sidebar.css.map */
+Backtrace:
+sidebar.sass:391
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.4/lib/sass/scss/parser.rb:1278:in `expected'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.4/lib/sass/script/lexer.rb:231:in `expected!'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.4/lib/sass/script/parser.rb:762:in `assert_done'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.4/lib/sass/script/parser.rb:69:in `parse'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.4/lib/sass/script/parser.rb:228:in `parse'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.4/lib/sass/script.rb:27:in `parse'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.4/lib/sass/engine.rb:1177:in `parse_script'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.4/lib/sass/engine.rb:749:in `parse_property'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.4/lib/sass/engine.rb:708:in `parse_property_or_rule'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.4/lib/sass/engine.rb:667:in `parse_line'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.4/lib/sass/engine.rb:540:in `build_tree'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.4/lib/sass/engine.rb:559:in `block in append_children'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.4/lib/sass/engine.rb:558:in `each'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.4/lib/sass/engine.rb:558:in `append_children'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.4/lib/sass/engine.rb:549:in `block in build_tree'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.4/lib/sass/engine.rb:542:in `each'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.4/lib/sass/engine.rb:542:in `build_tree'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.4/lib/sass/engine.rb:559:in `block in append_children'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.4/lib/sass/engine.rb:558:in `each'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.4/lib/sass/engine.rb:558:in `append_children'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.4/lib/sass/engine.rb:549:in `block in build_tree'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.4/lib/sass/engine.rb:542:in `each'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.4/lib/sass/engine.rb:542:in `build_tree'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.4/lib/sass/engine.rb:559:in `block in append_children'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.4/lib/sass/engine.rb:558:in `each'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.4/lib/sass/engine.rb:558:in `append_children'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.4/lib/sass/engine.rb:417:in `_to_tree'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.4/lib/sass/engine.rb:389:in `_render_with_sourcemap'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.4/lib/sass/engine.rb:307:in `render_with_sourcemap'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.4/lib/sass/plugin/compiler.rb:462:in `update_stylesheet'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.4/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.4/lib/sass/plugin/compiler.rb:209:in `each'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.4/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.4/lib/sass/plugin/compiler.rb:443:in `on_file_changed'
+/Library/Ruby/Gems/2.3.0/gems/sass-3.5.4/lib/sass/plugin/compiler.rb:320:in `block in watch'
+/Library/Ruby/Gems/2.3.0/gems/sass-listen-4.0.0/lib/sass-listen/event/config.rb:23:in `call'
+/Library/Ruby/Gems/2.3.0/gems/sass-listen-4.0.0/lib/sass-listen/event/processor.rb:115:in `_process_changes'
+/Library/Ruby/Gems/2.3.0/gems/sass-listen-4.0.0/lib/sass-listen/event/processor.rb:19:in `block in loop_for'
+/Library/Ruby/Gems/2.3.0/gems/sass-listen-4.0.0/lib/sass-listen/event/processor.rb:15:in `loop'
+/Library/Ruby/Gems/2.3.0/gems/sass-listen-4.0.0/lib/sass-listen/event/processor.rb:15:in `loop_for'
+/Library/Ruby/Gems/2.3.0/gems/sass-listen-4.0.0/lib/sass-listen/event/loop.rb:84:in `_wait_for_changes'
+/Library/Ruby/Gems/2.3.0/gems/sass-listen-4.0.0/lib/sass-listen/event/loop.rb:42:in `block in setup'
+/Library/Ruby/Gems/2.3.0/gems/sass-listen-4.0.0/lib/sass-listen/internals/thread_pool.rb:6:in `block in add'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid CSS after \"...255,255,255,0))\": expected expression (e.g. 1px, bold), was \";\"\A         on line 391 of sidebar.sass\A \A 386:   padding: 1em 2em\A 387: \A 388: .post_excerpt\A 389:   border-top: 1px solid rgba(255,255,255,.3)\A 390:   p\A 391:     -webkit-mask-image: -webkit-linear-gradient(top, rgba(255,255,255,1), rgba(255,255,255,.8) 80%, rgba(255,255,255,0));\A 392: \A 393: .post_content, .post_title, .post_footer, \A 394:   animation-duration: .4s\A 395:   animation-fill-mode: both\A 396:   animation-name: fade-in"; }

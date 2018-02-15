@@ -8,9 +8,12 @@ head:
   apple_touch_icon: "/img/logo.png"
 
 header:
+  info:
+    - "Student of Computer Science"
+    - "University of Vienna, Austria"
   slogan:
     - "Hello, nice to meet you!"
-    - "I am a computer science student at the University of Vienna. I find web technologies fascinating and aspire to work as a full-stack developer in the future. Here you can find some projects that I've been working on."
+    - "I find web technologies fascinating and aspire to work as a full-stack developer in the future. Here you can find some projects that I've been working on."
   location: Vienna, Austria
 
 img:
@@ -22,12 +25,9 @@ menu:
   Home:
     url: /
     icon: fa-home
-  About: 
+  About Me: 
     url: /about 
-    icon: fa-user
-  Contact: 
-    url: /contact
-    icon: fa-address-book
+    icon:
 
 thumbnail:
   default: 'linear-gradient(120deg, rgba(41, 50, 60, 0.2), rgba(41, 50, 60, 0.1))'
@@ -35,24 +35,31 @@ sns:
   email:
     url: mailto:jgawrylkowicz@gmail.com
     icon: fa-envelope
+    info: "jgawrylkowicz@gmail.com"
   facebook:
     url: https://www.facebook.com/facebook
     icon: fa-facebook
+    info: "Jakub Gawrylkowicz"
   twitter:
     url: 
     icon: fa-twitter
+    info:
   googleplus:
     url:
     icon: fa-googleplus
+    info:
   github:
     url: https://github.com/jgawrylkowicz
     icon: fa-github
+    info: "jgawrylkowicz"
   linkedin:
     url:
     icon: fa-linkedin
+    info:
   telegram:
     url: 
     icon: fa-telegram
+    info:
 
 # Miscelaneous
 favicon: /img/logo-128.png

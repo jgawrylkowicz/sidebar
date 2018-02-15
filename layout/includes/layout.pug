@@ -24,6 +24,11 @@ html(lang=config.language)
     #layout
       include header.pug
       #main
+        #top_bar
+          h3
+            !=pageTitle 
+            span(class="slash")="/"
+
         #content
           if body
             div!= body
