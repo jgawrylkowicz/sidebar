@@ -13,8 +13,7 @@ html(lang=config.language)
     meta(charset='UTF-8')
     meta(name='author', content=config.author)
     meta(name='desciption', content=config.description)
-    meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    title= pageTitle
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')    
     if theme.stylesheets !== undefined && theme.stylesheets.length > 0
       //- stylesheets list from config.yml
       each url in theme.stylesheets
@@ -23,12 +22,8 @@ html(lang=config.language)
   body
     #layout
       include header.pug
+      include topbar.pug
       #main
-        #top_bar
-          h3
-            !=pageTitle 
-            span(class="slash")="/"
-
         #content
           if body
             div!= body

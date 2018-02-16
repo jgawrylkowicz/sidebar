@@ -1,0 +1,13 @@
+-let title = (page.title == null) ? "home" : page.title
+//https://hexo.io/docs/variables.html#Site-Variables
+#topbar
+  #menu
+  i(class="fa fa-lg fa-navicon")&attributes({'aria-hidden': 'true'})
+
+  h3
+    !=title
+    span(class="slash")="/"
+
+  //#search
+    i(class="fa fa-search fa-lg")&attributes({'aria-hidden': 'true'})
+    input(type="text")
