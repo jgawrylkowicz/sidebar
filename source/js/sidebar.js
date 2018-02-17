@@ -1,3 +1,4 @@
+// Settings for pjax
 (function($) {
   $(document).pjax('[data-pjax] a, a[data-pjax]', '#main', {
     fragment: '#main',
@@ -17,6 +18,23 @@
     .css('opacity', '0')
     .addClass('fade-in');
   }).ready(function() {
-    console.log('rendered');
+    //console.log('rendered');
   });
 })(jQuery);
+
+// Open the sidebar
+$('#menu').click(function(event) {
+  event.stopPropagation();
+  $('#header').toggleClass('show-header');
+});
+
+// Close the sidebar
+$('#close').click(function(event) {
+  event.stopPropagation();
+  $('#header').toggleClass('show-header');
+});
+
+// Close the sidebar whhen clicked on a element
+$('body,html').click(function(event){
+  $('#header').removeClass('show-header');
+});
