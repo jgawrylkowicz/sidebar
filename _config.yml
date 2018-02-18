@@ -73,4 +73,6 @@ stylesheets:
 scripts:
 - /js/jquery-3.3.1.min.js
 - /js/jquery.pjax.js
+- /js/flowtype.js
 - /js/sidebar.js
+

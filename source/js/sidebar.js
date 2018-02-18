@@ -38,3 +38,11 @@ $('#close').click(function(event) {
 $('body,html').click(function(event){
   $('#header').removeClass('show-header');
 });
+
+// Flowtype.js
+(function($) {
+  $('body').flowtype({
+    minFont : 12,
+    maxFont : 17
+  });
+})(jQuery);
