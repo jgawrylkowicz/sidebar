@@ -16,7 +16,7 @@
       - let array = theme.header.slogan
       - first_sentence = theme.header.slogan[0]
       - array = array.slice(1)
-      h3
+      h4
         !=first_sentence
       p
         !=array.join('<br>')
@@ -27,22 +27,27 @@
     ul
       each values, label in theme.menu
         li
-          a(href=values.url data-pjax)
+          a(href=values.url data-pjax class="item")
             i(class="fa fa-lg " + values.icon)&attributes({'aria-hidden': 'true'})
-            !=label
+            div
+              div(class="label")!=label 
+              div(class='info')!=values.info
   #sns
     ul
       each values, label in theme.sns
         if values.url
           li
-            a(href=values.url)
+            a(href=values.url, class="item")
               i(class="fa fa-lg " + values.icon)&attributes({'aria-hidden': 'true'})
-              !=label 
+              div
+                div(class="label")!=label 
+                div(class='info')!=values.info
   #close
     ul
       li
-        a
-          i(class="fa fa-lg fa-close")&attributes({'aria-hidden': 'true'})
-          !="Close sidebar"
+       a(class="item")
+        i(class="fa fa-lg")&attributes({'aria-hidden': 'true'})
+        div
+          div(class="label")!="Close sidebar"
  
            
