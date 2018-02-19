@@ -16,7 +16,7 @@
   }).on('pjax:complete', function() {
     $('#content')
     .css('opacity', '0')
-    .addClass('fade-in');
+    .addClass('fade-in');  
   }).ready(function() {
     //console.log('rendered');
   });
@@ -40,9 +40,26 @@ $('body,html').click(function(event){
 });
 
 // Flowtype.js
-(function($) {
-  $('body').flowtype({
-    minFont : 12,
-    maxFont : 17
-  });
-})(jQuery);
+$('body').flowtype({
+  minFont : 12,
+  maxFont : 17
+});
+
+// Resize the posts' excerpt 
+// There seems to be no other way
+$( window ).resize(function(){
+  resize_excerpts();
+});
+
+//TODO doesnt work with pjax
+var resize_excerpts = function(){
+  let post_height = $('.post_container').height();
+  let content_height = $('.post_thumbnail').height() + $('.post_content_thumbnail').height() + $('.post_footer').height();
+  let height = (post_height - content_height) * .8;
+  $('.post_excerpt_hidden').css('height' , height)
+}
+
+// Functions loaded at the beginning
+window.onload = function(){
+  resize_excerpts();
+};

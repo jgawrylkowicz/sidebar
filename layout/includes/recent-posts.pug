@@ -2,16 +2,15 @@ div(class="posts")
   if page.posts.length > 0
       each post in page.posts.sort('date', -1).limit(10).toArray()
         -let background = (post.background) ? post.background : theme.thumbnail.default;
+        -let thumbnail = false
         div(class="card post", style={background: background})
           div(class="post_container")
-            -let thumbnail = "no-thumbnail"
             if post.thumbnail
-      
               div(class="post_thumbnail",)
                 img(src=post.thumbnail width="100%" height="100%")
-                -thumbnail = null
-              
-            div(class="post_content " + thumbnail)
+                -thumbnail = true
+            -let post_class= (thumbnail) ? 'post_content_thumbnail' : 'post_content' ;
+            div(class=post_class)
               div(class="post_title")
                 h1
                   a(href=config.root + post.path)= post.title
@@ -22,7 +21,8 @@ div(class="posts")
                 div(class="post_tags")
                   !=list_tags(post.tags, {show_count: false, class: 'tags', style: 'list', separator: ''})
 
-              div(class="post_excerpt hidden")
+              -let footer_class= (thumbnail) ? 'post_excerpt_hidden' : 'post_excerpt';
+              div(class=footer_class)
                 !=post.excerpt
                           
             div(class="post_footer")
