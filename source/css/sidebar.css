@@ -72,7 +72,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 600; }
 
 h1, h2, h3 {
-  margin: 1.28em 0 0.5em;
+  margin: 1.25em 0 0.5em;
   line-height: 1.2;
   margin-left: -2px; }
 
@@ -87,13 +87,13 @@ li {
   font-weight: 500; }
 
 h1 {
-  font-size: 2.097152em; }
+  font-size: 1.953125em; }
 
 h2 {
-  font-size: 1.6384em; }
+  font-size: 1.5625em; }
 
 h3 {
-  font-size: 1.28em; }
+  font-size: 1.25em; }
 
 h4 {
   font-size: 1em; }
@@ -120,7 +120,7 @@ ul {
   width: 100%; }
   @media only screen and (min-width: 1200px) {
     #layout {
-      grid-template-columns: 20em 3em 1fr; } }
+      grid-template-columns: 20em 2em 1fr 2em; } }
   @media only screen and (max-width: 1200px) {
     #layout {
       grid-template-columns: 1fr; } }
@@ -147,7 +147,7 @@ ul {
     text-transform: uppercase;
     color: #293C50;
     margin: 0;
-    padding-left: 3.15em; }
+    padding-left: 2.25em; }
   #topbar span.slash {
     color: #E7AAAE;
     padding: 0 0.5em; }
@@ -159,10 +159,16 @@ ul {
   @media only screen and (max-width: 1200px) {
     #topbar {
       padding: 0 1em;
-      position: fixed; } }
+      position: fixed;
+      transition: background 0.3s ease; } }
   @media only screen and (max-width: 900px) {
     #topbar h3 {
       justify-self: center; } }
+
+@media only screen and (max-width: 1200px) {
+  .show-topbar {
+    background: #F4F7FA;
+    box-shadow: 0 0.5em 2em 0 rgba(50, 50, 50, 0.2); } }
 
 @media only screen and (max-width: 768px) {
   #search {
@@ -179,12 +185,12 @@ ul {
 #menu {
   position: fixed; }
   #menu i {
-    font-size: 2.097152em;
+    font-size: 1.953125em;
     justify-self: flex-start;
     transition: color 0.3s ease-in-out;
     color: #293C50;
-    -webkit-filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2));
-    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2)); }
+    -webkit-filter: drop-shadow(0 0.5em 2em rgba(50, 50, 50, 0.2));
+    filter: drop-shadow(0 0.5em 2em rgba(50, 50, 50, 0.2)); }
     #menu i:hover {
       color: #6F64F2; }
   @media only screen and (min-width: 1200px) {
@@ -221,7 +227,7 @@ ul {
   flex-shrink: 1;
   flex-wrap: nowrap;
   background-color: white;
-  box-shadow: 0 1em 4em 0 rgba(50, 50, 50, 0.2);
+  box-shadow: 0 0.5em 2em 0 rgba(50, 50, 50, 0.2);
   position: fixed;
   align-items: flex-start; }
   @media only screen and (min-width: 1200px) {
@@ -292,13 +298,12 @@ ul {
       grid-template-columns: 1fr; } }
 
 #aboutme div {
-  font-size: 1.28em;
+  font-size: 1.25em;
   font-weight: 500;
   color: #293C50; }
 #aboutme p {
   color: #5F7288; }
 #aboutme h3, #aboutme h4 {
-  margin: 0;
   line-height: 1.5; }
 
 #navigation, #sns, #aboutme {
@@ -314,7 +319,7 @@ ul {
   padding: 0 0.75em; }
 
 #title {
-  padding-left: 0.5em;
+  padding-left: 0.75em;
   margin: 2em 0; }
   #title h3 {
     color: #6F64F2;
@@ -343,7 +348,7 @@ ul {
     padding-bottom: 1.6em; }
   #navigation div.info, #sns div.info {
     line-height: 0;
-    font-size: 0.78125em;
+    font-size: 0.8em;
     text-transform: lowercase;
     font-weight: 400;
     color: #AAB9C5; }
@@ -354,7 +359,7 @@ ul {
   height: auto;
   width: 5em;
   margin: auto;
-  box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.2); }
+  box-shadow: 0 0.5em 2em 0 rgba(50, 50, 50, 0.2); }
 
 .card {
   box-sizing: border-box;
@@ -363,8 +368,8 @@ ul {
   overflow: hidden;
   position: relative;
   background: white;
-  border-radius: 3px;
-  box-shadow: 0 1em 4em 0 rgba(50, 50, 50, 0.2); }
+  border-radius: 1%;
+  box-shadow: 0 0.5em 2em 0 rgba(50, 50, 50, 0.2); }
 
 .post {
   color: white;
@@ -381,7 +386,8 @@ ul {
 .article {
   width: 100%;
   max-width: 50em;
-  margin-top: 2em; }
+  margin-top: 2em;
+  margin-bottom: 4em; }
   .article .post_content {
     margin-top: 175px;
     padding-left: calc(20px + 2em);
@@ -390,22 +396,25 @@ ul {
     .article .post_content h2 {
       color: #6F64F2; }
 
+.article_container {
+  padding: calc(20px + 2em); }
+
 .article_banner {
   position: absolute;
   width: calc(100% - 4em);
   max-width: 46em;
   padding-top: 60%;
-  border-radius: 3px;
+  border-radius: 1%;
   z-index: 20;
   display: flex;
   flex-direction: column;
   justify-content: center;
   box-shadow: 0 2px 40px 0 rgba(0, 0, 0, 0.15);
   padding: 2em; }
-  .article_banner .post_footer {
+  .article_banner .article_footer {
     padding-top: 0.5em;
     border-top: 1px solid rgba(255, 255, 255, 0.7); }
-  .article_banner .post_tags {
+  .article_banner .article_tags {
     padding-bottom: 0.5em; }
   .article_banner .article_title {
     color: white;
@@ -416,12 +425,24 @@ ul {
     justify-content: space-between;
     z-index: 20; }
     .article_banner .article_title h1 {
-      font-size: 2.68435456em;
+      font-size: 2.44140625em;
       margin-bottom: 0; }
     .article_banner .article_title .post_date {
       font-size: 1em;
       margin-bottom: 0;
       font-weight: 400; }
+
+.article_banner, .article {
+  animation-duration: 0.3s;
+  animation-fill-mode: both;
+  animation-name: fade-in-up;
+  animation-timing-function: ease; }
+
+.article_banner {
+  animation-delay: 0.15s; }
+
+.article {
+  animation-delay: 0.25s; }
 
 .card-gradient {
   z-index: 3; }
@@ -446,7 +467,7 @@ ul {
   flex-direction: column;
   position: absolute;
   top: 0;
-  padding: 5%;
+  padding: 7.5%;
   height: 100%;
   width: 100%; }
 
@@ -455,8 +476,8 @@ ul {
   .post_thumbnail img {
     height: auto;
     vertical-align: middle;
-    -webkit-filter: drop-shadow(0 2px 16px rgba(0, 0, 0, 0.2));
-    filter: drop-shadow(0 2px 16px rgba(0, 0, 0, 0.2)); }
+    -webkit-filter: drop-shadow(0 0.5em 2em rgba(50, 50, 50, 0.3));
+    filter: drop-shadow(0 0.5em 2em rgba(50, 50, 50, 0.3)); }
 
 .post_title {
   position: relative;
@@ -477,11 +498,11 @@ ul {
   display: inline-flex;
   height: 1.25em;
   overflow: hidden;
-  font-size: 0.78125em; }
+  font-size: 0.8em; }
 
 .post_footer {
   z-index: 10;
-  bottom: 5%;
+  bottom: 7.5%;
   position: absolute; }
 
 .post_excerpt {
@@ -494,7 +515,7 @@ ul {
   overflow-x: hidden; }
 
 .post_content_thumbnail, post_content {
-  margin-top: 5%;
+  margin-top: 7.5%;
   position: relative;
   z-index: 4; }
   .post_content_thumbnail.no-thumbnail, post_content.no-thumbnail {
@@ -579,11 +600,11 @@ ul {
     flex-direction: row;
     align-items: center; }
     .container .item i {
-      font-size: 1.6384em;
+      font-size: 1.5625em;
       width: 2em; }
 
 .fade-in {
-  animation-duration: 0.4s;
+  animation-duration: 0.3s;
   animation-fill-mode: both;
   animation-delay: 0.1s;
   animation-name: fade-in-up;

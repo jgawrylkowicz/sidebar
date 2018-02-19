@@ -5,7 +5,7 @@
     timeout: 10000,
     push: true
   }).on('pjax:send', function() {
-    console.log('sent');
+    //console.log('sent');
     $('#content')
     .animate({
       opacity: 0,
@@ -17,8 +17,11 @@
     $('#content')
     .css('opacity', '0')
     .addClass('fade-in');  
+   // console.log("complete");
   }).ready(function() {
     //console.log('rendered');
+  }).on('pjax:end', function(){
+    resize_excerpts();
   });
 })(jQuery);
 
@@ -42,7 +45,7 @@ $('body,html').click(function(event){
 // Flowtype.js
 $('body').flowtype({
   minFont : 12,
-  maxFont : 17
+  maxFont : 15
 });
 
 // Resize the posts' excerpt 
@@ -57,6 +60,16 @@ var resize_excerpts = function(){
   let content_height = $('.post_thumbnail').height() + $('.post_content_thumbnail').height() + $('.post_footer').height();
   let height = (post_height - content_height) * .8;
   $('.post_excerpt_hidden').css('height' , height)
+  console.log("resized", height);
+}
+
+window.onscroll = function(){
+  let topbar = $('#topbar');
+  if ($(window).scrollTop() > topbar.height()){
+    topbar.addClass('show-topbar');
+  } else {
+    topbar.removeClass('show-topbar');
+  }
 }
 
 // Functions loaded at the beginning

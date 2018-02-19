@@ -5,7 +5,7 @@
 
 
 $line-height: 1.5
-$ratio: 1.28
+$ratio: 1.25
 $sidebar-width: 20em
 
 $break-xxs: 360px
@@ -24,7 +24,7 @@ $step-down-1: 1em / $ratio
 $step-down-2: $step-down-1 / $ratio
 
 $max-card-width: 800px
-$card-border-radius: 3px
+$card-border-radius: 1%
 $background-color: #EDF1F4
 $sidebar-background-color: white
 $card-background: rgb(255,255,255)
@@ -32,12 +32,12 @@ $dark-mode-card: rgba(44,50,58,1)
 
 $post-width: 28.75em
 $post-height: 32.875em
-$post-padding: 5%
+$post-padding: 7.5%
 
 $content-grid-gap: 3vw
 $content-grid-padding: 1em
 
-$shadow: 0 1em 4em 0 rgba(50,50,50,0.20)
+$shadow: 0 .5em 2em 0 rgba(50,50,50,0.2)
 
 
 
@@ -173,7 +173,7 @@ ul
   grid-template-rows: 100px 1fr
   width: 100%   
   @media only screen and (min-width: $break-xl)
-    grid-template-columns: $sidebar-width 3em 1fr
+    grid-template-columns: $sidebar-width 2em 1fr 2em
   @media only screen and (max-width: $break-xl)
     grid-template-columns: 1fr
 
@@ -202,7 +202,7 @@ ul
     text-transform: uppercase
     color: #293C50
     margin: 0
-    padding-left: 3.15em
+    padding-left: 2.25em
   span.slash
     color: #E7AAAE
     padding: 0 .5em
@@ -213,11 +213,15 @@ ul
   @media only screen and (max-width: $break-xl)
     padding: 0 1em
     position: fixed
-    //background: #F4F7FA
-    //box-shadow: 0 2px 40px 0 rgba(0,0,0,0.15)
+    transition: background .3s ease
   @media only screen and (max-width: $break-l)
     h3
       justify-self: center
+
+.show-topbar
+  @media only screen and (max-width: $break-xl)
+    background: #F4F7FA
+    box-shadow: $shadow
 
 #search
   @media only screen and (max-width: $break-m)
@@ -239,8 +243,8 @@ ul
     justify-self: flex-start
     transition: color .3s ease-in-out
     color: #293C50
-    -webkit-filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2))
-    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2))
+    -webkit-filter: drop-shadow(0 .5em 2em rgba(50, 50, 50, 0.2))
+    filter: drop-shadow(0 .5em 2em rgba(50, 50, 50, 0.2))
     &:hover
       color: #6F64F2
   @media only screen and (min-width: $break-xl) 
@@ -364,7 +368,7 @@ ul
   p
     color: #5F7288
   h3, h4
-    margin: 0
+
     line-height: $line-height
 
 #navigation, #sns, #aboutme
@@ -382,7 +386,7 @@ ul
   padding: 0 .75em
 
 #title
-  padding-left: .5em
+  padding-left: .75em
   margin: 2em 0
   h3
     color: #6F64F2
@@ -424,7 +428,7 @@ ul
     height: auto
     width: 5em
     margin: auto
-    box-shadow: 0 10px 40px 0 rgba(0,0,0,0.20)
+    box-shadow: $shadow
 
 .card
   box-sizing: border-box
@@ -458,10 +462,12 @@ ul
   display: block
   content: ''
 
+// Page 
 .article
   width: 100%
   max-width: 50em
   margin-top: 2em
+  margin-bottom: 4em
   .post_content
     margin-top: 175px  
     padding-left: calc(20px + 2em)
@@ -470,6 +476,9 @@ ul
     h2
       color: #6F64F2  
   
+.article_container
+  padding: calc(20px + 2em)
+
 
 .article_banner
   position: absolute
@@ -483,10 +492,10 @@ ul
   justify-content: center
   box-shadow: 0 2px 40px 0 rgba(0,0,0,0.15)
   padding: 2em
-  .post_footer
+  .article_footer
     padding-top: .5em
     border-top: 1px solid rgba(255,255,255,.7)
-  .post_tags
+  .article_tags
     padding-bottom: .5em
   .article_title
     color: white
@@ -503,6 +512,18 @@ ul
       font-size: 1em
       margin-bottom: 0
       font-weight: 400
+
+.article_banner, .article 
+  animation-duration: .3s
+  animation-fill-mode: both
+  animation-name: fade-in-up
+  animation-timing-function: ease
+
+.article_banner
+  animation-delay: .15s
+
+.article 
+  animation-delay: .25s
 
 .card-gradient
   z-index: 3
@@ -536,8 +557,8 @@ ul
   img
     height: auto
     vertical-align: middle
-    -webkit-filter: drop-shadow(0 2px 16px rgba(0, 0, 0, 0.2))
-    filter: drop-shadow(0 2px 16px rgba(0, 0, 0, 0.2))
+    -webkit-filter: drop-shadow(0 .5em 2em rgba(50, 50, 50, 0.3))
+    filter: drop-shadow(0 .5em 2em rgba(50, 50, 50, 0.3))
 
 .post_title
   position: relative
@@ -679,7 +700,7 @@ ul
 
 // Animations for the content of the main object
 .fade-in
-  animation-duration: .4s
+  animation-duration: .3s
   animation-fill-mode: both
   animation-delay: .1s
   animation-name: fade-in-up
