@@ -439,7 +439,9 @@ ul
 .post
   color: white
   width: 100%
-  padding-top: 115%
+  display: inline-block
+  position: relative
+  //padding-top: 115%
   &:hover
     .post_thumbnail
       //display: none
@@ -449,7 +451,12 @@ ul
     .hidden
       //max-height: none
       //height: 17em
- 
+
+.post::after
+  width: 100%
+  padding-top: 115%
+  display: block
+  content: ''
 
 .article
   width: 100%
