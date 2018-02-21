@@ -18,6 +18,9 @@
   background: rgba(107, 79, 189, 0.4);
   text-shadow: none; }
 
+::-webkit-scrollbar {
+  width: 0; }
+
 body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -82,9 +85,7 @@ ul {
   margin: 0; }
 
 li {
-  font-size: 1em;
-  text-transform: uppercase;
-  font-weight: 500; }
+  font-size: 1em; }
 
 h1 {
   font-size: 1.953125em; }
@@ -99,7 +100,7 @@ h4 {
   font-size: 1em; }
 
 p {
-  font-weight: 400;
+  font-weight: 300;
   overflow-wrap: break-word;
   word-wrap: break-word;
   -ms-word-break: break-all;
@@ -110,9 +111,7 @@ p {
   hyphens: auto; }
 
 ul {
-  letter-spacing: 1px;
-  line-height: 1.5;
-  font-weight: 600; }
+  line-height: 1.5; }
 
 #layout {
   display: grid;
@@ -142,7 +141,7 @@ ul {
   align-items: center;
   z-index: 1000;
   height: 100px;
-  width: 100%; }
+  width: 100vw; }
   #topbar h3 {
     text-transform: uppercase;
     color: #293C50;
@@ -160,7 +159,8 @@ ul {
     #topbar {
       padding: 0 1em;
       position: fixed;
-      transition: background 0.3s ease; } }
+      transition: background 0.15s ease;
+      height: 4em; } }
   @media only screen and (max-width: 900px) {
     #topbar h3 {
       justify-self: center; } }
@@ -187,7 +187,7 @@ ul {
   #menu i {
     font-size: 1.953125em;
     justify-self: flex-start;
-    transition: color 0.3s ease-in-out;
+    transition: color 0.15s ease-in-out;
     color: #293C50;
     -webkit-filter: drop-shadow(0 0.5em 2em rgba(50, 50, 50, 0.2));
     filter: drop-shadow(0 0.5em 2em rgba(50, 50, 50, 0.2)); }
@@ -217,51 +217,56 @@ ul {
 #header {
   vertical-align: middle;
   z-index: 1200;
-  height: 100%;
+  height: 100vh;
   flex-grow: 1;
   display: flex;
-  flex-direction: column;
-  flex-flow: nowrap;
-  overflow-wrap: normal;
   overflow-y: hidden;
   flex-shrink: 1;
-  flex-wrap: nowrap;
   background-color: white;
   box-shadow: 0 0.5em 2em 0 rgba(50, 50, 50, 0.2);
   position: fixed;
-  align-items: flex-start; }
+  align-items: flex-start;
+  flex-flow: wrap;
+  flex-direction: column; }
   @media only screen and (min-width: 1200px) {
     #header {
       left: 0; } }
   @media only screen and (min-width: 560px) and (max-width: 1200px) {
     #header {
-      left: -20em; } }
+      left: -20em;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(2em);
+      -webkit-backdrop-filter: blur(2em); } }
   @media only screen and (min-width: 560px) {
     #header {
       width: 20em; } }
   @media only screen and (max-width: 560px) {
     #header {
       width: 80%;
-      left: -80%; }
+      left: -80%;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(2em);
+      -webkit-backdrop-filter: blur(2em); }
       #header #info {
         justify-content: space-evenly; } }
-  #header p {
-    margin: 0; }
-  #header > div:first-child {
-    padding-top: 0; }
-  #header > div:last-child {
-    border-bottom: none;
-    padding-bottom: 0; }
+  #header > div {
+    padding: 1em 2em; }
+    #header > div:first-child {
+      padding: 0;
+      margin-bottom: 1vh; }
+    #header > div:last-child {
+      border-bottom: none;
+      padding-bottom: 0; }
   #header a.item {
     display: flex;
     align-items: center;
-    transition: color 0.3s ease; }
+    transition: color 0.15s ease; }
     #header a.item:hover {
       color: black; }
 
 .show-header {
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease; }
+  -webkit-transition: all 0.15s ease;
+  transition: all 0.15s ease; }
   @media only screen and (min-width: 1200px) {
     .show-header {
       -webkit-transform: translate3d(0, 0, 0);
@@ -274,11 +279,6 @@ ul {
     .show-header {
       -webkit-transform: translate3d(100%, 0, 0);
       transform: translate3d(100%, 0, 0); } }
-
-#header {
-  display: flex;
-  flex-flow: row wrap;
-  flex-direction: column; }
 
 .articles {
   display: flex;
@@ -296,24 +296,36 @@ ul {
   @media only screen and (max-width: 560px) {
     .posts {
       grid-template-columns: 1fr; } }
+  @media only screen and (min-width: 1600px) and (max-width: 2000px) {
+    .posts {
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 1.5vw; } }
+  @media only screen and (min-width: 2000px) and (max-width: 2600px) {
+    .posts {
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 1.2vw; } }
+  @media only screen and (min-width: 2600px) {
+    .posts {
+      grid-template-columns: repeat(5, 1fr);
+      grid-gap: 1vw; } }
 
-#aboutme div {
+#aboutme p {
+  color: #5F7288;
+  max-height: 7.5em;
+  transition: all 0.15s ease; }
+  @media only screen and (max-height: 800px) {
+    #aboutme p {
+      max-height: 0px;
+      opacity: 0; } }
+#aboutme div.greeting {
   font-size: 1.25em;
   font-weight: 500;
   color: #293C50; }
-#aboutme p {
-  color: #5F7288; }
-#aboutme h3, #aboutme h4 {
-  line-height: 1.5; }
-
-#navigation, #sns, #aboutme {
-  padding: 1em 2em; }
 
 #info {
   width: 100%;
   display: flex;
   flex-direction: row;
-  background-color: #F4F7FA;
   align-items: center;
   justify-content: center;
   padding: 0 0.75em; }
@@ -332,26 +344,34 @@ ul {
 #navigation, #sns {
   width: 100%; }
   #navigation a, #sns a {
-    transition: color 0.3s ease-in-out;
+    transition: color 0.15s ease-in-out;
     color: #5F7288; }
     #navigation a:hover, #sns a:hover {
       color: #ABA8F2; }
       #navigation a:hover i, #sns a:hover i {
-        color: #ebebfc; }
+        color: #ABA8F2; }
   #navigation i, #sns i {
     width: 1em;
-    color: #E7EDF3;
-    transition: color 0.3s ease-in-out;
+    color: #AAB9C5;
+    transition: color 0.15s ease-in-out;
     margin-right: 1em; }
   #navigation li, #sns li {
     line-height: 2;
-    padding-bottom: 1.6em; }
-  #navigation div.info, #sns div.info {
-    line-height: 0;
-    font-size: 0.8em;
-    text-transform: lowercase;
-    font-weight: 400;
-    color: #AAB9C5; }
+    padding-bottom: 1.5vh; }
+
+div.info {
+  line-height: 0.25;
+  font-size: 1em;
+  font-weight: 300;
+  color: #AAB9C5;
+  position: absolute; }
+
+div.label {
+  text-transform: uppercase;
+  font-weight: 500; }
+
+#sns li {
+  line-height: 2.5; }
 
 #avatar img {
   border-radius: 120%;
@@ -368,7 +388,7 @@ ul {
   overflow: hidden;
   position: relative;
   background: white;
-  border-radius: 1%;
+  border-radius: 1.5%;
   box-shadow: 0 0.5em 2em 0 rgba(50, 50, 50, 0.2); }
 
 .post {
@@ -404,7 +424,7 @@ ul {
   width: calc(100% - 4em);
   max-width: 46em;
   padding-top: 60%;
-  border-radius: 1%;
+  border-radius: 1.5%;
   z-index: 20;
   display: flex;
   flex-direction: column;
@@ -467,7 +487,7 @@ ul {
   flex-direction: column;
   position: absolute;
   top: 0;
-  padding: 7.5%;
+  padding: 6%;
   height: 100%;
   width: 100%; }
 
@@ -500,22 +520,33 @@ ul {
   overflow: hidden;
   font-size: 0.8em; }
 
-.post_footer {
+.post_footer, .post_footer_thumbnail {
   z-index: 10;
-  bottom: 7.5%;
+  bottom: 6%;
   position: absolute; }
 
+.post_footer .button {
+  color: white;
+  background: #ABA8F2; }
+  .post_footer .button:hover {
+    background: #6F64F2;
+    color: white; }
+
+@media only screen and (min-width: 768px) {
+  .post_excerpt, .post_excerpt_hidden {
+    font-size: 0.95em; } }
+
 .post_excerpt {
-  border-top: 1px solid rgba(0, 0, 0, 0.3); }
+  border-top: 0.05em solid rgba(0, 0, 0, 0.2); }
 
 .post_excerpt_hidden {
-  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  border-top: 0.05em solid rgba(255, 255, 255, 0.3);
   position: absolute;
   -webkit-mask-image: -webkit-linear-gradient(top, white, rgba(255, 255, 255, 0.25) 70%, rgba(255, 255, 255, 0));
   overflow-x: hidden; }
 
 .post_content_thumbnail, post_content {
-  margin-top: 7.5%;
+  margin-top: 6%;
   position: relative;
   z-index: 4; }
   .post_content_thumbnail.no-thumbnail, post_content.no-thumbnail {
@@ -546,8 +577,8 @@ ul {
   position: relative;
   z-index: 4; }
   .tags-list-item a {
-    -webkit-transition: color 0.3s ease;
-    transition: color 0.3s ease;
+    -webkit-transition: color 0.15s ease;
+    transition: color 0.15s ease;
     text-decoration: none;
     color: rgba(255, 255, 255, 0.7);
     text-transform: uppercase; }
@@ -576,7 +607,7 @@ ul {
   text-transform: uppercase;
   z-index: 4;
   box-shadow: 0 2px 8px 3px rgba(255, 255, 255, 0.1);
-  transition: all 0.3s ease-in-out; }
+  transition: all 0.15s ease-in-out; }
   .button:hover {
     box-shadow: 0 2px 16px 3px rgba(255, 255, 255, 0.2);
     color: #293C50;

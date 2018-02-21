@@ -16,7 +16,7 @@
       - let array = theme.header.slogan
       - first_sentence = theme.header.slogan[0]
       - array = array.slice(1)
-      h3
+      div(class="greeting")
         !=first_sentence
       p
         !=array.join('<br>')

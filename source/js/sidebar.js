@@ -44,9 +44,10 @@ $('body,html').click(function(event){
 
 // Flowtype.js
 $('body').flowtype({
-  minFont : 12,
-  maxFont : 15
+  minFont : 13,
+  maxFont : 17
 });
+
 
 // Resize the posts' excerpt 
 // There seems to be no other way
