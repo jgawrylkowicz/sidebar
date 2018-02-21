@@ -3,7 +3,7 @@ div(class="posts")
       each post in page.posts.sort('date', -1).limit(10).toArray()
         -let background = (post.background) ? post.background : theme.thumbnail.default;
         -let thumbnail = false
-        div(class="card post", style={background: background})
+        div(class="card post fade-in", style={background: background})
           div(class="post_container")
             if post.thumbnail
               div(class="post_thumbnail",)

@@ -4,7 +4,7 @@
 
 $line-height: 1.5
 $ratio: 1.25
-$sidebar-width: 20em
+$sidebar-width: 22em
 
 $break-xxs: 360px
 $break-xs: 400px
@@ -15,7 +15,6 @@ $break-xl: 1200px
 $break-xxl: 1600px
 $break-xxxl: 2000px
 $break-uw: 2600px 
-// between l and xl, please correct
 
 $step-up-1: 1em * $ratio
 $step-up-2: $step-up-1 * $ratio
@@ -25,7 +24,7 @@ $step-down-1: 1em / $ratio
 $step-down-2: $step-down-1 / $ratio
 
 $max-card-width: 800px
-$card-border-radius: 1.5%
+$card-border-radius: 2px
 $background-color: #EDF1F4
 $sidebar-background-color: white
 $card-background: rgb(255,255,255)
@@ -39,6 +38,8 @@ $content-grid-gap: 3vw
 $content-grid-padding: 1em
 
 $shadow: 0 .5em 2em 0 rgba(50,50,50,0.2)
+
+//@mixin transition 
 
 
 
@@ -292,25 +293,23 @@ ul
     left: 0
   @media only screen and (min-width: $break-s) and (max-width: $break-xl) 
     left: $sidebar-width - (2 * $sidebar-width)
-    background: rgba(255, 255, 255, .8)
-    backdrop-filter: blur(2em)
-    -webkit-backdrop-filter: blur(2em)
   @media only screen and (min-width: $break-s)
     width: $sidebar-width
   @media only screen and (max-width: $break-s) 
     width: 80%
     left: -80%
-    background: rgba(255, 255, 255, .8)
-    backdrop-filter: blur(2em)
-    -webkit-backdrop-filter: blur(2em)
-    #info
-      justify-content: space-evenly 
+  @media only screen and (max-width: $break-xl) 
+    @supports (backdrop-filter: blur(3em)) or (-webkit-backdrop-filter: blur(2em))
+      background: rgba(255, 255, 255, .8)
+      backdrop-filter: blur(2em)
+      -webkit-backdrop-filter: blur(2em)
 
   & > div
     padding: 1em 2em
     &:first-child
-      padding: 0
+      margin: 1em 2em
       margin-bottom: 1vh
+      padding: 0
     &:last-child 
       border-bottom: none
       padding-bottom: 0
@@ -321,7 +320,9 @@ ul
     &:hover
       color: black
   
-  
+
+
+
 // class for hiding the sidebar
 .show-header
   -webkit-transition: all .15s ease
@@ -336,8 +337,8 @@ ul
     -webkit-transform: translate3d(100%,0,0)
     transform: translate3d(100%,0,0)
 
-// not needed for now, may delete later
-#content
+//not needed for now, may delete later
+//#content
 
 // container for full pages and posts
 .articles
@@ -365,6 +366,11 @@ ul
   @media only screen and (min-width: $break-uw)  
     grid-template-columns: repeat(5,1fr)
     grid-gap: $content-grid-gap / 3
+  @for $i from 1 through 10 
+    div:nth-child(#{$i}) 
+      animation-delay: #{$i * .1}s
+    
+    
 
 // Short text about the site
 #aboutme
@@ -387,10 +393,8 @@ ul
   display: flex
   flex-direction: row
   align-items: center
-  justify-content: center
-  padding: 0 .75em
-  @media only screen and (min-width: $break-xl) 
-    //background-color: #F4F7FA
+  justify-content: flex-start
+
 
 #title
   padding-left: .75em
@@ -713,7 +717,7 @@ div.label
 
 
 .container
-  display:flex
+  display: flex
   flex-direction: column
   margin: auto
   justify-content: flex-start

@@ -119,7 +119,7 @@ ul {
   width: 100%; }
   @media only screen and (min-width: 1200px) {
     #layout {
-      grid-template-columns: 20em 2em 1fr 2em; } }
+      grid-template-columns: 22em 2em 1fr 2em; } }
   @media only screen and (max-width: 1200px) {
     #layout {
       grid-template-columns: 1fr; } }
@@ -152,7 +152,7 @@ ul {
     padding: 0 0.5em; }
   @media only screen and (min-width: 1200px) {
     #topbar {
-      margin-left: 20em; }
+      margin-left: 22em; }
       #topbar i {
         display: none; } }
   @media only screen and (max-width: 1200px) {
@@ -233,27 +233,26 @@ ul {
       left: 0; } }
   @media only screen and (min-width: 560px) and (max-width: 1200px) {
     #header {
-      left: -20em;
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(2em);
-      -webkit-backdrop-filter: blur(2em); } }
+      left: -22em; } }
   @media only screen and (min-width: 560px) {
     #header {
-      width: 20em; } }
+      width: 22em; } }
   @media only screen and (max-width: 560px) {
     #header {
       width: 80%;
-      left: -80%;
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(2em);
-      -webkit-backdrop-filter: blur(2em); }
-      #header #info {
-        justify-content: space-evenly; } }
+      left: -80%; } }
+  @media only screen and (max-width: 1200px) {
+    @supports (backdrop-filter: blur(3em)) or (-webkit-backdrop-filter: blur(2em)) {
+      #header {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(2em);
+        -webkit-backdrop-filter: blur(2em); } } }
   #header > div {
     padding: 1em 2em; }
     #header > div:first-child {
-      padding: 0;
-      margin-bottom: 1vh; }
+      margin: 1em 2em;
+      margin-bottom: 1vh;
+      padding: 0; }
     #header > div:last-child {
       border-bottom: none;
       padding-bottom: 0; }
@@ -273,8 +272,8 @@ ul {
       transform: translate3d(0, 0, 0); } }
   @media only screen and (min-width: 560px) and (max-width: 1200px) {
     .show-header {
-      -webkit-transform: translate3d(20em, 0, 0);
-      transform: translate3d(20em, 0, 0); } }
+      -webkit-transform: translate3d(22em, 0, 0);
+      transform: translate3d(22em, 0, 0); } }
   @media only screen and (max-width: 560px) {
     .show-header {
       -webkit-transform: translate3d(100%, 0, 0);
@@ -308,6 +307,26 @@ ul {
     .posts {
       grid-template-columns: repeat(5, 1fr);
       grid-gap: 1vw; } }
+  .posts div:nth-child(1) {
+    animation-delay: 0.1s; }
+  .posts div:nth-child(2) {
+    animation-delay: 0.2s; }
+  .posts div:nth-child(3) {
+    animation-delay: 0.3s; }
+  .posts div:nth-child(4) {
+    animation-delay: 0.4s; }
+  .posts div:nth-child(5) {
+    animation-delay: 0.5s; }
+  .posts div:nth-child(6) {
+    animation-delay: 0.6s; }
+  .posts div:nth-child(7) {
+    animation-delay: 0.7s; }
+  .posts div:nth-child(8) {
+    animation-delay: 0.8s; }
+  .posts div:nth-child(9) {
+    animation-delay: 0.9s; }
+  .posts div:nth-child(10) {
+    animation-delay: 1s; }
 
 #aboutme p {
   color: #5F7288;
@@ -327,8 +346,7 @@ ul {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
-  padding: 0 0.75em; }
+  justify-content: flex-start; }
 
 #title {
   padding-left: 0.75em;
@@ -388,7 +406,7 @@ div.label {
   overflow: hidden;
   position: relative;
   background: white;
-  border-radius: 1.5%;
+  border-radius: 2px;
   box-shadow: 0 0.5em 2em 0 rgba(50, 50, 50, 0.2); }
 
 .post {
@@ -424,7 +442,7 @@ div.label {
   width: calc(100% - 4em);
   max-width: 46em;
   padding-top: 60%;
-  border-radius: 1.5%;
+  border-radius: 2px;
   z-index: 20;
   display: flex;
   flex-direction: column;
@@ -623,6 +641,7 @@ div.label {
       padding: 0.5em 1em; } }
 
 .container {
+  display: flex;
   flex-direction: column;
   margin: auto;
   justify-content: flex-start; }

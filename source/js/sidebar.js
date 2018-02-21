@@ -44,7 +44,7 @@ $('body,html').click(function(event){
 
 // Flowtype.js
 $('body').flowtype({
-  minFont : 13,
+  minFont : 12,
   maxFont : 17
 });
 
