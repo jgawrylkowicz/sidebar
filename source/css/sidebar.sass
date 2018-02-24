@@ -1,6 +1,7 @@
 // TODO fix the position and the placeholder of the avatar image 
 // TODO add special classes for elements 
-
+// TODO Refractor the code
+// posts: grid: repeat(3, auto)  / auto-flow 1fr
 
 $line-height: 1.5
 $ratio: 1.25
@@ -15,6 +16,8 @@ $break-xl: 1200px
 $break-xxl: 1600px
 $break-xxxl: 2000px
 $break-uw: 2600px 
+
+//1600px has to be the maximum for other pages
 
 $step-up-1: 1em * $ratio
 $step-up-2: $step-up-1 * $ratio
@@ -116,10 +119,6 @@ a
   color: inherit
   text-decoration: none
   
-
-img
-  max-width: 100%
-
 *, :after, :before
   -webkit-box-sizing: border-box
   box-sizing: border-box
@@ -198,7 +197,7 @@ ul
 #topbar
   display: flex
   align-items: center 
-  z-index: 1000
+  z-index: 4000
   height: 100px
   width: 100vw
   h3
@@ -218,14 +217,12 @@ ul
     position: fixed
     transition: background .15s ease
     height: 4em
+    background: #F4F7FA
+    box-shadow: $shadow
   @media only screen and (max-width: $break-l)
     h3
       justify-self: center
 
-.show-topbar
-  @media only screen and (max-width: $break-xl)
-    background: #F4F7FA
-    box-shadow: $shadow
 
 #search
   @media only screen and (max-width: $break-m)
@@ -278,6 +275,7 @@ ul
   vertical-align: middle
   z-index: 1200
   height: 100vh
+  min-height: 100%
   flex-grow: 1
   display: flex
   overflow-y: hidden
@@ -299,10 +297,12 @@ ul
     width: 80%
     left: -80%
   @media only screen and (max-width: $break-xl) 
+    margin-top: 4em
     @supports (backdrop-filter: blur(3em)) or (-webkit-backdrop-filter: blur(2em))
       background: rgba(255, 255, 255, .8)
       backdrop-filter: blur(2em)
       -webkit-backdrop-filter: blur(2em)
+    
 
   & > div
     padding: 1em 2em
@@ -370,7 +370,7 @@ ul
     div:nth-child(#{$i}) 
       animation-delay: #{$i * .1}s
     
-    
+
 
 // Short text about the site
 #aboutme
@@ -378,7 +378,7 @@ ul
     color: #5F7288
     max-height: 7.5em
     transition: all .15s ease
-    @media only screen and (max-height: 800px)
+    @media only screen and (max-height: 600px)
       max-height: 0px
       opacity: 0
   div.greeting
@@ -467,8 +467,6 @@ div.label
   position: relative
   //padding-top: 115%
   &:hover
-    .post_thumbnail
-      //display: none
     .post_content
       // -webkit-transform: translate3d(0, -60%, 0)
       // transform: translate3d(0, -60%, 0)
@@ -564,21 +562,22 @@ div.label
     opacity: 1
 
 .post_container
-  display: flex
-  flex-direction: column
+  display: grid
+  grid-template-columns: 1fr
+  grid-template-rows: auto auto auto 1fr
+  grid-gap: .5em
+  padding: $post-padding
   position: absolute
   top: 0
-  padding: $post-padding
   height: 100%
   width: 100%
 
-.post_thumbnail
+img.post_thumbnail
+  grid-row-start: 1
   width: 100%
-  img
-    height: auto
-    vertical-align: middle
-    -webkit-filter: drop-shadow(0 .5em 2em rgba(50, 50, 50, 0.3))
-    filter: drop-shadow(0 .5em 2em rgba(50, 50, 50, 0.3))
+  height: auto
+  -webkit-filter: drop-shadow(0 .5em 2em rgba(50, 50, 50, 0.3))
+  filter: drop-shadow(0 .5em 2em rgba(50, 50, 50, 0.3))
 
 .post_title
   position: relative
@@ -601,13 +600,38 @@ div.label
   overflow: hidden
   font-size: $step-down-1
 
-// container for the posts' buttons 
-.post_footer, .post_footer_thumbnail
-  z-index: 10
-  bottom: $post-padding
-  position: absolute
 
+
+.post_header
+  grid-row-start: 2
+  color: #293C50 
+  border-bottom: 1px solid rgba(0,0,0,.2)
+  .post_tags
+    a
+      color: #5F7288
+  &.thumbnail
+    border-bottom: 1px solid rgba(255,255,255,.3)
+    color: white
+    .post_tags
+      a
+        color: rgba(255,255,255,.7)
+
+.post_excerpt
+  grid-row-start: 3
+  color: #293C50 
+  p
+    margin: 0
+  &.thumbnail
+    -webkit-mask-image: -webkit-linear-gradient(top, white, rgba(255, 255, 255, 1) 70%, rgba(255, 255, 255, 0))
+    overflow-y: hidden
+    color: white
+  @media only screen and (min-width: $break-m) 
+    font-size: .95em
+
+// container for the posts' buttons 
 .post_footer
+  align-self: end
+  grid-row-start: 4
   .button
     color: white
     background: #ABA8F2
@@ -615,44 +639,13 @@ div.label
       background: #6F64F2
       color: white
 
-.post_excerpt, .post_excerpt_hidden
-  @media only screen and (min-width: $break-m) 
-    font-size: .95em
-
-.post_excerpt
-  border-top: .05em solid rgba(0,0,0,.2)
-
-.post_excerpt_hidden
-  border-top: .05em solid rgba(255,255,255,.3)
-  position: absolute
-  -webkit-mask-image: -webkit-linear-gradient(top, white, rgba(255, 255, 255, 0.25) 70%, rgba(255, 255, 255, 0))
-  overflow-x: hidden
-
 .post_content, .post_title,
   //animation-duration: .4s
   //animation-fill-mode: both
   //animation-name: fade-in
   //animation-timing-function: ease
   //animation-delay: .2s
-
-.post_content_thumbnail, post_content
-  margin-top: $post-padding
-  position: relative
-  z-index: 4
-  &.no-thumbnail
-    margin-top: 0
-    color: #293C50 !important
-    .post_tags
-      a 
-        color: #5F7288 !important
-
-.post_content
-  margin-top: 0
-  color: #293C50 !important
-  .post_tags
-    a 
-      color: #5F7288 !important
-
+ 
 
 .tags-list
   margin: 0
