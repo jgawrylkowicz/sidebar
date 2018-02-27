@@ -37,7 +37,7 @@ $post-width: 28.75em
 $post-height: 32.875em
 $post-padding: 18px
 
-$content-grid-gap: 3vw
+$content-grid-gap: 36px
 $content-grid-padding: 1em
 
 $shadow: 0 .5em 2em 0 rgba(50,50,50,0.2)
@@ -75,6 +75,7 @@ $shadow: 0 .5em 2em 0 rgba(50,50,50,0.2)
 
 ::-webkit-scrollbar
   width: 0
+  display: none
 
 body
   -moz-osx-font-smoothing: grayscale
@@ -341,7 +342,7 @@ ul
 //#content
 
 // container for full pages and posts
-.articles
+.full_post
   display: flex
   justify-content: center
   margin: 0 .5em
@@ -359,13 +360,10 @@ ul
     grid-template-columns: 1fr
   @media only screen and (min-width: $break-xxl) and (max-width: $break-xxxl)
     grid-template-columns: repeat(3,1fr)
-    grid-gap: $content-grid-gap / 2
   @media only screen and (min-width: $break-xxxl) and (max-width: $break-uw)
     grid-template-columns: repeat(4,1fr)
-    grid-gap: $content-grid-gap / 2.5
   @media only screen and (min-width: $break-uw)  
     grid-template-columns: repeat(5,1fr)
-    grid-gap: $content-grid-gap / 3
 
 // Short text about the site
 #aboutme
@@ -478,16 +476,28 @@ ul
 // Page 
 .article
   width: 100%
-  max-width: 50em
+  max-width: 950px
   margin-top: 2em
   margin-bottom: 4em
-  .post_content
-    margin-top: 175px  
-    padding-left: calc(20px + 2em)
-    padding-right: calc(20px + 2em)
-    padding-bottom: calc(20px + 2em)
-    h2
-      color: #6F64F2  
+  display: flex
+  align-items: center
+
+.article_content
+  margin-top: 175px  
+  margin-bottom: 100px  
+  max-width: 900px  
+  padding-left: calc(20px + 2em)
+  padding-right: calc(20px + 2em)
+  padding-bottom: calc(20px + 2em)
+  p
+    margin: 2em 0
+  h2
+    color: #6F64F2  
+  img
+    width: 100%
+    -webkit-filter: drop-shadow(0 .5em 2em rgba(50, 50, 50, 0.3))
+    filter: drop-shadow(0 .5em 2em rgba(50, 50, 50, 0.3))
+
   
 .article_container
   padding: calc(20px + 2em)
@@ -495,9 +505,8 @@ ul
 
 .article_banner
   position: absolute
-  width: calc(100% - 4em)
-  max-width: 46em
-  padding-top: 60%
+  width: calc(100% - 2em)
+  max-width: 900px
   border-radius: $card-border-radius
   z-index: 20
   display: flex
@@ -505,9 +514,10 @@ ul
   justify-content: center
   box-shadow: 0 2px 40px 0 rgba(0,0,0,0.15)
   padding: 2em
+  margin: 0 1em
   .article_footer
     padding-top: .5em
-    border-top: 1px solid rgba(255,255,255,.7)
+    border-top: 1px solid rgba(255,255,255,.3)
   .article_tags
     padding-bottom: .5em
   .article_title
@@ -527,16 +537,11 @@ ul
       font-weight: 400
 
 .article_banner, .article 
+  font-size: 1.15em
   animation-duration: .3s
   animation-fill-mode: both
   animation-name: fade-in-up
   animation-timing-function: ease
-
-.article_banner
-  animation-delay: .15s
-
-.article 
-  animation-delay: .25s
 
 
 .post_container
@@ -614,14 +619,22 @@ ul
   align-self: flex-start
   justify-self: flex-end
   margin-top: auto
-
   .button
     color: white
     background: #ABA8F2
+    &.alt
+      color: rgba(255,255,255,.6)
+      background: #ABA8F2
     &:hover
       background: #6F64F2
       color: white
-
+  &.thumbnail
+    .button
+      color: #ABA8F2
+      background: rgba(255,255,255,.9)
+      &:hover
+        color: #6F64F2
+        background: white
 
 
 
@@ -671,18 +684,10 @@ ul
   text-decoration: none
   text-transform: uppercase
   z-index: 4
-  box-shadow: 0 2px 8px 3px rgba(255,255,255,0.10)
   transition: all .15s ease-in-out
   &:hover
-    box-shadow: 0 2px 16px 3px rgba(255,255,255,0.2)
-    color: #293C50
     -webkit-transform: translate3d(0, -5%, 0)
     transform: translate3d(0, -5%, 0)
-  &.alt
-    background: rgba(255,255,255,.3)
-    color: rgba(255,255,255,.7)
-  &.alt:hover
-    color: white
   @media screen and (max-width: $break-m)
     padding: .5em 1em
 

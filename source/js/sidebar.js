@@ -42,8 +42,3 @@ $('body,html').click(function(event){
   $('#header').removeClass('show-header');
 });
 
-// Flowtype.js
-$('body').flowtype({
-   minFont : 12,
-   maxFont : 15
-});

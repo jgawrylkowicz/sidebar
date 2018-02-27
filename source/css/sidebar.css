@@ -19,7 +19,8 @@
   text-shadow: none; }
 
 ::-webkit-scrollbar {
-  width: 0; }
+  width: 0;
+  display: none; }
 
 body {
   -moz-osx-font-smoothing: grayscale;
@@ -276,14 +277,14 @@ ul {
       -webkit-transform: translate3d(100%, 0, 0);
       transform: translate3d(100%, 0, 0); } }
 
-.articles {
+.full_post {
   display: flex;
   justify-content: center;
   margin: 0 0.5em; }
 
 .posts {
   display: grid;
-  grid-gap: 3vw;
+  grid-gap: 36px;
   grid-template-columns: repeat(auto-fit, minmax(22em, 1fr));
   grid-auto-rows: minmax(auto, 1fr);
   grid-auto-flow: row dense;
@@ -294,16 +295,13 @@ ul {
       grid-template-columns: 1fr; } }
   @media only screen and (min-width: 1600px) and (max-width: 2000px) {
     .posts {
-      grid-template-columns: repeat(3, 1fr);
-      grid-gap: 1.5vw; } }
+      grid-template-columns: repeat(3, 1fr); } }
   @media only screen and (min-width: 2000px) and (max-width: 2600px) {
     .posts {
-      grid-template-columns: repeat(4, 1fr);
-      grid-gap: 1.2vw; } }
+      grid-template-columns: repeat(4, 1fr); } }
   @media only screen and (min-width: 2600px) {
     .posts {
-      grid-template-columns: repeat(5, 1fr);
-      grid-gap: 1vw; } }
+      grid-template-columns: repeat(5, 1fr); } }
 
 #aboutme p {
   color: #5F7288;
@@ -400,35 +398,46 @@ ul {
 
 .article {
   width: 100%;
-  max-width: 50em;
+  max-width: 950px;
   margin-top: 2em;
-  margin-bottom: 4em; }
-  .article .post_content {
-    margin-top: 175px;
-    padding-left: calc(20px + 2em);
-    padding-right: calc(20px + 2em);
-    padding-bottom: calc(20px + 2em); }
-    .article .post_content h2 {
-      color: #6F64F2; }
+  margin-bottom: 4em;
+  display: flex;
+  align-items: center; }
+
+.article_content {
+  margin-top: 175px;
+  margin-bottom: 100px;
+  max-width: 900px;
+  padding-left: calc(20px + 2em);
+  padding-right: calc(20px + 2em);
+  padding-bottom: calc(20px + 2em); }
+  .article_content p {
+    margin: 2em 0; }
+  .article_content h2 {
+    color: #6F64F2; }
+  .article_content img {
+    width: 100%;
+    -webkit-filter: drop-shadow(0 0.5em 2em rgba(50, 50, 50, 0.3));
+    filter: drop-shadow(0 0.5em 2em rgba(50, 50, 50, 0.3)); }
 
 .article_container {
   padding: calc(20px + 2em); }
 
 .article_banner {
   position: absolute;
-  width: calc(100% - 4em);
-  max-width: 46em;
-  padding-top: 60%;
+  width: calc(100% - 2em);
+  max-width: 900px;
   border-radius: 6px;
   z-index: 20;
   display: flex;
   flex-direction: column;
   justify-content: center;
   box-shadow: 0 2px 40px 0 rgba(0, 0, 0, 0.15);
-  padding: 2em; }
+  padding: 2em;
+  margin: 0 1em; }
   .article_banner .article_footer {
     padding-top: 0.5em;
-    border-top: 1px solid rgba(255, 255, 255, 0.7); }
+    border-top: 1px solid rgba(255, 255, 255, 0.3); }
   .article_banner .article_tags {
     padding-bottom: 0.5em; }
   .article_banner .article_title {
@@ -448,16 +457,11 @@ ul {
       font-weight: 400; }
 
 .article_banner, .article {
+  font-size: 1.15em;
   animation-duration: 0.3s;
   animation-fill-mode: both;
   animation-name: fade-in-up;
   animation-timing-function: ease; }
-
-.article_banner {
-  animation-delay: 0.15s; }
-
-.article {
-  animation-delay: 0.25s; }
 
 .post_container {
   display: flex;
@@ -535,9 +539,18 @@ ul {
   .post_footer .button {
     color: white;
     background: #ABA8F2; }
+    .post_footer .button.alt {
+      color: rgba(255, 255, 255, 0.6);
+      background: #ABA8F2; }
     .post_footer .button:hover {
       background: #6F64F2;
       color: white; }
+  .post_footer.thumbnail .button {
+    color: #ABA8F2;
+    background: rgba(255, 255, 255, 0.9); }
+    .post_footer.thumbnail .button:hover {
+      color: #6F64F2;
+      background: white; }
 
 .tags-list {
   margin: 0;
@@ -584,18 +597,10 @@ ul {
   text-decoration: none;
   text-transform: uppercase;
   z-index: 4;
-  box-shadow: 0 2px 8px 3px rgba(255, 255, 255, 0.1);
   transition: all 0.15s ease-in-out; }
   .button:hover {
-    box-shadow: 0 2px 16px 3px rgba(255, 255, 255, 0.2);
-    color: #293C50;
     -webkit-transform: translate3d(0, -5%, 0);
     transform: translate3d(0, -5%, 0); }
-  .button.alt {
-    background: rgba(255, 255, 255, 0.3);
-    color: rgba(255, 255, 255, 0.7); }
-  .button.alt:hover {
-    color: white; }
   @media screen and (max-width: 768px) {
     .button {
       padding: 0.5em 1em; } }
