@@ -1,7 +1,8 @@
 // TODO fix the position and the placeholder of the avatar image 
 // TODO add special classes for elements 
 // TODO Refractor the code
-// posts: grid: repeat(3, auto)  / auto-flow 1fr
+// TODO move topbar into content
+// TODO return to media queries based fontsizes  
 
 $line-height: 1.5
 $ratio: 1.25
@@ -483,12 +484,10 @@ ul
   align-items: center
 
 .article_content
-  margin-top: 175px  
+  margin-top: 12em 
   margin-bottom: 100px  
   max-width: 900px  
-  padding-left: calc(20px + 2em)
-  padding-right: calc(20px + 2em)
-  padding-bottom: calc(20px + 2em)
+  padding: calc(20px + 2em)
   p
     margin: 2em 0
   h2
@@ -497,11 +496,11 @@ ul
     width: 100%
     -webkit-filter: drop-shadow(0 .5em 2em rgba(50, 50, 50, 0.3))
     filter: drop-shadow(0 .5em 2em rgba(50, 50, 50, 0.3))
+ 
+  @media only screen and (max-width: $break-s)
+    padding: 1em
 
   
-.article_container
-  padding: calc(20px + 2em)
-
 
 .article_banner
   position: absolute
@@ -537,11 +536,12 @@ ul
       font-weight: 400
 
 .article_banner, .article 
-  font-size: 1.15em
   animation-duration: .3s
   animation-fill-mode: both
   animation-name: fade-in-up
   animation-timing-function: ease
+  @media only screen and (min-width: $break-xl)
+     font-size: 1.15em
 
 
 .post_container
