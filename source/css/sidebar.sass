@@ -6,7 +6,7 @@
 
 $line-height: 1.5
 $ratio: 1.25
-$sidebar-width: 22em
+$sidebar-width: 350px
 
 $break-xxs: 360px
 $break-xs: 400px
@@ -98,6 +98,7 @@ html
   height: 100%
   width: 100%
   touch-action: manipulation
+  font-size: 100%
 
 body, html
   font-family: 'Roboto', "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif
@@ -240,14 +241,11 @@ ul
 
 // The button for opening the sidebar
 #menu
-  position: fixed
   i
     font-size: $step-up-3
     justify-self: flex-start
     transition: color .15s ease-in-out
     color: #293C50
-    -webkit-filter: drop-shadow(0 .5em 2em rgba(50, 50, 50, 0.2))
-    filter: drop-shadow(0 .5em 2em rgba(50, 50, 50, 0.2))
     &:hover
       color: #6F64F2
   @media only screen and (min-width: $break-xl) 
@@ -256,7 +254,6 @@ ul
 //The button for closing the sidebar    
 #close
   padding: 0em 2em
-  justify-self: flex-end
   font-size: 1em
   margin-top: auto
   margin-bottom: 1em
@@ -276,8 +273,7 @@ ul
 #header
   vertical-align: middle
   z-index: 1200
-  height: 100vh
-  min-height: 100%
+  height: 100%
   flex-grow: 1
   display: flex
   overflow-y: hidden
@@ -288,41 +284,32 @@ ul
   align-items: flex-start 
   flex-flow: wrap
   flex-direction: column
-
-  @media only screen and (min-width: $break-xl) 
-    left: 0
-  @media only screen and (min-width: $break-s) and (max-width: $break-xl) 
-    left: $sidebar-width - (2 * $sidebar-width)
-  @media only screen and (min-width: $break-s)
-    width: $sidebar-width
-  @media only screen and (max-width: $break-s) 
-    width: 80%
-    left: -80%
-  @media only screen and (max-width: $break-xl) 
-    margin-top: 4em
-    @supports (backdrop-filter: blur(3em)) or (-webkit-backdrop-filter: blur(2em))
-      background: rgba(255, 255, 255, .8)
-      backdrop-filter: blur(2em)
-      -webkit-backdrop-filter: blur(2em)
-    
+  left: $sidebar-width - (2 * $sidebar-width)
+  width: $sidebar-width
+  padding-top: 4em
 
   & > div
     padding: 1em 2em
-    &:first-child
-      margin: 1em 2em
-      margin-bottom: 1vh
-      padding: 0
-    &:last-child 
-      border-bottom: none
-      padding-bottom: 0
-  a.item
+  &:last-child 
+    border-bottom: none
+    padding-bottom: 0
+    
+  .item
     display: flex
     align-items: center
     transition: color .15s ease
     &:hover
       color: black
   
-
+  @media only screen and (min-width: $break-xl) 
+    padding-top: 0
+    height: 100vh
+    left: 0
+  @media only screen and (max-width: $break-xl) 
+    @supports (backdrop-filter: blur(3em)) or (-webkit-backdrop-filter: blur(2em))
+      background: rgba(255, 255, 255, .8)
+      backdrop-filter: blur(2em)
+      -webkit-backdrop-filter: blur(2em)
 
 
 // class for hiding the sidebar
@@ -332,12 +319,10 @@ ul
   @media only screen and (min-width: $break-xl)
     -webkit-transform: translate3d(0,0,0)
     transform: translate3d(0,0,0)
-  @media only screen and (min-width: $break-s) and (max-width: $break-xl)
+  @media only screen and (max-width: $break-xl)
     -webkit-transform: translate3d($sidebar-width,0,0)
     transform: translate3d($sidebar-width,0,0)
-  @media only screen and (max-width: $break-s) 
-    -webkit-transform: translate3d(100%,0,0)
-    transform: translate3d(100%,0,0)
+
 
 //not needed for now, may delete later
 //#content

@@ -37,7 +37,8 @@ html {
   display: block;
   height: 100%;
   width: 100%;
-  touch-action: manipulation; }
+  touch-action: manipulation;
+  font-size: 100%; }
 
 body, html {
   font-family: "Roboto", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
@@ -117,7 +118,7 @@ ul {
   width: 100%; }
   @media only screen and (min-width: 1200px) {
     #layout {
-      grid-template-columns: 22em 2em 1fr 2em; } }
+      grid-template-columns: 350px 2em 1fr 2em; } }
   @media only screen and (max-width: 1200px) {
     #layout {
       grid-template-columns: 1fr; } }
@@ -150,7 +151,7 @@ ul {
     padding: 0 0.5em; }
   @media only screen and (min-width: 1200px) {
     #topbar {
-      margin-left: 22em; }
+      margin-left: 350px; }
       #topbar i {
         display: none; } }
   @media only screen and (max-width: 1200px) {
@@ -177,24 +178,19 @@ ul {
   margin-left: 1em;
   width: 260px; }
 
-#menu {
-  position: fixed; }
-  #menu i {
-    font-size: 1.953125em;
-    justify-self: flex-start;
-    transition: color 0.15s ease-in-out;
-    color: #293C50;
-    -webkit-filter: drop-shadow(0 0.5em 2em rgba(50, 50, 50, 0.2));
-    filter: drop-shadow(0 0.5em 2em rgba(50, 50, 50, 0.2)); }
-    #menu i:hover {
-      color: #6F64F2; }
-  @media only screen and (min-width: 1200px) {
-    #menu {
-      display: none; } }
+#menu i {
+  font-size: 1.953125em;
+  justify-self: flex-start;
+  transition: color 0.15s ease-in-out;
+  color: #293C50; }
+  #menu i:hover {
+    color: #6F64F2; }
+@media only screen and (min-width: 1200px) {
+  #menu {
+    display: none; } }
 
 #close {
   padding: 0em 2em;
-  justify-self: flex-end;
   font-size: 1em;
   margin-top: auto;
   margin-bottom: 1em; }
@@ -212,8 +208,7 @@ ul {
 #header {
   vertical-align: middle;
   z-index: 1200;
-  height: 100vh;
-  min-height: 100%;
+  height: 100%;
   flex-grow: 1;
   display: flex;
   overflow-y: hidden;
@@ -223,43 +218,32 @@ ul {
   position: fixed;
   align-items: flex-start;
   flex-flow: wrap;
-  flex-direction: column; }
-  @media only screen and (min-width: 1200px) {
-    #header {
-      left: 0; } }
-  @media only screen and (min-width: 560px) and (max-width: 1200px) {
-    #header {
-      left: -22em; } }
-  @media only screen and (min-width: 560px) {
-    #header {
-      width: 22em; } }
-  @media only screen and (max-width: 560px) {
-    #header {
-      width: 80%;
-      left: -80%; } }
-  @media only screen and (max-width: 1200px) {
-    #header {
-      margin-top: 4em; }
-      @supports (backdrop-filter: blur(3em)) or (-webkit-backdrop-filter: blur(2em)) {
-        #header {
-          background: rgba(255, 255, 255, 0.8);
-          backdrop-filter: blur(2em);
-          -webkit-backdrop-filter: blur(2em); } } }
+  flex-direction: column;
+  left: -350px;
+  width: 350px;
+  padding-top: 4em; }
   #header > div {
     padding: 1em 2em; }
-    #header > div:first-child {
-      margin: 1em 2em;
-      margin-bottom: 1vh;
-      padding: 0; }
-    #header > div:last-child {
-      border-bottom: none;
-      padding-bottom: 0; }
-  #header a.item {
+  #header:last-child {
+    border-bottom: none;
+    padding-bottom: 0; }
+  #header .item {
     display: flex;
     align-items: center;
     transition: color 0.15s ease; }
-    #header a.item:hover {
+    #header .item:hover {
       color: black; }
+  @media only screen and (min-width: 1200px) {
+    #header {
+      padding-top: 0;
+      height: 100vh;
+      left: 0; } }
+  @media only screen and (max-width: 1200px) {
+    @supports (backdrop-filter: blur(3em)) or (-webkit-backdrop-filter: blur(2em)) {
+      #header {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(2em);
+        -webkit-backdrop-filter: blur(2em); } } }
 
 .show-header {
   -webkit-transition: all 0.15s ease;
@@ -268,14 +252,10 @@ ul {
     .show-header {
       -webkit-transform: translate3d(0, 0, 0);
       transform: translate3d(0, 0, 0); } }
-  @media only screen and (min-width: 560px) and (max-width: 1200px) {
+  @media only screen and (max-width: 1200px) {
     .show-header {
-      -webkit-transform: translate3d(22em, 0, 0);
-      transform: translate3d(22em, 0, 0); } }
-  @media only screen and (max-width: 560px) {
-    .show-header {
-      -webkit-transform: translate3d(100%, 0, 0);
-      transform: translate3d(100%, 0, 0); } }
+      -webkit-transform: translate3d(350px, 0, 0);
+      transform: translate3d(350px, 0, 0); } }
 
 .full_post {
   display: flex;
