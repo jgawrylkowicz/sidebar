@@ -27,7 +27,7 @@ $step-down-1: 1em / $ratio
 $step-down-2: $step-down-1 / $ratio
 
 $max-card-width: 800px
-$card-border-radius: 2px
+$card-border-radius: 6px
 $background-color: #EDF1F4
 $sidebar-background-color: white
 $card-background: rgb(255,255,255)
@@ -35,7 +35,7 @@ $dark-mode-card: rgba(44,50,58,1)
 
 $post-width: 28.75em
 $post-height: 32.875em
-$post-padding: 6%
+$post-padding: 18px
 
 $content-grid-gap: 3vw
 $content-grid-padding: 1em
@@ -366,11 +366,6 @@ ul
   @media only screen and (min-width: $break-uw)  
     grid-template-columns: repeat(5,1fr)
     grid-gap: $content-grid-gap / 3
-  @for $i from 1 through 10 
-    div:nth-child(#{$i}) 
-      animation-delay: #{$i * .1}s
-    
-
 
 // Short text about the site
 #aboutme
@@ -426,14 +421,14 @@ ul
     padding-bottom: 1.5vh
 
 
-div.info
+.info
   line-height: .25
   font-size: 1em
   font-weight: 300
   color: #AAB9C5
   position: absolute
 
-div.label
+.label
   text-transform: uppercase
   font-weight: 500
 
@@ -543,37 +538,25 @@ div.label
 .article 
   animation-delay: .25s
 
-.card-gradient
-  z-index: 3
-  &::after
-    -webkit-transition: opacity .3s ease
-    background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(142, 102, 119, 0.15)), color-stop(90%, rgba(255, 175, 189, 0)))
-    background-image: linear-gradient(to top, rgba(142, 102, 119, 0.15) 0%, rgba(255, 175, 189, 0) 90%)
-    bottom: 0
-    content: ''
-    height: 40%
-    left: 0
-    opacity: .4
-    position: absolute
-    transition: opacity .3s ease
-    width: 100%
-    z-index: 2
-  &:hover::after
-    opacity: 1
 
 .post_container
-  display: grid
-  grid-template-columns: 1fr
-  grid-template-rows: auto auto auto 1fr
-  grid-gap: .5em
+  display: flex
+  flex-direction: column
   padding: $post-padding
   position: absolute
   top: 0
+  left: 0
+  bottom: 0
+  right: 0
   height: 100%
   width: 100%
 
-img.post_thumbnail
-  grid-row-start: 1
+.post_header, .post_excerpt
+  margin-bottom: .5em
+.post_thumbnail
+  margin-bottom: .75em
+
+.post_thumbnail
   width: 100%
   height: auto
   -webkit-filter: drop-shadow(0 .5em 2em rgba(50, 50, 50, 0.3))
@@ -601,16 +584,14 @@ img.post_thumbnail
   font-size: $step-down-1
 
 
-
 .post_header
-  grid-row-start: 2
   color: #293C50 
   border-bottom: 1px solid rgba(0,0,0,.2)
   .post_tags
     a
       color: #5F7288
   &.thumbnail
-    border-bottom: 1px solid rgba(255,255,255,.3)
+    border-bottom: 1px solid rgba(255,255,255,.2)
     color: white
     .post_tags
       a
@@ -630,8 +611,10 @@ img.post_thumbnail
 
 // container for the posts' buttons 
 .post_footer
-  align-self: end
-  grid-row-start: 4
+  align-self: flex-start
+  justify-self: flex-end
+  margin-top: auto
+
   .button
     color: white
     background: #ABA8F2
@@ -639,13 +622,8 @@ img.post_thumbnail
       background: #6F64F2
       color: white
 
-.post_content, .post_title,
-  //animation-duration: .4s
-  //animation-fill-mode: both
-  //animation-name: fade-in
-  //animation-timing-function: ease
-  //animation-delay: .2s
- 
+
+
 
 .tags-list
   margin: 0
