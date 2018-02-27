@@ -482,9 +482,9 @@ ul
   margin-bottom: 4em
   display: flex
   align-items: center
+  overflow: visible
 
 .article_content
-  margin-top: 12em 
   margin-bottom: 100px  
   max-width: 900px  
   padding: calc(20px + 2em)
@@ -503,9 +503,10 @@ ul
   
 
 .article_banner
-  position: absolute
+  position: relative
   width: calc(100% - 2em)
-  max-width: 900px
+  margin: 0 1em
+  margin-top: -20px
   border-radius: $card-border-radius
   z-index: 20
   display: flex
@@ -513,7 +514,6 @@ ul
   justify-content: center
   box-shadow: 0 2px 40px 0 rgba(0,0,0,0.15)
   padding: 2em
-  margin: 0 1em
   .article_footer
     padding-top: .5em
     border-top: 1px solid rgba(255,255,255,.3)
@@ -540,8 +540,6 @@ ul
   animation-fill-mode: both
   animation-name: fade-in-up
   animation-timing-function: ease
-  @media only screen and (min-width: $break-xl)
-     font-size: 1.15em
 
 
 .post_container

@@ -1,27 +1,28 @@
 extends includes/layout.pug
 block content
   div(class="full_post")
-    -background = (page.background) ? page.background : theme.thumbnail.default;
-    div(class="article_banner", style={background: background})
-      div(class="article_title")
-        h1
-          a(href=config.root + page.path)= page.title
-        div(class="article_date")
-          !=date(page.date, date_format)
+    div(class="card article")
+    
+      -background = (page.background) ? page.background : theme.thumbnail.default;
+      div(class="article_banner", style={background: background})
+        div(class="article_title")
+          h1
+            a(href=config.root + page.path)= page.title
+          div(class="article_date")
+            !=date(page.date, date_format)
 
-      if page.tags.length > 0 
-        div(class="article_tags")
-          !=list_tags(page.tags, {show_count: false, class: 'tags', style: 'list', separator: ''})
+        if page.tags.length > 0 
+          div(class="article_tags")
+            !=list_tags(page.tags, {show_count: false, class: 'tags', style: 'list', separator: ''})
 
-      div(class="article_footer")
-        if page.github
-          a(class="button" href=page.github)= 'More on Git '
-            i(class="fa fa-github fa-lg")&attributes({'aria-hidden': 'true'})
-        if page.heroku
-          a(class="button" href=page.heroku)= 'More on Heroku '
-            i(class="fa fa-cloud fa-lg")&attributes({'aria-hidden': 'true'})
-
-    div(class="card article")           
+        div(class="article_footer")
+          if page.github
+            a(class="button" href=page.github)= 'More on Git '
+              i(class="fa fa-github fa-lg")&attributes({'aria-hidden': 'true'})
+          if page.heroku
+            a(class="button" href=page.heroku)= 'More on Heroku '
+              i(class="fa fa-cloud fa-lg")&attributes({'aria-hidden': 'true'})
+           
       div(class="article_content")
         !=page.content
                   
