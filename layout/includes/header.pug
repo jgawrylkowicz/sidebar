@@ -1,16 +1,15 @@
 #header
   #info
-    #avatar
-      img(src=theme.img.avatar, alt='avatar')
+    img#avatar(src=theme.img.avatar, alt='avatar')
     #title
-        if theme.img.avatar
-          h3
-            !=config.author
-          p
-            if (Array.isArray(theme.header.info))
-              !=theme.header.info.join('<br>')
-            else
-              !=theme.header.info
+      if theme.img.avatar
+        h3(class="title_author")
+          !=config.author
+        p(class="title_text")
+          if (Array.isArray(theme.header.info))
+            !=theme.header.info.join('<br>')
+          else
+            !=theme.header.info
   #aboutme
     if (Array.isArray(theme.header.slogan))
       - let array = theme.header.slogan
@@ -18,35 +17,35 @@
       - array = array.slice(1)
       div(class="greeting")
         !=first_sentence
-      p
+      p(class="greeting_text")
         !=array.join('<br>')
     else
       h4
         !=theme.header.slogan
-  #navigation
-    ul
-      each values, label in theme.menu
+  
+  ul#navigation
+    each values, label in theme.menu
+      li
+        a(href=values.url data-pjax class="nav_item")
+          i(class="fa fa-lg nav_item_icon " + values.icon)&attributes({'aria-hidden': 'true'})
+          div
+            div(class="label")!=label 
+            //div(class='info')!=values.info
+  
+  ul#sns
+    each values, label in theme.sns
+      if values.url
         li
-          a(href=values.url data-pjax class="item")
-            i(class="fa fa-lg " + values.icon)&attributes({'aria-hidden': 'true'})
+          a(href=values.url, class="nav_item")
+            i(class="fa fa-lg nav_item_icon " + values.icon)&attributes({'aria-hidden': 'true'})
             div
               div(class="label")!=label 
-              div(class='info')!=values.info
-  #sns
-    ul
-      each values, label in theme.sns
-        if values.url
-          li
-            a(href=values.url, class="item")
-              i(class="fa fa-lg " + values.icon)&attributes({'aria-hidden': 'true'})
-              div
-                div(class="label")!=label 
-                div(class='info')!=values.info
-  #close
-    ul
-      li
-       a(class="item")
-        i(class="fa fa-lg")&attributes({'aria-hidden': 'true'})
+              //div(class='info')!=values.info
+
+  ul#close
+    li
+      a(class="nav_item close")
+        i(class="fa fa-lg nav_item_icon ")&attributes({'aria-hidden': 'true'})
         div
           div(class="label")!="Close sidebar"
  

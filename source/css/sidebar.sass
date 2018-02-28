@@ -127,15 +127,14 @@ a
   box-sizing: border-box
 
 h1, h2, h3, h4, h5, h6, ul
-  &:first-of-type
-    padding-top: 0
-    margin-top: 0
+  padding-top: 0
+  margin-top: 0
 
 h1, h2, h3, h4, h5, h6
   font-weight: 600
 
 h1, h2, h3
-  margin: $step-up-1 0 .5em
+  margin-bottom: $step-up-1 .5em
   line-height: 1.2
   margin-left: -2px
 
@@ -201,30 +200,40 @@ ul
   display: flex
   align-items: center 
   z-index: 4000
-  height: 100px
   width: 100vw
-  h3
-    text-transform: uppercase
-    color: #293C50
-    margin: 0
-    padding-left: 2.25em
-  span.slash
-    color: #E7AAAE
-    padding: 0 .5em
+  padding: 0 1em
+  position: fixed
+  transition: background .15s ease
+  height: 4em
+  background: #F4F7FA
+  box-shadow: $shadow
   @media only screen and (min-width: $break-xl)
-    margin-left: $sidebar-width
-    i
-      display: none
-  @media only screen and (max-width: $break-xl)
-    padding: 0 1em
-    position: fixed
-    transition: background .15s ease
-    height: 4em
-    background: #F4F7FA
-    box-shadow: $shadow
-  @media only screen and (max-width: $break-l)
-    h3
-      justify-self: center
+    margin-left: $sidebar-width 
+    background: none
+    box-shadow: none
+    height: 100px
+    position: relative
+    width: 100%
+    
+// The button for opening the sidebar
+.menu_button
+  font-size: $step-up-3
+  justify-self: flex-start
+  transition: color .15s ease-in-out
+  color: #293C50
+  &:hover
+    color: #6F64F2
+  @media only screen and (min-width: $break-xl)
+    display: none !important
+
+.slash
+  color: #E7AAAE
+  padding: 0 .5em
+.top_nav
+  text-transform: uppercase
+  color: #293C50
+  margin: 0
+  padding-left: 2.25em
 
 
 #search
@@ -239,33 +248,19 @@ ul
     margin-left: 1em
     width: 260px
 
-// The button for opening the sidebar
-#menu
-  i
-    font-size: $step-up-3
-    justify-self: flex-start
-    transition: color .15s ease-in-out
-    color: #293C50
-    &:hover
-      color: #6F64F2
-  @media only screen and (min-width: $break-xl) 
-    display: none
 
 //The button for closing the sidebar    
 #close
-  padding: 0em 2em
-  font-size: 1em
   margin-top: auto
   margin-bottom: 1em
-  a 
-    color: #E7AAAE 
-    &:hover
-      color: #E8676A !important
-  i
-    margin-right: 1em
-    width: 1em
   @media only screen and (min-width: $break-xl)
     display: none 
+.close
+  border: none !important
+  background: none !important
+  color: #E7AAAE !important
+  &:hover
+    color: #E8676A !important
 
 // Container for the sidebar
 // 3 different versions, depending on the screen width
@@ -287,20 +282,6 @@ ul
   left: $sidebar-width - (2 * $sidebar-width)
   width: $sidebar-width
   padding-top: 4em
-
-  & > div
-    padding: 1em 2em
-  &:last-child 
-    border-bottom: none
-    padding-bottom: 0
-    
-  .item
-    display: flex
-    align-items: center
-    transition: color .15s ease
-    &:hover
-      color: black
-  
   @media only screen and (min-width: $break-xl) 
     padding-top: 0
     height: 100vh
@@ -311,6 +292,30 @@ ul
       backdrop-filter: blur(2em)
       -webkit-backdrop-filter: blur(2em)
 
+.nav_item
+  display: flex
+  padding: 1em 2em
+  align-items: center
+  transition: all .15s ease-in-out
+  color: #5F7288
+  border-left: 5px solid transparent
+  &:hover
+    color: #6F64F2
+    background: rgba(0,0,0,.05)
+    border-left: 5px solid #6F64F2
+    .nav_item_icon
+      color: #ABA8F2
+  &:active
+    border-left: 5px solid #E8676A
+    background: #E7AAAE
+  &.active
+    border-left: 5px solid #6F64F2
+
+.nav_item_icon
+  width: 1em
+  color: #AAB9C5
+  transition: color .15s ease-in-out
+  margin-right: 1em
 
 // class for hiding the sidebar
 .show-header
@@ -323,6 +328,65 @@ ul
     -webkit-transform: translate3d($sidebar-width,0,0)
     transform: translate3d($sidebar-width,0,0)
 
+#info, #aboutme 
+  padding: 1em 2em   
+#navigation, #sns, #close
+  width: 100%  
+  padding: 1em 0
+
+
+// Short text about the site
+.greeting
+  font-size: $step-up-1
+  font-weight: 600
+  color: #293C50
+.greeting_text
+  color: #5F7288
+  max-height: 7.5em
+  transition: all .15s ease
+  @media only screen and (max-height: 600px)
+    max-height: 0px
+    opacity: 0
+
+// top container for the information about the site / user
+// contains the avatar and the title objects
+#info
+  width: 100%
+  display: flex
+  flex-direction: row
+  align-items: center
+  justify-content: flex-start
+
+#title
+  padding-left: .75em
+  margin: 2em 0
+
+.title_author
+  color: #6F64F2
+  line-height: $line-height
+  margin: 0
+.title_text
+  color: #6D757E
+  margin: 0
+
+.info
+  line-height: .25
+  font-size: 1em
+  font-weight: 300
+  color: #AAB9C5
+  position: absolute
+
+.label
+  text-transform: uppercase
+  font-weight: 600
+
+#avatar
+  border-radius: 120%
+  display: block
+  height: auto
+  width: 6em
+  margin: auto
+  box-shadow: $shadow
 
 //not needed for now, may delete later
 //#content
@@ -337,97 +401,19 @@ ul
 .posts
   display: grid
   grid-gap: $content-grid-gap
-  grid-template-columns: repeat(auto-fit, minmax(22em, 1fr))
   grid-auto-rows: minmax(auto, 1fr)
   grid-auto-flow: row dense
   padding: $content-grid-padding
   margin-bottom: 4em
-  @media only screen and (max-width: $break-s) 
-    grid-template-columns: 1fr
+  grid-template-columns: 1fr
+  @media only screen and (min-width: $break-m) and (max-width: $break-xxl)  
+    grid-template-columns: repeat(auto-fit, minmax(22em, 1fr))
   @media only screen and (min-width: $break-xxl) and (max-width: $break-xxxl)
     grid-template-columns: repeat(3,1fr)
   @media only screen and (min-width: $break-xxxl) and (max-width: $break-uw)
     grid-template-columns: repeat(4,1fr)
   @media only screen and (min-width: $break-uw)  
     grid-template-columns: repeat(5,1fr)
-
-// Short text about the site
-#aboutme
-  p
-    color: #5F7288
-    max-height: 7.5em
-    transition: all .15s ease
-    @media only screen and (max-height: 600px)
-      max-height: 0px
-      opacity: 0
-  div.greeting
-    font-size: $step-up-1
-    font-weight: 500
-    color: #293C50
-
-// top container for the information about the site / user
-// contains the avatar and the title objects
-#info
-  width: 100%
-  display: flex
-  flex-direction: row
-  align-items: center
-  justify-content: flex-start
-
-
-#title
-  padding-left: .75em
-  margin: 2em 0
-  h3
-    color: #6F64F2
-    line-height: $line-height
-  p 
-    color: #6D757E
-  & > *
-    margin: 0
-
-#navigation, #sns
-  width: 100%
-  a
-    transition: color .15s ease-in-out
-    color: #5F7288
-    &:hover
-      color: #ABA8F2
-      i
-        color: #ABA8F2
-  i 
-    width: 1em
-    color: #AAB9C5
-    transition: color .15s ease-in-out
-    margin-right: 1em
-  li
-    line-height: 2
-    padding-bottom: 1.5vh
-
-
-.info
-  line-height: .25
-  font-size: 1em
-  font-weight: 300
-  color: #AAB9C5
-  position: absolute
-
-.label
-  text-transform: uppercase
-  font-weight: 500
-
-#sns
-  li
-    line-height: 2.5
-
-#avatar
-  img
-    border-radius: 120%
-    display: block
-    height: auto
-    width: 5em
-    margin: auto
-    box-shadow: $shadow
 
 .card
   box-sizing: border-box
@@ -444,14 +430,7 @@ ul
   width: 100%
   display: inline-block
   position: relative
-  //padding-top: 115%
-  &:hover
-    .post_content
-      // -webkit-transform: translate3d(0, -60%, 0)
-      // transform: translate3d(0, -60%, 0)
-    .hidden
-      //max-height: none
-      //height: 17em
+  //&:hover
 
 .post::after
   width: 100%
