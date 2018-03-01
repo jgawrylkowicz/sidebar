@@ -1,29 +1,28 @@
 extends includes/layout.pug
 block content
-  div(class="full_post")
+  div(class="full-post")
     div(class="card article")
-    
-      -background = (page.background) ? page.background : theme.thumbnail.default;
-      div(class="article_banner", style={background: background})
-        div(class="article_title")
-          h1
-            a(href=config.root + page.path)= page.title
-          div(class="article_date")
+      -let background = (page.background) ? page.background : theme.thumbnail.default;
+      -let thumbnail_modifier = (page.background) ? '--thumbnail' : '';
+      div(class="article__banner", style={background: background})
+        div(class="article__banner--title" + thumbnail_modifier)
+          h1= page.title
+          div(class="article__banner--date")
             !=date(page.date, date_format)
 
         if page.tags.length > 0 
-          div(class="article_tags")
+          div(class="article__banner--tags" + thumbnail_modifier)
             !=list_tags(page.tags, {show_count: false, class: 'tags', style: 'list', separator: ''})
 
-        div(class="article_footer")
+        div(class="article__banner--footer")
           if page.github
-            a(class="button" href=page.github)= 'More on Git '
+            a(class="button" + thumbnail_modifier, href=page.github)= 'More on Git '
               i(class="fa fa-github fa-lg")&attributes({'aria-hidden': 'true'})
           if page.heroku
-            a(class="button" href=page.heroku)= 'More on Heroku '
+            a(class="button" + thumbnail_modifier, href=page.heroku)= 'More on Heroku '
               i(class="fa fa-cloud fa-lg")&attributes({'aria-hidden': 'true'})
            
-      div(class="article_content")
+      div(class="article__content")
         !=page.content
                   
 

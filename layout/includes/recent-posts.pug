@@ -4,31 +4,31 @@ div(class="posts")
         -let background = (post.background) ? post.background : theme.thumbnail.default;
         -let thumbnail_modifier = ''
         div(class="card post fade-in", style={background: background})
-          div(class="post_container")
+          div(class="post--container")
             if post.thumbnail
-              img(class="post_thumbnail", src=post.thumbnail width="100%" height="100%")
-              -thumbnail_modifier = 'thumbnail'
-            div(class="post_header " + thumbnail_modifier)
-              div(class="post_title")
+              img(class="post__thumbnail", src=post.thumbnail width="100%" height="100%")
+              -thumbnail_modifier = '--thumbnail'
+            div(class="post__header" + thumbnail_modifier)
+              div(class="post__header--title")
                 h1
                   a(href=config.root + post.path)= post.title
-                div(class="post_date")
+                div(class="post__header--date")
                   !=date(post.date, date_format)
 
               if post.tags.length > 0 
-                div(class="post_tags")
+                div(class="post__header--tags" + thumbnail_modifier)
                   !=list_tags(post.tags, {show_count: false, class: 'tags', style: 'list', separator: ''})
 
-            div(class='post_excerpt ' + thumbnail_modifier)
+            div(class='post__excerpt' + thumbnail_modifier)
               !=post.excerpt
                           
-            div(class="post_footer " + thumbnail_modifier)
-              a(class="button" data-pjax href=config.root + post.path)= 'Read more'
+            div(class="post__footer" + thumbnail_modifier)
+              a(class="button" + thumbnail_modifier, data-pjax href=config.root + post.path)= 'Read more'
               if post.github
-                  a(class="button alt" href=post.github)
+                  a(class="button--alt" + thumbnail_modifier, href=post.github)
                     i(class="fa fa-github fa-lg")&attributes({'aria-hidden': 'true'})
               if post.heroku
-                  a(class="button alt" href=post.heroku)
+                  a(class="button--alt" + thumbnail_modifier, href=post.heroku)
                     i(class="fa fa-cloud fa-lg")&attributes({'aria-hidden': 'true'})
           
         

@@ -20,11 +20,11 @@ html(lang=config.language)
         link(rel='stylesheet', href=url)
     link(rel="icon", href=config.root + 'img/logo-128.png')
   body
-    #layout
+    div(class="layout")
       include header.pug
       include topbar.pug
-      #main
-        #content
+      #main(class="main")
+        #content(class="main__content")
           if body
             div!= body
           else

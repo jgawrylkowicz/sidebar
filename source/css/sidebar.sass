@@ -2,7 +2,7 @@
 // TODO add special classes for elements 
 // TODO Refractor the code
 // TODO move topbar into content
-// TODO return to media queries based fontsizes  
+// Zooming out causes the topbar and the header display issues   
 
 $line-height: 1.5
 $ratio: 1.25
@@ -172,7 +172,7 @@ ul
 
 // Structure of the site
 // contains main and header objects
-#layout
+.layout
   display: grid
   grid-template-rows: 100px 1fr
   width: 100%   
@@ -183,7 +183,7 @@ ul
 
 // Container for the main content 
 // Contains one of the classes - articles or posts
-#main
+.main
   width: 100%
   overflow: visible
   z-index: 1
@@ -196,7 +196,7 @@ ul
 
 // Container for the top information
 // fixed for mobile
-#topbar
+.tob-bar
   display: flex
   align-items: center 
   z-index: 4000
@@ -216,7 +216,7 @@ ul
     width: 100%
     
 // The button for opening the sidebar
-.menu_button
+.top-bar__button
   font-size: $step-up-3
   justify-self: flex-start
   transition: color .15s ease-in-out
@@ -226,17 +226,16 @@ ul
   @media only screen and (min-width: $break-xl)
     display: none !important
 
-.slash
+.top-bar__text--slash
   color: #E7AAAE
   padding: 0 .5em
-.top_nav
+.top-bar__text
   text-transform: uppercase
   color: #293C50
   margin: 0
   padding-left: 2.25em
 
-
-#search
+.search
   @media only screen and (max-width: $break-m)
     display: none
   input[type="text"]
@@ -248,24 +247,16 @@ ul
     margin-left: 1em
     width: 260px
 
-
 //The button for closing the sidebar    
-#close
+.header__close
   margin-top: auto
-  margin-bottom: 1em
   @media only screen and (min-width: $break-xl)
     display: none 
-.close
-  border: none !important
-  background: none !important
-  color: #E7AAAE !important
-  &:hover
-    color: #E8676A !important
 
 // Container for the sidebar
 // 3 different versions, depending on the screen width
 // desktop, desktop/tablet , mobile 
-#header
+.header
   vertical-align: middle
   z-index: 1200
   height: 100%
@@ -285,6 +276,7 @@ ul
   @media only screen and (min-width: $break-xl) 
     padding-top: 0
     height: 100vh
+    min-height: 100%
     left: 0
   @media only screen and (max-width: $break-xl) 
     @supports (backdrop-filter: blur(3em)) or (-webkit-backdrop-filter: blur(2em))
@@ -292,7 +284,7 @@ ul
       backdrop-filter: blur(2em)
       -webkit-backdrop-filter: blur(2em)
 
-.nav_item
+.nav-item
   display: flex
   padding: 1em 2em
   align-items: center
@@ -307,15 +299,33 @@ ul
       color: #ABA8F2
   &:active
     border-left: 5px solid #E8676A
-    background: #E7AAAE
-  &.active
-    border-left: 5px solid #6F64F2
+    background: #FFE6E8
 
-.nav_item_icon
+.nav-item__icon
   width: 1em
   color: #AAB9C5
   transition: color .15s ease-in-out
   margin-right: 1em
+
+.nav-item__info
+  line-height: .25
+  font-size: 1em
+  font-weight: 300
+  color: #AAB9C5
+  position: absolute
+
+.nav-item__label
+  text-transform: uppercase
+  font-weight: 600
+
+.nav-item--close
+  display: flex
+  padding: 1em 2em
+  align-items: center
+  transition: all .15s ease-in-out
+  color: #E7AAAE 
+  &:hover
+    color: #E8676A
 
 // class for hiding the sidebar
 .show-header
@@ -328,19 +338,18 @@ ul
     -webkit-transform: translate3d($sidebar-width,0,0)
     transform: translate3d($sidebar-width,0,0)
 
-#info, #aboutme 
-  padding: 1em 2em   
-#navigation, #sns, #close
+.header__info, .header__about
+  padding: 12px 24px   
+.header__close, .header__sns, .header__nav
   width: 100%  
-  padding: 1em 0
-
+  padding: 12px 0
 
 // Short text about the site
-.greeting
+.header__about--greeting
   font-size: $step-up-1
   font-weight: 600
   color: #293C50
-.greeting_text
+.header__about--text
   color: #5F7288
   max-height: 7.5em
   transition: all .15s ease
@@ -350,49 +359,35 @@ ul
 
 // top container for the information about the site / user
 // contains the avatar and the title objects
-#info
+.header__info
   width: 100%
   display: flex
   flex-direction: row
   align-items: center
   justify-content: flex-start
 
-#title
-  padding-left: .75em
-  margin: 2em 0
+.info-title
+  padding-left: 12px
+  margin: 12px 0
 
-.title_author
+.info-title__author
   color: #6F64F2
   line-height: $line-height
   margin: 0
-.title_text
+
+.info-title__text
   color: #6D757E
   margin: 0
 
-.info
-  line-height: .25
-  font-size: 1em
-  font-weight: 300
-  color: #AAB9C5
-  position: absolute
-
-.label
-  text-transform: uppercase
-  font-weight: 600
-
-#avatar
+.avatar
   border-radius: 120%
   display: block
   height: auto
   width: 6em
-  margin: auto
   box-shadow: $shadow
 
-//not needed for now, may delete later
-//#content
-
 // container for full pages and posts
-.full_post
+.full-post
   display: flex
   justify-content: center
   margin: 0 .5em
@@ -448,7 +443,54 @@ ul
   align-items: center
   overflow: visible
 
-.article_content
+.article__banner, .article 
+  animation-duration: .3s
+  animation-fill-mode: both
+  animation-name: fade-in-up
+  animation-timing-function: ease
+
+.article__banner
+  position: relative
+  width: calc(100% - 2em)
+  margin: 0 1em
+  margin-top: -20px
+  border-radius: $card-border-radius
+  z-index: 20
+  display: flex
+  flex-direction: column
+  justify-content: center
+  box-shadow: 0 2px 40px 0 rgba(0,0,0,0.15)
+  padding: 2em
+
+.article__banner--title, .article__banner--title--thumbnail
+  position: relative
+  display: flex
+  align-items: baseline
+  flex-direction: row
+  justify-content: space-between
+  z-index: 20
+  h1
+    font-size: $step-up-4
+    margin-bottom: 0
+
+.article__banner--title
+  color: #293C50
+  
+.article__banner--title--thumbnail
+  color: white
+
+.article__banner--date, .post__header--date
+  font-size: 1em
+  margin-bottom: 0
+  font-weight: 400
+
+.article__banner--tags
+  padding-bottom: .5em
+
+.article__banner--footer
+  padding-top: .5em
+
+.article__content
   margin-bottom: 100px  
   max-width: 900px  
   padding: calc(20px + 2em)
@@ -464,49 +506,7 @@ ul
   @media only screen and (max-width: $break-s)
     padding: 1em
 
-  
-
-.article_banner
-  position: relative
-  width: calc(100% - 2em)
-  margin: 0 1em
-  margin-top: -20px
-  border-radius: $card-border-radius
-  z-index: 20
-  display: flex
-  flex-direction: column
-  justify-content: center
-  box-shadow: 0 2px 40px 0 rgba(0,0,0,0.15)
-  padding: 2em
-  .article_footer
-    padding-top: .5em
-    border-top: 1px solid rgba(255,255,255,.3)
-  .article_tags
-    padding-bottom: .5em
-  .article_title
-    color: white
-    position: relative
-    display: flex
-    align-items: baseline
-    flex-direction: row
-    justify-content: space-between
-    z-index: 20
-    h1
-      font-size: $step-up-4
-      margin-bottom: 0
-    .post_date
-      font-size: 1em
-      margin-bottom: 0
-      font-weight: 400
-
-.article_banner, .article 
-  animation-duration: .3s
-  animation-fill-mode: both
-  animation-name: fade-in-up
-  animation-timing-function: ease
-
-
-.post_container
+.post--container
   display: flex
   flex-direction: column
   padding: $post-padding
@@ -518,18 +518,18 @@ ul
   height: 100%
   width: 100%
 
-.post_header, .post_excerpt
+.post__header, .post__excerpt, .post__header--thumbnail, .post__excerpt--thumbnail
   margin-bottom: .5em
-.post_thumbnail
+.post__thumbnail
   margin-bottom: .75em
 
-.post_thumbnail
+.post__thumbnail
   width: 100%
   height: auto
   -webkit-filter: drop-shadow(0 .5em 2em rgba(50, 50, 50, 0.3))
   filter: drop-shadow(0 .5em 2em rgba(50, 50, 50, 0.3))
 
-.post_title
+.post__header--title
   position: relative
   display: flex
   align-items: baseline
@@ -539,66 +539,52 @@ ul
   h1
     margin-bottom: 0
 
-.post_date
-  font-size: 1em
-  margin-bottom: 0
-  font-weight: 400
-
-.post_tags
+.post__header--tags, .post__header--tags--thumbnail
   display: inline-flex
   height: 1.25em
   overflow: hidden
   font-size: $step-down-1
 
-
-.post_header
+.post__header
   color: #293C50 
   border-bottom: 1px solid rgba(0,0,0,.2)
-  .post_tags
-    a
-      color: #5F7288
-  &.thumbnail
-    border-bottom: 1px solid rgba(255,255,255,.2)
+      
+.post__header--tags, .article__banner--tags
+  color: #5F7288
+  a:hover
+    color: black
+ 
+.post__header--tags--thumbnail, .article__banner--tags--thumbnail
+  color: rgba(255,255,255,.7)
+  a:hover
     color: white
-    .post_tags
-      a
-        color: rgba(255,255,255,.7)
 
-.post_excerpt
+.post__header--thumbnail
+  color: white
+  border-bottom: 1px solid rgba(255,255,255,.2)
+
+.post__excerpt, .post__excerpt--thumbnail
   grid-row-start: 3
   color: #293C50 
   p
     margin: 0
-  &.thumbnail
-    -webkit-mask-image: -webkit-linear-gradient(top, white, rgba(255, 255, 255, 1) 70%, rgba(255, 255, 255, 0))
-    overflow-y: hidden
-    color: white
-  @media only screen and (min-width: $break-m) 
-    font-size: .95em
+
+.post__excerpt--thumbnail
+  -webkit-mask-image: -webkit-linear-gradient(top, white, rgba(255, 255, 255, 1) 70%, rgba(255, 255, 255, 0))
+  overflow-y: hidden
+  color: white
 
 // container for the posts' buttons 
-.post_footer
+.post__footer
   align-self: flex-start
   justify-self: flex-end
   margin-top: auto
-  .button
-    color: white
-    background: #ABA8F2
-    &.alt
-      color: rgba(255,255,255,.6)
-      background: #ABA8F2
-    &:hover
-      background: #6F64F2
-      color: white
-  &.thumbnail
-    .button
-      color: #ABA8F2
-      background: rgba(255,255,255,.9)
-      &:hover
-        color: #6F64F2
-        background: white
+   
 
-
+.post__footer--thumbnail
+  align-self: flex-start
+  justify-self: flex-end
+  margin-top: auto
 
 .tags-list
   margin: 0
@@ -609,10 +595,7 @@ ul
     -webkit-transition: color .15s ease
     transition: color .15s ease
     text-decoration: none
-    color: rgba(255,255,255,.7)
     text-transform: uppercase
-    &:hover
-      color: white
   -webkit-appearance: none
   float: left
   padding-right: .5em
@@ -623,18 +606,9 @@ ul
   text-align: center
   position: relative
   z-index: 4
-
-
-.button-wrapper
-  z-index: -1
-  margin-left: auto
-  &:last-of-type
-    padding-bottom: 0
   
-.button
-  background-color: white 
+.button, .button--alt, .button--thumbnail, .button--alt--thumbnail
   border-radius: 3px
-  color: #5F7288
   display: inline-block
   font-size: 1em
   font-weight: 400
@@ -648,24 +622,38 @@ ul
   z-index: 4
   transition: all .15s ease-in-out
   &:hover
-    -webkit-transform: translate3d(0, -5%, 0)
-    transform: translate3d(0, -5%, 0)
+    -webkit-transform: translate3d(0, -1px, 0)
+    transform: translate3d(0, -1px, 0)
   @media screen and (max-width: $break-m)
     padding: .5em 1em
 
+.button
+  background: #ABA8F2
+  color: rgba(255,255,255,.9)
+  &:hover
+    background: #6F64F2
+    color: white
 
-.container
-  display: flex
-  flex-direction: column
-  margin: auto
-  justify-content: flex-start
-  .item 
-    display: flex
-    flex-direction: row
-    align-items: center
-    i
-      font-size: $step-up-2
-      width: 2em
+.button--thumbnail
+  background: rgba(255,255,255,.9)
+  color: #ABA8F2
+  &:hover
+    background: white
+    color: #6F64F2
+    
+.button--alt
+  background: #E7AAAE
+  color: rgba(255,255,255,.7)
+  &:hover
+    background: #E8676A
+    color: white
+  
+.button--alt--thumbnail
+  color: #ABA8F2
+  background: rgba(255,255,255,.8)
+  &:hover
+    color: #6F64F2
+    background: white
 
 
 // Animations for the content of the main object
