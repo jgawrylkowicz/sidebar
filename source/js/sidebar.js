@@ -6,17 +6,17 @@
     push: true
   }).on('pjax:send', function() {
     //console.log('sent');
-    $('#content')
-    .animate({
-      opacity: 0,
-    },{
-      duration: 150,
-    })
-    .removeClass('fade-in');
+    // $('#content')
+    // .animate({
+    //   opacity: 0,
+    // },{
+    //   duration: 150,
+    // })
+    // .removeClass('fade-in');
   }).on('pjax:complete', function() {
-    $('#content')
-    .css('opacity', '0')
-    .addClass('fade-in');  
+    // $('#content')
+    // .css('opacity', '0')
+    // .addClass('fade-in');  
    // console.log("complete");
   }).ready(function() {
     //console.log('rendered');
@@ -42,9 +42,17 @@ $('body,html').click(function(event){
   $('#header').removeClass('show-header');
 });
 
-// Flowtype.js
+// Observer for dectecting a change of style on body - Flowtype in this case
+var observer = new MutationObserver(function(mutations) {
+  mutations.forEach(function(mutationRecord) {
+    document.onload = $('body').css("opacity", 1);
+  });    
+});
+
+observer.observe(document.body, { attributes : true, attributeFilter : ['style'] });
+
+//Flowtype.js
 $('body').flowtype({
    minFont : 12,
    maxFont : 15
 });
-

@@ -41,7 +41,7 @@ $post-padding: 18px
 $content-grid-gap: 36px
 $content-grid-padding: 1em
 
-$shadow: 0 .5em 2em 0 rgba(50,50,50,0.2)
+$shadow: 0 6px 24px 0 rgba(50,50,50,0.2)
 
 //@mixin transition 
 
@@ -79,6 +79,7 @@ $shadow: 0 .5em 2em 0 rgba(50,50,50,0.2)
   display: none
 
 body
+  opacity: 0
   -moz-osx-font-smoothing: grayscale
   -webkit-font-smoothing: antialiased
   background: $background-color
@@ -86,9 +87,9 @@ body
   background-size: cover
   //height: 100vh
   margin: 0
+  transition: opacity .3s ease-in-out
+  transition-delay: .2s
   //width: 100%
-  //position: fixed
-  //position fixed and height somehow break the performance on safari
   text-rendering: optimizeLegibility
 
 html
@@ -203,7 +204,7 @@ ul
   width: 100vw
   padding: 0 1em
   position: fixed
-  transition: background .15s ease
+  transition: background .15s ease-in-out
   height: 4em
   background: #F4F7FA
   box-shadow: $shadow
@@ -235,7 +236,7 @@ ul
   margin: 0
   padding-left: 2.25em
 
-.search
+.to-bar__search
   @media only screen and (max-width: $break-m)
     display: none
   input[type="text"]
@@ -273,6 +274,7 @@ ul
   left: $sidebar-width - (2 * $sidebar-width)
   width: $sidebar-width
   padding-top: 4em
+  will-change: transform
   @media only screen and (min-width: $break-xl) 
     padding-top: 0
     height: 100vh
@@ -288,7 +290,9 @@ ul
   display: flex
   padding: 1em 2em
   align-items: center
-  transition: all .15s ease-in-out
+  transition-property: color, border-left, background
+  transition-duration: .15s
+  transition-timing-function: ease-in-out
   color: #5F7288
   border-left: 5px solid transparent
   &:hover
@@ -322,15 +326,18 @@ ul
   display: flex
   padding: 1em 2em
   align-items: center
-  transition: all .15s ease-in-out
+  transition-property: color, border-left, background
+  transition-duration: .15s
+  transition-timing-function: ease-in-out
   color: #E7AAAE 
   &:hover
     color: #E8676A
 
 // class for hiding the sidebar
 .show-header
-  -webkit-transition: all .15s ease
-  transition: all .15s ease
+  transition-property: transform
+  transition-duration: .15s
+  transition-timing-function: ease-in-out
   @media only screen and (min-width: $break-xl)
     -webkit-transform: translate3d(0,0,0)
     transform: translate3d(0,0,0)
@@ -352,7 +359,9 @@ ul
 .header__about--text
   color: #5F7288
   max-height: 7.5em
-  transition: all .15s ease
+  transition-property: height
+  transition-duration: .15s
+  transition-timing-function: ease-in-out
   @media only screen and (max-height: 600px)
     max-height: 0px
     opacity: 0
@@ -425,7 +434,7 @@ ul
   width: 100%
   display: inline-block
   position: relative
-  //&:hover
+  &:hover
 
 .post::after
   width: 100%
@@ -447,7 +456,7 @@ ul
   animation-duration: .3s
   animation-fill-mode: both
   animation-name: fade-in-up
-  animation-timing-function: ease
+  animation-timing-function: ease-in-out 
 
 .article__banner
   position: relative
@@ -592,8 +601,8 @@ ul
 
 .tags-list-item
   a
-    -webkit-transition: color .15s ease
-    transition: color .15s ease
+    -webkit-transition: color .15s ease-in-out
+    transition: color .15s ease-in-out
     text-decoration: none
     text-transform: uppercase
   -webkit-appearance: none
@@ -620,10 +629,13 @@ ul
   text-decoration: none
   text-transform: uppercase
   z-index: 4
-  transition: all .15s ease-in-out
+  transition-property: transform, color, background
+  transition-duration: .15s
+  transition-timing-function: ease-in-out
   &:hover
-    -webkit-transform: translate3d(0, -1px, 0)
-    transform: translate3d(0, -1px, 0)
+    -webkit-transform: translateY(-2px) scale(1.02, 1.02)
+    transform: translateY(-2px) scale(1.02, 1.02)
+    box-shadow: 0 3px 12px rgba(50,50,50,0.2)
   @media screen and (max-width: $break-m)
     padding: .5em 1em
 
@@ -662,7 +674,7 @@ ul
   animation-fill-mode: both
   animation-delay: .1s
   animation-name: fade-in-up
-  animation-timing-function: ease
+  animation-timing-function: ease-in-out
  
 @keyframes fade-in-up 
   from 
