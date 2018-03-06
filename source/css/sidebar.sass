@@ -30,13 +30,14 @@ $step-down-2: $step-down-1 / $ratio
 $max-card-width: 800px
 $card-border-radius: 6px
 $background-color: #EDF1F4
-$sidebar-background-color: white
+$sidebar-background-color: #F4F7FA
 $card-background: rgb(255,255,255)
 $dark-mode-card: rgba(44,50,58,1)
 
 $post-width: 28.75em
 $post-height: 32.875em
 $post-padding: 18px
+$top-bar-height: 64px
 
 $content-grid-gap: 36px
 $content-grid-padding: 1em
@@ -159,7 +160,7 @@ h4
   font-size: 1em
 
 p
-  font-weight: 300
+  font-weight: 400
   overflow-wrap: break-word
   word-wrap: break-word
   -ms-word-break: break-all
@@ -205,16 +206,18 @@ ul
   padding: 0 1em
   position: fixed
   transition: background .15s ease-in-out
-  height: 4em
+  height: $top-bar-height
   background: #F4F7FA
   box-shadow: $shadow
-  @media only screen and (min-width: $break-xl)
-    margin-left: $sidebar-width 
-    background: none
-    box-shadow: none
-    height: 100px
-    position: relative
-    width: 100%
+  top: 0
+  left: 0
+  // @media only screen and (min-width: $break-xl)
+  //   margin-left: $sidebar-width 
+  //   background: none
+  //   box-shadow: none
+  //   height: 100px
+  //   position: relative
+  //   width: 100%
     
 // The button for opening the sidebar
 .top-bar__button
@@ -259,7 +262,8 @@ ul
 // desktop, desktop/tablet , mobile 
 .header
   vertical-align: middle
-  z-index: 1200
+  margin-top: $top-bar-height
+  z-index: 10
   height: 100%
   flex-grow: 1
   display: flex
@@ -273,7 +277,6 @@ ul
   flex-direction: column
   left: $sidebar-width - (2 * $sidebar-width)
   width: $sidebar-width
-  padding-top: 4em
   will-change: transform
   @media only screen and (min-width: $break-xl) 
     padding-top: 0
@@ -314,7 +317,7 @@ ul
 .nav-item__info
   line-height: .25
   font-size: 1em
-  font-weight: 300
+  font-weight: 400
   color: #AAB9C5
   position: absolute
 
@@ -633,8 +636,6 @@ ul
   transition-duration: .15s
   transition-timing-function: ease-in-out
   &:hover
-    -webkit-transform: translateY(-2px) scale(1.02, 1.02)
-    transform: translateY(-2px) scale(1.02, 1.02)
     box-shadow: 0 3px 12px rgba(50,50,50,0.2)
   @media screen and (max-width: $break-m)
     padding: .5em 1em
