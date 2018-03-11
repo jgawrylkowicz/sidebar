@@ -222,6 +222,9 @@ ul {
         backdrop-filter: blur(2em);
         -webkit-backdrop-filter: blur(2em); } } }
 
+#header:focus {
+  outline: 0px solid transparent; }
+
 .nav-item {
   display: flex;
   padding: 1em 2em;
@@ -265,7 +268,8 @@ ul {
   transition-property: color, border-left, background;
   transition-duration: 0.15s;
   transition-timing-function: ease-in-out;
-  color: #E7AAAE; }
+  color: #E7AAAE;
+  margin-bottom: 64px; }
   .nav-item--close:hover {
     color: #E8676A; }
 

@@ -8,22 +8,57 @@ new Pjax({
   }
 })
 
+var showHeader = function(){
+  var header = document.getElementById('header');
+  if(!(header.classList.contains("show-header"))){
+    header.classList.add('show-header');
+  } else {
+    header.classList.toggle('show-header');
+  }
+  header.focus();
+}
+
+var hideHeader = function(){
+  var header = document.getElementById('header');
+  header.classList.remove('show-header');
+}
+
+
 // Open & close the sidebar
 var menu = document.getElementById('menu');
-menu.addEventListener('click', function(){
-  var header = document.getElementById('header');
-  header.classList.toggle('show-header').focus();
+menu.addEventListener('click', function(e){
+  showHeader();
 }, false );
 
 var close = document.getElementById('close');
-close.addEventListener('click', function(){
-  var header = document.getElementById('header');
-  header.classList.remove('show-header');
+close.addEventListener('click', function(e){
+  hideHeader();
 }, false );
+
+var header = document.getElementById('header');
+header.addEventListener('click', function(e) {
+  hideHeader();
+}, false);
 
 
 // Close the sidebar when clicked on a element
+// var header = document.getElementById('header');
+// header.onblur = function(e){
+//   //e.stopPropagation();
+//   hideHeader();
+//   console.log('event',e);
+// }
 
+header.onfocus = function(){
+  //console.log("focusin");
+  //window.clearTimeout();
+}
+
+document.addEventListener('keydown', (event) => {
+  if (event.which == 27)
+    hideHeader();
+    event.preventDefault();
+});
 
 //Flowtype.js
 $('body').flowtype({
