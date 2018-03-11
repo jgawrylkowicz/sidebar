@@ -35,25 +35,18 @@ close.addEventListener('click', function(e){
   hideHeader();
 }, false );
 
-var header = document.getElementById('header');
-header.addEventListener('click', function(e) {
-  hideHeader();
-}, false);
-
 
 // Close the sidebar when clicked on a element
-// var header = document.getElementById('header');
-// header.onblur = function(e){
-//   //e.stopPropagation();
-//   hideHeader();
-//   console.log('event',e);
-// }
-
-header.onfocus = function(){
-  //console.log("focusin");
-  //window.clearTimeout();
+var header = document.getElementById('header');
+header.onblur = function(e){
+  if (!(e.explicitOriginalTarget.classList.contains( 'top-bar__button' )))
+    hideHeader();
+    e.stopPropagation();
+    // Normally, if the header has no hiding animation, this code wouldn't work – the navigation links wouldn't work. 
+    // The header would hide before the link event would fire. 
 }
 
+// Close the sidebar by using Esc key
 document.addEventListener('keydown', (event) => {
   if (event.which == 27)
     hideHeader();

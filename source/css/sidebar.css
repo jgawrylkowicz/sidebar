@@ -208,7 +208,11 @@ ul {
   flex-direction: column;
   left: -350px;
   width: 350px;
-  will-change: transform; }
+  will-change: transform;
+  transition-property: transform;
+  transition-duration: 0.15s;
+  transition-delay: 0.2s;
+  transition-timing-function: ease-in-out; }
   @media only screen and (min-width: 1200px) {
     .header {
       padding-top: 0;
@@ -276,7 +280,8 @@ ul {
 .show-header {
   transition-property: transform;
   transition-duration: 0.15s;
-  transition-timing-function: ease-in-out; }
+  transition-timing-function: ease-in-out;
+  transition-delay: 0s !important; }
   @media only screen and (min-width: 1200px) {
     .show-header {
       -webkit-transform: translate3d(0, 0, 0);
