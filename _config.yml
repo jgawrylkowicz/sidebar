@@ -73,7 +73,7 @@ stylesheets:
 # scripts loaded in the end of the body
 scripts:
 - /js/jquery-3.3.1.min.js
-- /js/jquery.pjax.js
+- /js/pjax.js
 - /js/flowtype.js
 - /js/sidebar.js
 
