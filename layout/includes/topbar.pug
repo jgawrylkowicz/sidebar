@@ -1,7 +1,11 @@
 -let title = (page.title == null) ? "home" : page.title
 //https://hexo.io/docs/variables.html#Site-Variables
 #tob-bar(class="tob-bar")
-  i#menu(class="fa fa-lg fa-navicon top-bar__button")&attributes({'aria-hidden': 'true'})
+  #menu(class="top-bar__button")
+    div(class="bar")
+    div(class="bar")
+    div(class="bar")
+
   h3#menu-text(class='top-bar__text')
     !=title
     span(class="top-bar__text--slash")="/"

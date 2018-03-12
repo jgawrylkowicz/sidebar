@@ -19,7 +19,7 @@ $break-xxxl: 2000px
 $break-uw: 2600px 
 
 //1600px has to be the maximum for other pages
-
+$base-font-size: 1em * .95
 $step-up-1: 1em * $ratio
 $step-up-2: $step-up-1 * $ratio
 $step-up-3: $step-up-2 * $ratio
@@ -100,13 +100,12 @@ html
   height: 100%
   width: 100%
   touch-action: manipulation
-  font-size: 100%
+  font-size: $base-font-size
 
 body, html
   font-family: 'Roboto', "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif
   font-weight: 400
   overflow-x: hidden
-  font-size: 1em
 
 code
   border: none
@@ -221,14 +220,28 @@ ul
     
 // The button for opening the sidebar
 .top-bar__button
-  font-size: $step-up-3
+  font-size: $step-up-2
   justify-self: flex-start
-  transition: color .15s ease-in-out
+  display: block
   color: #293C50
+  cursor: pointer
   &:hover
     color: #6F64F2
+    .bar
+      background-color: #6F64F2
   @media only screen and (min-width: $break-xl)
     display: none !important
+  &.rotated
+
+.bar
+  transition: all .15s ease-in-out
+  width: 1em
+  height: .2em
+  margin: .1em 0
+  background-color: #293C50
+  border-radius: 2px
+  -webkit-filter: drop-shadow(0 8px 32px rgba(50, 50, 50, 0.3))
+  filter: drop-shadow(0 1px 3px rgba(50, 50, 50, 0.3))
 
 .top-bar__text--slash
   color: #E7AAAE
@@ -253,6 +266,7 @@ ul
 
 //The button for closing the sidebar    
 .header__close
+  cursor: pointer
   margin-top: auto
   @media only screen and (min-width: $break-xl)
     display: none 
@@ -705,3 +719,26 @@ ul
     opacity: 1
     -webkit-transform: none
     transform: none
+
+.pace 
+  -webkit-pointer-events: none
+  pointer-events: none
+  -webkit-user-select: none
+  -moz-user-select: none
+  user-select: none
+  
+.pace-inactive  .pace-progress
+  opacity: 0
+  transition: opacity .5s ease-in-out 
+
+.pace .pace-progress 
+  background: #6F64F2
+  position: fixed
+  z-index: 8000
+  top: 0
+  right: 100%
+  width: 100%
+  height: 3px
+  -webkit-filter: drop-shadow(0 2px 2px #6F64F2)
+  filter: drop-shadow(0 2px 2px #6F64F2)
+

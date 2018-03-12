@@ -16,11 +16,16 @@ var showHeader = function(){
     header.classList.toggle('show-header');
   }
   header.focus();
+  
+  var menu = document.getElementById('menu');
+  menu.classList.add("rotated");
 }
 
 var hideHeader = function(){
   var header = document.getElementById('header');
   header.classList.remove('show-header');
+  var menu = document.getElementById('menu');
+  menu.classList.remove("rotated");
 }
 
 
@@ -28,22 +33,35 @@ var hideHeader = function(){
 var menu = document.getElementById('menu');
 menu.addEventListener('click', function(e){
   showHeader();
+  e.stopPropagation();
 }, false );
+
 
 var close = document.getElementById('close');
 close.addEventListener('click', function(e){
   hideHeader();
+  e.stopPropagation();
 }, false );
 
 
 // Close the sidebar when clicked on a element
 var header = document.getElementById('header');
 header.onblur = function(e){
-  if (!(e.explicitOriginalTarget.classList.contains( 'top-bar__button' )))
-    hideHeader();
-    e.stopPropagation();
-    // Normally, if the header has no hiding animation, this code wouldn't work – the navigation links wouldn't work. 
-    // The header would hide before the link event would fire. 
+
+  var id;
+  if (e.explicitOriginalTarget){
+    id = e.explicitOriginalTarget.id;
+  }
+
+  if (id == "menu"){
+    // do nothing
+  } else {
+    hideHeader();   
+  }
+  e.stopPropagation();  
+  // Normally, if the header has no hiding animation, this code wouldn't work – the navigation links wouldn't work. 
+  // The header would hide before the link event would fire.
+    
 }
 
 // Close the sidebar by using Esc key
@@ -51,12 +69,6 @@ document.addEventListener('keydown', (event) => {
   if (event.which == 27)
     hideHeader();
     event.preventDefault();
-});
-
-//Flowtype.js
-$('body').flowtype({
-   minFont : 12,
-   maxFont : 15
 });
 
 document.onload = document.body.style.opacity = 1;
