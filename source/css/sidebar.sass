@@ -36,7 +36,7 @@ $dark-mode-card: rgba(44,50,58,1)
 
 $post-width: 28.75em
 $post-height: 32.875em
-$post-padding: 18px
+$post-padding: 24px
 $top-bar-height: 64px
 
 $content-grid-gap: 36px
@@ -53,21 +53,14 @@ $shadow: 0 6px 24px 0 rgba(50,50,50,0.2)
   font-family: 'Roboto'
   font-style: normal
   font-weight: 600
-  src: local("Roboto Medium"), url(/fonts/Roboto-Medium.woff) format("tff")
+  src: local("Roboto Medium"), url(/fonts/Roboto-Medium.tff) format("tff")
 
 
 @font-face
   font-family: 'Roboto'
   font-style: normal
   font-weight: 400
-  src: local("Roboto Regular"), url(/fonts/Roboto-Regular.woff) format("tff")
-
-
-@font-face
-  font-family: 'Roboto'
-  font-style: normal
-  font-weight: 300
-  src: local("Roboto Light"), url(/fonts/Roboto-Light.woff) format("tff") 
+  src: local("Roboto Regular"), url(/fonts/Roboto-Regular.tff) format("tff")
 
 
 \::-moz-selection, ::selection
@@ -218,6 +211,11 @@ ul
   //   position: relative
   //   width: 100%
     
+.top-bar__logo
+  font-family: "LobsterTwo"
+  font-style: cursive
+
+
 // The button for opening the sidebar
 .top-bar__button
   font-size: $step-up-2
@@ -307,13 +305,14 @@ ul
       background: rgba(255, 255, 255, .8)
       backdrop-filter: blur(2em)
       -webkit-backdrop-filter: blur(2em)
+      
 
 #header:focus
   outline: 0px solid transparent
  
 .nav-item
   display: flex
-  padding: 1em 2em
+  padding: 1em 33px   
   align-items: center
   transition-property: color, border-left, background
   transition-duration: .15s
@@ -373,7 +372,7 @@ ul
     transform: translate3d($sidebar-width,0,0)
 
 .header__info, .header__about
-  padding: 12px 24px   
+  padding:  12px 36px   
 .header__close, .header__sns, .header__nav
   width: 100%  
   padding: 12px 0
@@ -430,21 +429,28 @@ ul
 
 // container for the recents posts
 .posts
+  
   display: grid
   grid-gap: $content-grid-gap
   grid-auto-rows: minmax(auto, 1fr)
   grid-auto-flow: row dense
   padding: $content-grid-padding
-  margin-bottom: 4em
   grid-template-columns: 1fr
-  @media only screen and (min-width: $break-m) and (max-width: $break-xxl)  
-    grid-template-columns: repeat(auto-fit, minmax(22em, 1fr))
-  @media only screen and (min-width: $break-xxl) and (max-width: $break-xxxl)
+  margin: 0 auto
+  margin-bottom: 4em
+  max-width: $break-s
+  @media only screen and (min-width: $break-l) and (max-width: $break-xl)
+    grid-template-columns: repeat(2,1fr)
+    max-width: $break-l
+  @media only screen and (min-width: $break-xl) and (max-width: $break-xxxl)  
+    grid-template-columns: repeat(2,1fr)
+    max-width: $break-xl
+  @media only screen and (min-width: $break-xxxl)
     grid-template-columns: repeat(3,1fr)
-  @media only screen and (min-width: $break-xxxl) and (max-width: $break-uw)
-    grid-template-columns: repeat(4,1fr)
-  @media only screen and (min-width: $break-uw)  
-    grid-template-columns: repeat(5,1fr)
+    max-width: $break-xxl
+
+
+
 
 .card
   box-sizing: border-box
@@ -461,11 +467,10 @@ ul
   width: 100%
   display: inline-block
   position: relative
-  &:hover
 
 .post::after
   width: 100%
-  padding-top: 115%
+  padding-top: 113%
   display: block
   content: ''
 
@@ -543,9 +548,11 @@ ul
     padding: 1em
 
 .post--container
-  display: flex
-  flex-direction: column
-  padding: $post-padding
+  // display: flex
+  // flex-direction: column
+  display: grid
+  grid-template-columns: 1fr
+  grid-template-rows: auto 1fr 25%
   position: absolute
   top: 0
   left: 0
@@ -554,16 +561,36 @@ ul
   height: 100%
   width: 100%
 
-.post__header, .post__excerpt, .post__header--thumbnail, .post__excerpt--thumbnail
-  margin-bottom: .5em
-.post__thumbnail
-  margin-bottom: .75em
+  // &>div
+  //   padding: $post-padding
+  // &>div:first-child
+  //   padding: $post-padding
+  // &>div:last-child
+  //   padding: $post-padding
+
+.post__header--thumbnail, .post__excerpt--thumbnail,
+  padding: 24px
+  padding-bottom: 0
+
+.post__excerpt, .post__thumbnails
+  padding: 24px
+
+// .post__thumbnail
+//   margin-bottom: .75em
+
+.post__thumbnails
+  align-self: center
 
 .post__thumbnail
   width: 100%
   height: auto
   -webkit-filter: drop-shadow(0 .5em 2em rgba(50, 50, 50, 0.3))
   filter: drop-shadow(0 .5em 2em rgba(50, 50, 50, 0.3))
+
+.post__thumbnail--background
+  background-color: rgba(255,255,255,.6)
+  z-index: -1
+  transform: scale(0.95) translateY(-5%) 
 
 .post__header--title
   position: relative
@@ -573,7 +600,10 @@ ul
   justify-content: space-between
   z-index: 20
   h1
-    margin-bottom: 0
+    margin-bottom: 0.1em
+
+.post__header--date
+  color: rgba(255,255,255,.7)
 
 .post__header--tags, .post__header--tags--thumbnail
   display: inline-flex
@@ -583,7 +613,6 @@ ul
 
 .post__header
   color: #293C50 
-  border-bottom: 1px solid rgba(0,0,0,.2)
       
 .post__header--tags, .article__banner--tags
   color: #5F7288
@@ -597,30 +626,27 @@ ul
 
 .post__header--thumbnail
   color: white
-  border-bottom: 1px solid rgba(255,255,255,.2)
 
-.post__excerpt, .post__excerpt--thumbnail
-  grid-row-start: 3
+.post__excerpt
   color: #293C50 
+  align-self: flex-start
+  justify-self: flex-end
+
   p
     margin: 0
-
-.post__excerpt--thumbnail
-  -webkit-mask-image: -webkit-linear-gradient(top, white, rgba(255, 255, 255, 1) 70%, rgba(255, 255, 255, 0))
-  overflow-y: hidden
-  color: white
-
-// container for the posts' buttons 
-.post__footer
-  align-self: flex-start
-  justify-self: flex-end
-  margin-top: auto
    
+.post__footer
+  display: flex
+  flex-direction: column
+  background: rgba(255,255,255,.99)
+  height: 100%
 
-.post__footer--thumbnail
-  align-self: flex-start
+.post__link
+  color: #293C50
   justify-self: flex-end
-  margin-top: auto
+  text-transform: uppercase
+  font-weight: 600 
+  align-self: flex-end
 
 .tags-list
   margin: 0

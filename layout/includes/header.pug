@@ -1,14 +1,14 @@
 #header(class="header", tabindex="1")
-  div(class="header__info")
-    img(src=theme.img.avatar, alt='avatar', class="avatar")
-    div(class="info-title")
-      h3(class="info-title__author")
-        !=config.author
-      p(class="info-title__text")
-        if (Array.isArray(theme.header.info))
-          !=theme.header.info.join('<br>')
-        else
-          !=theme.header.info
+  //- div(class="header__info")
+  //-   img(src=theme.img.avatar, alt='avatar', class="avatar")
+  //-   div(class="info-title")
+  //-     h3(class="info-title__author")
+  //-       !=config.author
+  //-     p(class="info-title__text")
+  //-       if (Array.isArray(theme.header.info))
+  //-         !=theme.header.info.join('<br>')
+  //-       else
+  //-         !=theme.header.info
   div(class="header__about")
     if (Array.isArray(theme.header.slogan))
       - let array = theme.header.slogan
