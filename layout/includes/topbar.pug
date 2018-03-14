@@ -1,8 +1,8 @@
 -let title = (page.title == null) ? "home" : page.title
 //https://hexo.io/docs/variables.html#Site-Variables
 #tob-bar(class="tob-bar")
-  //- div(class="top-bar__logo")
-  //-   !=config.author
+  div(class="top-bar__logo")
+    !=config.author
   #menu(class="top-bar__button")
     div(class="bar")
     div(class="bar")
@@ -12,6 +12,6 @@
     !=title
     span(class="top-bar__text--slash")="/"
 
-  //#search
-    i(class="fa fa-search fa-lg")&attributes({'aria-hidden': 'true'})
-    input(type="text")
+  //- div(class="tob-bar__search")
+  //-   i(class="fa fa-search fa-lg")&attributes({'aria-hidden': 'true'})
+  //-   input(type="text")
