@@ -11,11 +11,13 @@ $break-xxs: 360px
 $break-xs: 400px
 $break-s: 560px
 $break-m: 768px
-$break-l: 900px
+$break-l: 970px
 $break-xl: 1200px
-$break-xxl: 1600px
-$break-xxxl: 2000px
+$break-xxl: 1400px
+$break-xxxl: 1860px
 $break-uw: 2600px 
+
+$mobile-break: $break-xxl
 
 //1600px has to be the maximum for other pages
 $base-font-size: 1em * .95
@@ -37,10 +39,6 @@ $dark-mode-card: rgba(44,50,58,1)
 $post-width: 28.75em
 $post-height: 32.875em
 $post-padding: 2em
-
-
-$content-grid-gap: 2em
-$content-grid-padding: .5em
 
 $shadow: 0 6px 24px 0 rgba(50,50,50,0.2)
 
@@ -171,10 +169,10 @@ ul
   grid-template-rows: $top-bar-height 3rem 1fr
   width: 100%   
   height: 100%
-  @media only screen and (min-width: $break-xl)
+  @media only screen and (min-width: $mobile-break)
     grid-template-columns: $sidebar-width 3rem 1fr 3rem
-  @media only screen and (max-width: $break-xl)
-    grid-template-columns: 1fr
+  @media only screen and (max-width: $mobile-break)
+    grid-template-columns: 1rem 1fr 1rem
 
 // Container for the main content 
 // Contains one of the classes - articles or posts
@@ -184,10 +182,9 @@ ul
   overflow: visible
   z-index: 1
   grid-row-start: 3
-  @media only screen and (min-width: $break-xl)
-    grid-column-start: 3
-  @media only screen and (max-width: $break-xl)
-    grid-column-start: 1
+  grid-column-start: 3
+  @media only screen and (max-width: $mobile-break)
+    grid-column-start: 2
  
 
 // Container for the top information
@@ -207,7 +204,7 @@ ul
   box-shadow: $shadow
   top: 0
   left: 0
-  @media only screen and (min-width: $break-xl)
+  @media only screen and (min-width: $mobile-break)
     grid-template-columns: $sidebar-width 3rem 1fr 1fr 3rem
 
 .top-bar__logo
@@ -218,7 +215,7 @@ ul
   overflow: visible
   span
     font-weight: 600
-  @media only screen and (max-width: $break-xl)
+  @media only screen and (max-width: $mobile-break)
     display: none
 
 // The button for opening the sidebar
@@ -233,7 +230,7 @@ ul
     color: #6F64F2
     .bar
       background-color: #6F64F2
-  @media only screen and (min-width: $break-xl)
+  @media only screen and (min-width: $mobile-break)
     display: none !important
   &.rotated
 
@@ -257,13 +254,13 @@ ul
   color: #293C50
   margin: 0
   grid-column: 4 / 4
-  @media only screen and (min-width: $break-xl)
+  @media only screen and (min-width: $mobile-break)
     grid-column: 3 / 3
 
 .tob-bar__search
   grid-column: 4
   justify-self: end
-  @media only screen and (max-width: $break-m)
+  @media only screen and (max-width: $mobile-break)
     display: none
   input[type="text"]
     background: #FFFFFF
@@ -278,7 +275,7 @@ ul
 .header__close
   cursor: pointer
   margin-top: auto
-  @media only screen and (min-width: $break-xl)
+  @media only screen and (min-width: $mobile-break)
     display: none 
 
 // Container for the sidebar
@@ -308,12 +305,12 @@ ul
   transition-timing-function: ease-in-out
   &>div:first-child
     padding-top: 3rem
-  @media only screen and (min-width: $break-xl) 
+  @media only screen and (min-width: $mobile-break) 
     padding-top: 0
     height: 100vh
     min-height: 100%
     left: 0
-  @media only screen and (max-width: $break-xl) 
+  @media only screen and (max-width: $mobile-break) 
     @supports (backdrop-filter: blur(3em)) or (-webkit-backdrop-filter: blur(2em))
       background: rgba(255, 255, 255, .8)
       backdrop-filter: blur(2em)
@@ -377,10 +374,10 @@ ul
   transition-duration: .15s
   transition-timing-function: ease-in-out
   transition-delay: 0s !important
-  @media only screen and (min-width: $break-xl)
+  @media only screen and (min-width: $mobile-break)
     -webkit-transform: translate3d(0,0,0)
     transform: translate3d(0,0,0)
-  @media only screen and (max-width: $break-xl)
+  @media only screen and (max-width: $mobile-break)
     -webkit-transform: translate3d($sidebar-width,0,0)
     transform: translate3d($sidebar-width,0,0)
 
@@ -443,22 +440,35 @@ ul
 // container for the recents posts
 .posts
   display: grid
-  grid-gap: $content-grid-gap
-  grid-auto-rows: minmax(auto, 1fr)
+  grid-gap: 20px
   grid-auto-flow: row dense
-  grid-template-columns: 1fr
   margin: 0 auto
   margin-bottom: 4em
-  max-width: $break-s
-  @media only screen and (min-width: $break-l) and (max-width: $break-xl)
-    grid-template-columns: repeat(2,1fr)
-    max-width: $break-l
-  @media only screen and (min-width: $break-xl) and (max-width: $break-xxxl)  
-    grid-template-columns: repeat(2,1fr)
-    max-width: $break-xl
-  @media only screen and (min-width: $break-xxxl)
-    grid-template-columns: repeat(3,1fr)
-    max-width: $break-xxl
+  align-items: center
+  grid-auto-rows: minmax(auto, 1fr)
+  grid-template-columns: 1fr
+  justify-items: center
+  @media only screen and (min-width: $break-l)
+    grid-template-columns: repeat(auto-fit, 460px)
+
+
+.posts-container
+  margin: 0 auto
+  @media only screen and (min-width: $break-l) and (max-width: $break-xxxl)
+    max-width: 960px 
+  @media only screen and (min-width: $break-xxxl) 
+    max-width: 1440px 
+
+.post
+  color: white
+  width: 100%
+  position: relative
+  @media only screen and (min-width: $break-s) and (max-width: $break-l)
+    width: 460px * 1.15
+    height: 520px * 1.15
+  @media only screen and (min-width: $break-l)
+    width: 460px
+    height: 520px
 
 .card
   box-sizing: border-box
@@ -469,18 +479,6 @@ ul
   background: $card-background
   border-radius: $card-border-radius
   box-shadow: $shadow
-
-.post
-  color: white
-  width: 100%
-  display: inline-block
-  position: relative
-
-.post::after
-  width: 100%
-  padding-top: 113%
-  display: block
-  content: ''
 
 // Page 
 .article
@@ -555,19 +553,14 @@ ul
   @media only screen and (max-width: $break-s)
     padding: 1em
 
-.post__container
-  // display: flex
-  // flex-direction: column
+.post-container
   display: grid
   grid-template-columns: 1fr
   grid-template-rows: 1fr 25%
-  position: absolute
-  top: 0
-  left: 0
-  bottom: 0
-  right: 0
   height: 100%
   width: 100%
+  @media only screen and (max-width: $break-s)
+    grid-template-rows: 1fr auto
 
 .post__header, .post__header--thumbnail
   display: flex
@@ -592,9 +585,6 @@ ul
 .post__footer
   padding: $post-padding
   padding-top: 1rem
-
-// .post__thumbnail
-//   margin-bottom: .75em
 
 .post__thumbnails
   align-self: center
