@@ -5,7 +5,7 @@
 $line-height: 1.5
 $ratio: 1.25
 $sidebar-width: 320px
-$top-bar-height: 64px
+$top-bar-height: 4em
 
 $break-xxs: 360px
 $break-xs: 400px
@@ -17,7 +17,8 @@ $break-xxl: 1400px
 $break-xxxl: 1860px
 $break-uw: 2600px 
 
-$mobile-break: $break-xxl
+$mobile-break: $break-s  
+$sidebar-break: $break-xxl
 
 //1600px has to be the maximum for other pages
 $base-font-size: 1em * .95
@@ -91,12 +92,23 @@ html
   height: 100%
   width: 100%
   touch-action: manipulation
-  font-size: $base-font-size
+  
 
 body, html
   font-family: 'Roboto', "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif
   font-weight: 400
   overflow-x: hidden
+  font-size: $base-font-size
+  @media only screen and (min-width: $sidebar-break) 
+    font-size: .95em
+  @media only screen and (min-width: $mobile-break) and (max-width: $sidebar-break)
+    font-size: .93em
+  @media only screen and (min-width: $break-xs) and (max-width: $break-s)
+    font-size: .90em
+  @media only screen and (min-width: $break-xxs) and (max-width: $break-xs)
+    font-size: .87em
+  @media only screen and (max-width: $break-xxs)
+    font-size: .84em
 
 code
   border: none
@@ -169,9 +181,9 @@ ul
   grid-template-rows: $top-bar-height 3rem 1fr
   width: 100%   
   height: 100%
-  @media only screen and (min-width: $mobile-break)
+  @media only screen and (min-width: $sidebar-break)
     grid-template-columns: $sidebar-width 3rem 1fr 3rem
-  @media only screen and (max-width: $mobile-break)
+  @media only screen and (max-width: $sidebar-break)
     grid-template-columns: 1rem 1fr 1rem
 
 // Container for the main content 
@@ -183,7 +195,7 @@ ul
   z-index: 1
   grid-row-start: 3
   grid-column-start: 3
-  @media only screen and (max-width: $mobile-break)
+  @media only screen and (max-width: $sidebar-break)
     grid-column-start: 2
  
 
@@ -191,7 +203,8 @@ ul
 // fixed for mobile
 .tob-bar
   display: grid
-  grid-template-columns: 2rem 2em 1em 1fr 2rem
+ 
+  grid-template-columns: 1rem 1rem 1rem 1fr 1rem
   grid-template-rows: 1fr
   align-items: center 
   z-index: 4000
@@ -204,8 +217,11 @@ ul
   box-shadow: $shadow
   top: 0
   left: 0
-  @media only screen and (min-width: $mobile-break)
+  @media only screen and (min-width: $sidebar-break)
     grid-template-columns: $sidebar-width 3rem 1fr 1fr 3rem
+  @media only screen and (min-width: $mobile-break) and (max-width: $sidebar-break)
+    grid-template-columns: 2rem 2rem 1rem 1fr 2rem
+   
 
 .top-bar__logo
   font-size: $step-up-1
@@ -215,7 +231,7 @@ ul
   overflow: visible
   span
     font-weight: 600
-  @media only screen and (max-width: $mobile-break)
+  @media only screen and (max-width: $sidebar-break)
     display: none
 
 // The button for opening the sidebar
@@ -230,7 +246,7 @@ ul
     color: #6F64F2
     .bar
       background-color: #6F64F2
-  @media only screen and (min-width: $mobile-break)
+  @media only screen and (min-width: $sidebar-break)
     display: none !important
   &.rotated
 
@@ -254,13 +270,13 @@ ul
   color: #293C50
   margin: 0
   grid-column: 4 / 4
-  @media only screen and (min-width: $mobile-break)
+  @media only screen and (min-width: $sidebar-break)
     grid-column: 3 / 3
 
 .tob-bar__search
   grid-column: 4
   justify-self: end
-  @media only screen and (max-width: $mobile-break)
+  @media only screen and (max-width: $sidebar-break)
     display: none
   input[type="text"]
     background: #FFFFFF
@@ -275,7 +291,7 @@ ul
 .header__close
   cursor: pointer
   margin-top: auto
-  @media only screen and (min-width: $mobile-break)
+  @media only screen and (min-width: $sidebar-break)
     display: none 
 
 // Container for the sidebar
@@ -305,12 +321,12 @@ ul
   transition-timing-function: ease-in-out
   &>div:first-child
     padding-top: 3rem
-  @media only screen and (min-width: $mobile-break) 
+  @media only screen and (min-width: $sidebar-break) 
     padding-top: 0
     height: 100vh
     min-height: 100%
     left: 0
-  @media only screen and (max-width: $mobile-break) 
+  @media only screen and (max-width: $sidebar-break) 
     @supports (backdrop-filter: blur(3em)) or (-webkit-backdrop-filter: blur(2em))
       background: rgba(255, 255, 255, .8)
       backdrop-filter: blur(2em)
@@ -374,10 +390,10 @@ ul
   transition-duration: .15s
   transition-timing-function: ease-in-out
   transition-delay: 0s !important
-  @media only screen and (min-width: $mobile-break)
+  @media only screen and (min-width: $sidebar-break)
     -webkit-transform: translate3d(0,0,0)
     transform: translate3d(0,0,0)
-  @media only screen and (max-width: $mobile-break)
+  @media only screen and (max-width: $sidebar-break)
     -webkit-transform: translate3d($sidebar-width,0,0)
     transform: translate3d($sidebar-width,0,0)
 
@@ -398,9 +414,9 @@ ul
   transition-property: height
   transition-duration: .15s
   transition-timing-function: ease-in-out
-  @media only screen and (max-height: 600px)
-    max-height: 0px
-    opacity: 0
+  // @media only screen and (max-height: 600px)
+  //   max-height: 0px
+  //   opacity: 0
 
 // top container for the information about the site / user
 // contains the avatar and the title objects
@@ -452,6 +468,7 @@ ul
     grid-template-columns: repeat(auto-fit, 460px)
 
 
+
 .posts-container
   margin: 0 auto
   @media only screen and (min-width: $break-l) and (max-width: $break-xxxl)
@@ -462,6 +479,7 @@ ul
 .post
   color: white
   width: 100%
+  height: 100vw
   position: relative
   @media only screen and (min-width: $break-s) and (max-width: $break-l)
     width: 460px * 1.15
@@ -550,7 +568,7 @@ ul
     -webkit-filter: drop-shadow(0 .5em 2em rgba(50, 50, 50, 0.3))
     filter: drop-shadow(0 .5em 2em rgba(50, 50, 50, 0.3))
  
-  @media only screen and (max-width: $break-s)
+  @media only screen and (max-width: $mobile-break)
     padding: 1em
 
 .post-container
@@ -559,8 +577,10 @@ ul
   grid-template-rows: 1fr 25%
   height: 100%
   width: 100%
-  @media only screen and (max-width: $break-s)
-    grid-template-rows: 1fr auto
+  @media only screen and (max-width: $mobile-break)
+    grid-template-rows: 1fr
+    &>div:last-child
+      display: none
 
 .post__header, .post__header--thumbnail
   display: flex
@@ -645,6 +665,22 @@ ul
   text-transform: uppercase
   font-weight: 600 
   margin-top: auto
+  transition-property: color
+  transition-duration: .15s
+  transition-timing-function: ease-in-out
+  &:hover
+    color: black
+
+.post__header--link
+  display: none
+  text-transform: uppercase
+  font-weight: 600 
+  @media only screen and (max-width: $mobile-break)
+    display: inline
+    position: absolute
+    bottom: $post-padding
+    right: $post-padding
+    color: white
 
 .tags-list
   margin: 0
