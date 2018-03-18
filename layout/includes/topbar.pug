@@ -2,7 +2,7 @@
 //https://hexo.io/docs/variables.html#Site-Variables
 #tob-bar(class="tob-bar")
   div(class="top-bar__logo")
-    !=config.author
+    !=theme.header.title
   #menu(class="top-bar__button")
     div(class="bar")
     div(class="bar")
@@ -10,6 +10,7 @@
 
   h3#menu-text(class='top-bar__text')
     !=title
+    
     span(class="top-bar__text--slash")="/"
 
   //- div(class="tob-bar__search")

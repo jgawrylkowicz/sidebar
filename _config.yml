@@ -8,6 +8,7 @@ head:
   apple_touch_icon: "/img/logo.png"
 
 header:
+  title: "Jakub<span>Gawrylkowicz</span>"
   info:
     - "Computer Science Student"
     - "University of Vienna, Austria"

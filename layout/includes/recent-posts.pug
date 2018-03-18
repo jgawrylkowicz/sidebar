@@ -11,7 +11,7 @@ div(class="posts-container")
             div(class="post-container")
               div(class="post__header" + thumbnail_modifier,  style={background: background})
                 div(class="post__header--title")
-                  h1
+                  h2
                     a(href=config.root + post.path)= post.title
                   div(class="post__header--date")
                     !=date(post.date, date_format)
@@ -21,10 +21,15 @@ div(class="posts-container")
                     !=list_tags(post.tags, {show_count: false, class: 'tags', style: 'list', separator: ''})
 
                 if post.thumbnail
-                  div(class="post__thumbnails")
-                    div(class="post__thumbnail--background")
-                    div(class="post__thumbnail--background")
+  
+                  
+                  div(class="post__thumbnails landscape")
+                    
                     img(class="post__thumbnail", src=post.thumbnail width="100%" height="100%")
+                    div(class="post__thumbnail--background")  
+                    div(class="post__thumbnail--background")
+                    div(class="post__thumbnail--background")
+                   
 
                 a(class='post__header--link', data-pjax href=config.root + post.path)= 'Read more'
                             
