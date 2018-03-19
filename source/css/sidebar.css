@@ -140,12 +140,17 @@ ul {
   width: 100%;
   height: 100%;
   overflow: visible;
+  transition: opacity 0.3s ease-in-out, filter 0.3s ease-in-out;
   z-index: 1;
   grid-row-start: 3;
   grid-column-start: 3; }
   @media only screen and (max-width: 1400px) {
     .main {
       grid-column-start: 2; } }
+
+.main--onblur {
+  opacity: 0.5;
+  filter: blur(2px); }
 
 .tob-bar {
   display: grid;
@@ -421,7 +426,8 @@ ul {
   color: white;
   width: 100%;
   height: 100vw;
-  position: relative; }
+  position: relative;
+  transition: all 0.3s ease-in-out; }
   @media only screen and (min-width: 560px) {
     .post {
       width: 460px;
@@ -498,7 +504,8 @@ ul {
   max-width: 900px;
   padding: calc(20px + 2em); }
   .article__content p {
-    margin: 2em 0; }
+    margin: 2em 0;
+    color: #293C50; }
   .article__content h2 {
     color: #6F64F2; }
   .article__content img {
@@ -508,6 +515,22 @@ ul {
   @media only screen and (max-width: 560px) {
     .article__content {
       padding: 1em; } }
+
+.post:hover {
+  box-shadow: 0 6px 48px 0 rgba(50, 50, 50, 0.4); }
+
+.post:hover .post__thumbnails > div {
+  opacity: 0.8; }
+.post:hover .post__thumbnails > img {
+  transform: scale(1.05); }
+.post:hover .post__thumbnails.landscape > div:nth-child(2) {
+  transform: scale(0.92) translateY(-12%); }
+.post:hover .post__thumbnails.landscape > div:nth-child(3) {
+  transform: scale(0.85) translateY(-22%); }
+.post:hover .post__thumbnails.portrait > div:nth-child(2) {
+  transform: scale(0.92) translateY(-10%); }
+.post:hover .post__thumbnails.portrait > div:nth-child(3) {
+  transform: scale(0.85) translateY(-17%); }
 
 .post-container {
   display: grid;
@@ -543,12 +566,13 @@ ul {
 
 .post__footer {
   padding: 2em;
-  padding-top: 1rem; }
+  padding-top: 1rem;
+  z-index: 10; }
 
 .post__thumbnails {
   align-self: center;
-  margin: auto 0;
-  position: relative;
+  top: 25%;
+  position: absolute;
   transform-style: preserve-3d;
   transform: translate3d(0, 0, 0); }
   .post__thumbnails.landscape {
@@ -556,28 +580,32 @@ ul {
     height: 220.9932px; }
     .post__thumbnails.landscape .post__thumbnail--background {
       background-color: rgba(255, 255, 255, 0.6); }
+    .post__thumbnails.landscape > div:nth-child(2) {
+      transform: scale(0.95) translateY(-5%);
+      transition-delay: 0.05s;
+      z-index: 1; }
+    .post__thumbnails.landscape > div:nth-child(3) {
+      transform: scale(0.9) translateY(-10%);
+      z-index: 0;
+      transition-delay: 0.1s; }
+  .post__thumbnails.portrait {
+    width: 311.9904px;
+    height: 552px; }
+    .post__thumbnails.portrait .post__thumbnail--background {
+      background-color: rgba(255, 255, 255, 0.6); }
+    .post__thumbnails.portrait > div:nth-child(2) {
+      transform: scale(0.95) translateY(-4%);
+      transition-delay: 0.05s;
+      z-index: 1; }
+    .post__thumbnails.portrait > div:nth-child(3) {
+      transform: scale(0.9) translateY(-8%);
+      z-index: 0;
+      transition-delay: 0.1s; }
   .post__thumbnails > img {
     transition: all 0.3s ease-in-out; }
   .post__thumbnails > div {
     transition: all 0.3s ease-in-out;
     opacity: 0.6; }
-  .post__thumbnails > div:nth-child(2) {
-    transform: scale(0.95) translateY(-5%);
-    z-index: 1; }
-  .post__thumbnails > div:nth-child(3) {
-    transform: scale(0.9) translateY(-10%);
-    z-index: 0; }
-
-.post:hover .post__thumbnails > div {
-  opacity: 0.8; }
-.post:hover .post__thumbnails > img {
-  transform: scale(1.05); }
-.post:hover .post__thumbnails > div:nth-child(2) {
-  transform: scale(0.92) translateY(-12%);
-  transition-delay: 0.05s; }
-.post:hover .post__thumbnails > div:nth-child(3) {
-  transform: scale(0.85) translateY(-22%);
-  transition-delay: 0.1s; }
 
 .post__thumbnail {
   width: 100%;
@@ -626,7 +654,7 @@ ul {
     color: white; }
 
 .post__excerpt {
-  color: #293C50;
+  color: #5F7288;
   align-self: flex-start;
   justify-self: flex-end; }
   .post__excerpt p {
@@ -642,7 +670,7 @@ ul {
   transition-duration: 0.15s;
   transition-timing-function: ease-in-out; }
   .post__link:hover {
-    color: black; }
+    color: #6F64F2; }
 
 .post__header--link {
   display: none;

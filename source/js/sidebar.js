@@ -10,10 +10,14 @@ new Pjax({
 
 var showHeader = function(){
   var header = document.getElementById('header');
+  var main = document.getElementById('main');
+  
   if(!(header.classList.contains("show-header"))){
     header.classList.add('show-header');
+    main.classList.add('main--onblur');
   } else {
     header.classList.toggle('show-header');
+    main.classList.toggle('main--onblur');
   }
   header.focus();
   
@@ -23,7 +27,11 @@ var showHeader = function(){
 
 var hideHeader = function(){
   var header = document.getElementById('header');
+  var main = document.getElementById('main');
+
   header.classList.remove('show-header');
+  main.classList.remove('main--onblur');
+
   var menu = document.getElementById('menu');
   menu.classList.remove("rotated");
 }

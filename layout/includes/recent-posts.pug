@@ -21,11 +21,10 @@ div(class="posts-container")
                     !=list_tags(post.tags, {show_count: false, class: 'tags', style: 'list', separator: ''})
 
                 if post.thumbnail
-  
-                  
-                  div(class="post__thumbnails landscape")
+
+                  div(class="post__thumbnails " + post.thumbnail.orientation)
                     
-                    img(class="post__thumbnail", src=post.thumbnail width="100%" height="100%")
+                    img(class="post__thumbnail", src=post.thumbnail.url width="100%" height="100%")
                     div(class="post__thumbnail--background")  
                     div(class="post__thumbnail--background")
                     div(class="post__thumbnail--background")
