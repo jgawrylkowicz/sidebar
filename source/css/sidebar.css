@@ -1,14 +1,14 @@
 @charset "UTF-8";
 @font-face {
-  font-family: "Roboto";
+  font-family: "Colfax Medium";
   font-style: normal;
-  font-weight: 600;
-  src: local("Roboto Medium"), url(/fonts/Roboto-Medium.tff) format("tff"); }
+  font-weight: normal;
+  src: local("Colfax Medium"), url("/fonts/Colfax-Medium.woff") format("woff"); }
 @font-face {
-  font-family: "Roboto";
+  font-family: "Colfax Regular";
   font-style: normal;
-  font-weight: 400;
-  src: local("Roboto Regular"), url(/fonts/Roboto-Regular.tff) format("tff"); }
+  font-weight: normal;
+  src: local("Colfax Regular"), url("/fonts/Colfax-Regular.woff") format("woff"); }
 ::-moz-selection, ::selection {
   background: rgba(107, 79, 189, 0.4);
   text-shadow: none; }
@@ -38,8 +38,8 @@ html {
   touch-action: manipulation; }
 
 body, html {
-  font-family: "Roboto", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
-  font-weight: 400;
+  font-family: "Colfax Regular", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  font-weight: normal;
   overflow-x: hidden;
   font-size: 0.95em; }
   @media only screen and (min-width: 1400px) {
@@ -83,7 +83,8 @@ h1, h2, h3, h4, h5, h6, ul {
   margin-top: 0; }
 
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 600; }
+  font-family: "Colfax Medium";
+  font-weight: normal; }
 
 h1, h2, h3 {
   margin-bottom: 1.25em 0.5rem;
@@ -111,7 +112,6 @@ h4 {
   font-size: 1em; }
 
 p {
-  font-weight: 400;
   overflow-wrap: break-word;
   word-wrap: break-word;
   -ms-word-break: break-all;
@@ -180,7 +180,8 @@ ul {
   padding: 0 3rem;
   overflow: visible; }
   .top-bar__logo span {
-    font-weight: 600; }
+    font-family: "Colfax Medium";
+    font-weight: normal; }
   @media only screen and (max-width: 1400px) {
     .top-bar__logo {
       display: none; } }
@@ -314,13 +315,13 @@ ul {
 .nav-item__info {
   line-height: 0.25;
   font-size: 1rem;
-  font-weight: 400;
   color: #AAB9C5;
   position: absolute; }
 
 .nav-item__label {
   text-transform: uppercase;
-  font-weight: 600; }
+  font-family: "Colfax Medium";
+  font-weight: normal; }
 
 .nav-item--close {
   display: flex;
@@ -357,7 +358,8 @@ ul {
 
 .header__about--greeting {
   font-size: 1.25em;
-  font-weight: 600;
+  font-family: "Colfax Medium";
+  font-weight: normal;
   color: #293C50; }
 
 .header__about--text {
@@ -490,8 +492,7 @@ ul {
 
 .article__banner--date, .post__header--date {
   font-size: 1em;
-  margin-bottom: 0;
-  font-weight: 400; }
+  margin-bottom: 0; }
 
 .article__banner--tags {
   padding-bottom: 0.5em; }
@@ -613,7 +614,9 @@ ul {
   position: absolute;
   z-index: 10;
   -webkit-filter: drop-shadow(0 0.5em 2em rgba(50, 50, 50, 0.4));
-  filter: drop-shadow(0 0.5em 2em rgba(50, 50, 50, 0.4)); }
+  filter: drop-shadow(0 0.5em 2em rgba(50, 50, 50, 0.4));
+  transform-style: preserve-3d;
+  transform: translate3d(0, 0, 0); }
 
 .post__thumbnail--background {
   width: 100%;
@@ -664,7 +667,8 @@ ul {
   color: #293C50;
   align-self: flex-end;
   text-transform: uppercase;
-  font-weight: 600;
+  font-family: "Colfax Medium";
+  font-weight: normal;
   margin-top: auto;
   transition-property: color;
   transition-duration: 0.15s;
@@ -675,7 +679,8 @@ ul {
 .post__header--link {
   display: none;
   text-transform: uppercase;
-  font-weight: 600; }
+  font-family: "Colfax Medium";
+  font-weight: normal; }
   @media only screen and (max-width: 560px) {
     .post__header--link {
       display: inline;
@@ -692,7 +697,6 @@ ul {
   -webkit-appearance: none;
   float: left;
   padding-right: 0.5em;
-  font-weight: 400;
   list-style: none;
   margin-left: 0;
   padding-left: 0;
@@ -709,7 +713,6 @@ ul {
   border-radius: 3px;
   display: inline-block;
   font-size: 1em;
-  font-weight: 400;
   padding: 0.7em 1.4em;
   margin-right: 0.5em;
   margin-top: 0.5em;
