@@ -60,7 +60,7 @@ header.onblur = function(e){
   if (e.explicitOriginalTarget){
     id = e.explicitOriginalTarget.id;
   }
-  console.log(e);
+  //console.log(e);
   if (id == "menu"){
     // do nothing
   } else {

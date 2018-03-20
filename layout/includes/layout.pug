@@ -1,11 +1,10 @@
 
-- var pageTitle = page.title || config.subtitle || ''
+- var pageTitle = page.title || config.subtitle || 'Home'
 - if (is_archive()) pageTitle = 'Archives'
 - if (is_tag()) pageTitle = 'Tag: ' + page.tag
 - if (is_category()) pageTitle = 'Category: ' + page.category
 - if (is_month()) pageTitle += ': ' + page.month + '/' + page.year
 - if (is_year()) pageTitle += ': ' + page.year
-- pageTitle += ' [ ' + config.title + ' ]'
 
 doctype html
 html(lang=config.language)
@@ -13,6 +12,7 @@ html(lang=config.language)
     meta(charset='UTF-8')
     meta(name='author', content=config.author)
     meta(name='desciption', content=config.description)
+    meta(name='title', content=pageTitle)
     meta(name='viewport', content='width=device-width, initial-scale=1.0')    
     if theme.stylesheets !== undefined && theme.stylesheets.length > 0
       //- stylesheets list from config.yml

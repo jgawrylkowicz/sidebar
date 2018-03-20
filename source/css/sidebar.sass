@@ -1,7 +1,3 @@
-// TODO Refractor the code
-// Zooming out causes the topbar and the header display issues   
-// fix padding 
-
 $line-height: 1.5
 $ratio: 1.25
 $sidebar-width: 320px
@@ -43,8 +39,6 @@ $post-padding: 2em
 
 $shadow: 0 6px 24px 0 rgba(50,50,50,0.2)
 
-//@mixin transition 
-
 @function pow($number, $exponent) 
   $value: 1
   @if $exponent > 0 
@@ -52,14 +46,11 @@ $shadow: 0 6px 24px 0 rgba(50,50,50,0.2)
       $value:  $value * $number
   @return $value
 
-
 @font-face 
   font-family: 'Colfax Medium'
   font-style: normal
   font-weight: normal
   src: local('Colfax Medium'), url('/fonts/Colfax-Medium.woff') format('woff')
-
-
 
 @font-face 
   font-family: 'Colfax Regular'
@@ -70,7 +61,6 @@ $shadow: 0 6px 24px 0 rgba(50,50,50,0.2)
 \::-moz-selection, ::selection
   background: rgba(107, 79, 189, 0.4)
   text-shadow: none
-
 
 ::-webkit-scrollbar
   width: 0
@@ -208,7 +198,6 @@ ul
   opacity: .5
   filter: blur(2px)
  
-
 // Container for the top information
 // fixed for mobile
 .tob-bar
@@ -275,6 +264,9 @@ ul
 .top-bar__text--slash
   color: #E7AAAE
   padding: 0 .5rem
+
+.top-bar__text--subtitle
+  color: #5F7288
 
 .top-bar__text
   text-transform: uppercase
@@ -373,10 +365,13 @@ ul
   margin-right: 1rem
 
 .nav-item__info
-  line-height: .25
-  font-size: 1rem
+  line-height: .5
+  font-size: .9em
   color: #AAB9C5
+  text-transform: none
+  font-family: 'Colfax Regular'
   position: absolute
+
 
 .nav-item__label
   text-transform: uppercase
@@ -653,13 +648,11 @@ ul
   position: absolute
   transform-style: preserve-3d
   transform: translate3d(0,0,0)
-  
+
   &.landscape
     width: $post-width * .85
     height: $post-width * 0.5652 * .85
-    .post__thumbnail--background
-      background-color: rgba(255,255,255,.6)
-
+ 
     @for $i from 1 through 5
       &>.post__thumbnail--background:nth-child(#{$i})
         $factor_size: pow(.95, $i)
@@ -671,8 +664,6 @@ ul
   &.portrait
     width: $post-width  * 0.5652  * 1.2 
     height: $post-width * 1.2
-    .post__thumbnail--background
-      background-color: rgba(255,255,255,.6)
 
     @for $i from 1 through 5
       &>.post__thumbnail--background:nth-child(#{$i})
@@ -699,7 +690,7 @@ ul
   transform: translate3d(0,0,0)
 
 .post__thumbnail--background
-
+  background-color: rgba(255,255,255,.6)
   width: 100%
   height: 100%
   position: absolute

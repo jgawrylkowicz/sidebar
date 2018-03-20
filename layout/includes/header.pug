@@ -1,6 +1,6 @@
 #header(class="header", tabindex="1")
-  div(class="header__info")
-    img(src=theme.img.avatar, alt='avatar', class="avatar")
+  //- div(class="header__info")
+  //-   img(src=theme.img.avatar, alt='avatar', class="avatar")
   div(class="header__about")
     if (Array.isArray(theme.header.slogan))
       - let array = theme.header.slogan
@@ -21,7 +21,7 @@
           i(class="fa fa-lg nav-item__icon " + values.icon)&attributes({'aria-hidden': 'true'})
           div
             div(class="nav-item__label")!=label 
-            //div(class='nav-item__info')!=values.info
+              //div(class='nav-item__info')!=values.info
   
   ul(class="header__sns")
     each values, label in theme.sns
@@ -31,7 +31,7 @@
             i(class="fa fa-lg nav-item__icon " + values.icon)&attributes({'aria-hidden': 'true'})
             div
               div(class="nav-item__label")!=label 
-              //div(class='nav-item__info')!=values.info
+              div(class='nav-item__info')!=values.info
 
   ul(class="header__close")
     li

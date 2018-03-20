@@ -216,6 +216,9 @@ ul {
   color: #E7AAAE;
   padding: 0 0.5rem; }
 
+.top-bar__text--subtitle {
+  color: #5F7288; }
+
 .top-bar__text {
   text-transform: uppercase;
   color: #293C50;
@@ -313,9 +316,11 @@ ul {
   margin-right: 1rem; }
 
 .nav-item__info {
-  line-height: 0.25;
-  font-size: 1rem;
+  line-height: 0.5;
+  font-size: 0.9em;
   color: #AAB9C5;
+  text-transform: none;
+  font-family: "Colfax Regular";
   position: absolute; }
 
 .nav-item__label {
@@ -622,8 +627,6 @@ ul {
   .post__thumbnails.landscape {
     width: 391px;
     height: 220.9932px; }
-    .post__thumbnails.landscape .post__thumbnail--background {
-      background-color: rgba(255, 255, 255, 0.6); }
     .post__thumbnails.landscape > .post__thumbnail--background:nth-child(1) {
       transform: scale(0.95) translateY(-5.25%);
       transition-delay: 0.03s;
@@ -647,8 +650,6 @@ ul {
   .post__thumbnails.portrait {
     width: 311.9904px;
     height: 552px; }
-    .post__thumbnails.portrait .post__thumbnail--background {
-      background-color: rgba(255, 255, 255, 0.6); }
     .post__thumbnails.portrait > .post__thumbnail--background:nth-child(1) {
       transform: scale(0.95) translateY(-3.675%);
       transition-delay: 0.03s;
@@ -685,6 +686,7 @@ ul {
   transform: translate3d(0, 0, 0); }
 
 .post__thumbnail--background {
+  background-color: rgba(255, 255, 255, 0.6);
   width: 100%;
   height: 100%;
   position: absolute;
