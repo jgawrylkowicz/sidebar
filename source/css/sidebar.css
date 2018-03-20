@@ -270,7 +270,7 @@ ul {
   transition-delay: 0.15s;
   transition-timing-function: ease-in-out; }
   .header > div:first-child {
-    padding-top: 3rem; }
+    padding-top: 2rem; }
   @media only screen and (min-width: 1400px) {
     .header {
       padding-top: 0;
@@ -393,7 +393,8 @@ ul {
   border-radius: 120%;
   display: block;
   height: auto;
-  width: 6em;
+  width: 60%;
+  margin: 0 auto;
   box-shadow: 0 6px 24px 0 rgba(50, 50, 50, 0.2); }
 
 .full-post {
@@ -414,6 +415,26 @@ ul {
   @media only screen and (min-width: 970px) {
     .posts {
       grid-template-columns: repeat(auto-fit, 460px); } }
+  .posts > div:nth-child(1) {
+    animation-delay: 0.15s; }
+  .posts > div:nth-child(2) {
+    animation-delay: 0.3s; }
+  .posts > div:nth-child(3) {
+    animation-delay: 0.45s; }
+  .posts > div:nth-child(4) {
+    animation-delay: 0.6s; }
+  .posts > div:nth-child(5) {
+    animation-delay: 0.75s; }
+  .posts > div:nth-child(6) {
+    animation-delay: 0.9s; }
+  .posts > div:nth-child(7) {
+    animation-delay: 1.05s; }
+  .posts > div:nth-child(8) {
+    animation-delay: 1.2s; }
+  .posts > div:nth-child(9) {
+    animation-delay: 1.35s; }
+  .posts > div:nth-child(10) {
+    animation-delay: 1.5s; }
 
 .posts-container {
   margin: 0 auto; }
@@ -520,18 +541,40 @@ ul {
 .post:hover {
   box-shadow: 0 6px 48px 0 rgba(50, 50, 50, 0.4); }
 
-.post:hover .post__thumbnails > div {
-  opacity: 0.8; }
 .post:hover .post__thumbnails > img {
   transform: scale(1.05); }
-.post:hover .post__thumbnails.landscape > div:nth-child(2) {
-  transform: scale(0.92) translateY(-12%); }
-.post:hover .post__thumbnails.landscape > div:nth-child(3) {
-  transform: scale(0.85) translateY(-22%); }
-.post:hover .post__thumbnails.portrait > div:nth-child(2) {
-  transform: scale(0.92) translateY(-10%); }
-.post:hover .post__thumbnails.portrait > div:nth-child(3) {
-  transform: scale(0.85) translateY(-17%); }
+.post:hover .post__thumbnails.landscape > .post__thumbnail--background:nth-child(2) {
+  transform: scale(0.8649) translateY(-15.435%);
+  opacity: 0.49; }
+.post:hover .post__thumbnails.landscape > .post__thumbnail--background:nth-child(3) {
+  transform: scale(0.804357) translateY(-24.310125%);
+  opacity: 0.343; }
+.post:hover .post__thumbnails.landscape > .post__thumbnail--background:nth-child(4) {
+  transform: scale(0.74805201) translateY(-34.034175%);
+  opacity: 0.2401; }
+.post:hover .post__thumbnails.landscape > .post__thumbnail--background:nth-child(5) {
+  transform: scale(0.6956883693) translateY(-44.6698546875%);
+  opacity: 0.16807; }
+.post:hover .post__thumbnails.portrait > .post__thumbnail--background:nth-child(1) {
+  transform: scale(0.93) translateY(-5.775%);
+  transition-delay: 0.03s;
+  opacity: 0.7; }
+.post:hover .post__thumbnails.portrait > .post__thumbnail--background:nth-child(2) {
+  transform: scale(0.8649) translateY(-12.1275%);
+  transition-delay: 0.06s;
+  opacity: 0.49; }
+.post:hover .post__thumbnails.portrait > .post__thumbnail--background:nth-child(3) {
+  transform: scale(0.804357) translateY(-19.1008125%);
+  transition-delay: 0.09s;
+  opacity: 0.343; }
+.post:hover .post__thumbnails.portrait > .post__thumbnail--background:nth-child(4) {
+  transform: scale(0.74805201) translateY(-26.7411375%);
+  transition-delay: 0.12s;
+  opacity: 0.2401; }
+.post:hover .post__thumbnails.portrait > .post__thumbnail--background:nth-child(5) {
+  transform: scale(0.6956883693) translateY(-35.0977429688%);
+  transition-delay: 0.15s;
+  opacity: 0.16807; }
 
 .post-container {
   display: grid;
@@ -581,32 +624,55 @@ ul {
     height: 220.9932px; }
     .post__thumbnails.landscape .post__thumbnail--background {
       background-color: rgba(255, 255, 255, 0.6); }
-    .post__thumbnails.landscape > div:nth-child(2) {
-      transform: scale(0.95) translateY(-5%);
-      transition-delay: 0.05s;
-      z-index: 1; }
-    .post__thumbnails.landscape > div:nth-child(3) {
-      transform: scale(0.9) translateY(-10%);
-      z-index: 0;
-      transition-delay: 0.1s; }
+    .post__thumbnails.landscape > .post__thumbnail--background:nth-child(1) {
+      transform: scale(0.95) translateY(-5.25%);
+      transition-delay: 0.03s;
+      opacity: 0.6; }
+    .post__thumbnails.landscape > .post__thumbnail--background:nth-child(2) {
+      transform: scale(0.9025) translateY(-11.025%);
+      transition-delay: 0.06s;
+      opacity: 0.36; }
+    .post__thumbnails.landscape > .post__thumbnail--background:nth-child(3) {
+      transform: scale(0.857375) translateY(-17.364375%);
+      transition-delay: 0.09s;
+      opacity: 0.216; }
+    .post__thumbnails.landscape > .post__thumbnail--background:nth-child(4) {
+      transform: scale(0.81450625) translateY(-24.310125%);
+      transition-delay: 0.12s;
+      opacity: 0.1296; }
+    .post__thumbnails.landscape > .post__thumbnail--background:nth-child(5) {
+      transform: scale(0.7737809375) translateY(-31.9070390625%);
+      transition-delay: 0.15s;
+      opacity: 0.07776; }
   .post__thumbnails.portrait {
     width: 311.9904px;
     height: 552px; }
     .post__thumbnails.portrait .post__thumbnail--background {
       background-color: rgba(255, 255, 255, 0.6); }
-    .post__thumbnails.portrait > div:nth-child(2) {
-      transform: scale(0.95) translateY(-4%);
-      transition-delay: 0.05s;
-      z-index: 1; }
-    .post__thumbnails.portrait > div:nth-child(3) {
-      transform: scale(0.9) translateY(-8%);
-      z-index: 0;
-      transition-delay: 0.1s; }
+    .post__thumbnails.portrait > .post__thumbnail--background:nth-child(1) {
+      transform: scale(0.95) translateY(-3.675%);
+      transition-delay: 0.03s;
+      opacity: 0.6; }
+    .post__thumbnails.portrait > .post__thumbnail--background:nth-child(2) {
+      transform: scale(0.9025) translateY(-7.7175%);
+      transition-delay: 0.06s;
+      opacity: 0.36; }
+    .post__thumbnails.portrait > .post__thumbnail--background:nth-child(3) {
+      transform: scale(0.857375) translateY(-12.1550625%);
+      transition-delay: 0.09s;
+      opacity: 0.216; }
+    .post__thumbnails.portrait > .post__thumbnail--background:nth-child(4) {
+      transform: scale(0.81450625) translateY(-17.0170875%);
+      transition-delay: 0.12s;
+      opacity: 0.1296; }
+    .post__thumbnails.portrait > .post__thumbnail--background:nth-child(5) {
+      transform: scale(0.7737809375) translateY(-22.3349273438%);
+      transition-delay: 0.15s;
+      opacity: 0.07776; }
   .post__thumbnails > img {
     transition: all 0.3s ease-in-out; }
   .post__thumbnails > div {
-    transition: all 0.3s ease-in-out;
-    opacity: 0.6; }
+    transition: all 0.3s ease-in-out; }
 
 .post__thumbnail {
   width: 100%;

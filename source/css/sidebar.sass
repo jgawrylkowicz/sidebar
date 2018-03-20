@@ -45,6 +45,14 @@ $shadow: 0 6px 24px 0 rgba(50,50,50,0.2)
 
 //@mixin transition 
 
+@function pow($number, $exponent) 
+  $value: 1
+  @if $exponent > 0 
+    @for $i from 1 through $exponent 
+      $value:  $value * $number
+  @return $value
+
+
 @font-face 
   font-family: 'Colfax Medium'
   font-style: normal
@@ -58,9 +66,6 @@ $shadow: 0 6px 24px 0 rgba(50,50,50,0.2)
   font-style: normal
   font-weight: normal
   src: local('Colfax Regular'), url('/fonts/Colfax-Regular.woff') format('woff')
-
-
-
 
 \::-moz-selection, ::selection
   background: rgba(107, 79, 189, 0.4)
@@ -326,7 +331,7 @@ ul
   transition-delay: .15s
   transition-timing-function: ease-in-out
   &>div:first-child
-    padding-top: 3rem
+    padding-top: 2rem
   @media only screen and (min-width: $sidebar-break) 
     padding-top: 0
     height: 100vh
@@ -451,7 +456,8 @@ ul
   border-radius: 120%
   display: block
   height: auto
-  width: 6em
+  width: 60%
+  margin: 0 auto
   box-shadow: $shadow
 
 // container for full pages and posts
@@ -473,7 +479,9 @@ ul
   justify-items: center
   @media only screen and (min-width: $break-l)
     grid-template-columns: repeat(auto-fit, $post-width)
-
+  @for $i from 1 through 10
+    &>div:nth-child(#{$i})
+      animation-delay: .15s * $i
 
 
 .posts-container
@@ -581,20 +589,25 @@ ul
   box-shadow: 0 6px 48px 0 rgba(50,50,50,0.4)
 
 .post:hover .post__thumbnails
-  &>div
-    opacity: .8
+
   &>img
     transform: scale(1.05) 
   &.landscape
-    &>div:nth-child(2)
-      transform: scale(.92)  translateY(-12%) 
-    &>div:nth-child(3)
-      transform: scale(.85)  translateY(-22%) 
-  &.portrait
-    &>div:nth-child(2)
-      transform: scale(.92)  translateY(-10%) 
-    &>div:nth-child(3)
-      transform: scale(.85)  translateY(-17%) 
+    @for $i from 2 through 5
+      &>.post__thumbnail--background:nth-child(#{$i})
+        $factor_size: pow(.93, $i)
+        $factor_translate: pow(1.05, $i)
+        transform: scale(1 * $factor_size) translateY(-7% * $i * $factor_translate) 
+        opacity: pow(.7, $i)
+
+  &.portrait 
+    @for $i from 1 through 5
+      &>.post__thumbnail--background:nth-child(#{$i})
+        $factor_size: pow(.93, $i)
+        $factor_translate: pow(1.05, $i)
+        transform: scale(1 * $factor_size) translateY(-5.5% * $i * $factor_translate) 
+        transition-delay: .03s * $i
+        opacity: pow(.7, $i)
 
 
 .post-container
@@ -646,35 +659,33 @@ ul
     height: $post-width * 0.5652 * .85
     .post__thumbnail--background
       background-color: rgba(255,255,255,.6)
-    
-    &>div:nth-child(2)
-      transform: scale(0.95) translateY(-5%)
-      transition-delay: .05s
-      z-index: 1
-    &>div:nth-child(3)
-      transform: scale(0.90) translateY(-10%)
-      z-index: 0
-      transition-delay: .1s   
+
+    @for $i from 1 through 5
+      &>.post__thumbnail--background:nth-child(#{$i})
+        $factor_size: pow(.95, $i)
+        $factor_translate: pow(1.05, $i)
+        transform: scale(1 * $factor_size) translateY(-5% * $i * $factor_translate) 
+        transition-delay: .03s * $i
+        opacity: pow(.6, $i)
+
   &.portrait
     width: $post-width  * 0.5652  * 1.2 
     height: $post-width * 1.2
     .post__thumbnail--background
       background-color: rgba(255,255,255,.6)
 
-    &>div:nth-child(2)
-      transform: scale(0.95) translateY(-4%)
-      transition-delay: .05s
-      z-index: 1
-    &>div:nth-child(3)
-      transform: scale(0.90) translateY(-8%)
-      z-index: 0
-      transition-delay: .1s  
+    @for $i from 1 through 5
+      &>.post__thumbnail--background:nth-child(#{$i})
+        $factor_size: pow(.95, $i)
+        $factor_translate: pow(1.05, $i)
+        transform: scale(1 * $factor_size) translateY(-3.5% * $i * $factor_translate) 
+        transition-delay: .03s * $i
+        opacity: pow(.6, $i)
       
   &>img
     transition: all .3s ease-in-out
   &>div
     transition: all .3s ease-in-out
-    opacity: .6
  
 
 .post__thumbnail
