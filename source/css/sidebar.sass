@@ -173,13 +173,13 @@ ul
 // contains main and header objects
 .layout
   display: grid
-  grid-template-rows: $top-bar-height 3rem 1fr
+  grid-template-rows: $top-bar-height 1fr
   width: 100%   
   height: 100%
   @media only screen and (min-width: $sidebar-break)
-    grid-template-columns: $sidebar-width 3rem 1fr 3rem
+    grid-template-columns: $sidebar-width 1fr
   @media only screen and (max-width: $sidebar-break)
-    grid-template-columns: 1rem 1fr 1rem
+    grid-template-columns: 1fr
 
 // Container for the main content 
 // Contains one of the classes - articles or posts
@@ -190,9 +190,9 @@ ul
   transition: opacity .3s ease-in-out, filter .3s ease-in-out
   z-index: 1
   grid-row-start: 3
-  grid-column-start: 3
+  grid-column-start: 2
   @media only screen and (max-width: $sidebar-break)
-    grid-column-start: 2
+    grid-column-start: 1
   
 .main--onblur
   opacity: .5
@@ -248,7 +248,6 @@ ul
       background-color: #6F64F2
   @media only screen and (min-width: $sidebar-break)
     display: none !important
-  &.rotated
 
 .bar
   transition: all .15s ease-in-out
@@ -455,11 +454,17 @@ ul
   margin: 0 auto
   box-shadow: $shadow
 
+
+.posts, .full-post
+  padding-top: 3rem
+  @media only screen and (max-width: $mobile-break) 
+    padding-left: .5rem
+    padding-right: .5rem
+
 // container for full pages and posts
 .full-post
   display: flex
   justify-content: center
-  margin: 0 .5em
 
 // container for the recents posts
 .posts
@@ -584,25 +589,27 @@ ul
   box-shadow: 0 6px 48px 0 rgba(50,50,50,0.4)
 
 .post:hover .post__thumbnails
-
   &>img
-    transform: scale(1.05) 
+    transform: scale(1.01) 
+   
   &.landscape
     @for $i from 2 through 5
       &>.post__thumbnail--background:nth-child(#{$i})
-        $factor_size: pow(.93, $i)
-        $factor_translate: pow(1.05, $i)
-        transform: scale(1 * $factor_size) translateY(-7% * $i * $factor_translate) 
-        opacity: pow(.7, $i)
+        $exp: ($i - 1) 
+        $factor_size: pow(.93, $exp)
+        $factor_translate: pow(1.05, $exp)
+        transform: scale(1 * $factor_size) translateY(-8% * $exp * $factor_translate) 
+        opacity: pow(.7, $exp)
 
   &.portrait 
-    @for $i from 1 through 5
+    @for $i from 2 through 5
       &>.post__thumbnail--background:nth-child(#{$i})
-        $factor_size: pow(.93, $i)
-        $factor_translate: pow(1.05, $i)
-        transform: scale(1 * $factor_size) translateY(-5.5% * $i * $factor_translate) 
-        transition-delay: .03s * $i
-        opacity: pow(.7, $i)
+        $exp: ($i - 1) 
+        $factor_size: pow(.93, $exp)
+        $factor_translate: pow(1.05, $exp)
+        transform: scale(1 * $factor_size) translateY(-6% * $exp * $factor_translate) 
+        transition-delay: .03s * $exp
+        opacity: pow(.7, $exp)
 
 
 .post-container
@@ -653,25 +660,27 @@ ul
     width: $post-width * .85
     height: $post-width * 0.5652 * .85
  
-    @for $i from 1 through 5
+    @for $i from 2 through 5
       &>.post__thumbnail--background:nth-child(#{$i})
-        $factor_size: pow(.95, $i)
-        $factor_translate: pow(1.05, $i)
-        transform: scale(1 * $factor_size) translateY(-5% * $i * $factor_translate) 
-        transition-delay: .03s * $i
-        opacity: pow(.6, $i)
+        $exp: ($i - 1) 
+        $factor_size: pow(.95, $exp)
+        $factor_translate: pow(1.05, $exp)
+        transform: scale(1 * $factor_size) translateY(-5% * $exp  * $factor_translate) 
+        transition-delay: .03s * $exp
+        opacity: pow(.6, $exp)
 
   &.portrait
     width: $post-width  * 0.5652  * 1.2 
     height: $post-width * 1.2
 
-    @for $i from 1 through 5
+    @for $i from 2 through 5
       &>.post__thumbnail--background:nth-child(#{$i})
-        $factor_size: pow(.95, $i)
-        $factor_translate: pow(1.05, $i)
-        transform: scale(1 * $factor_size) translateY(-3.5% * $i * $factor_translate) 
-        transition-delay: .03s * $i
-        opacity: pow(.6, $i)
+        $exp: ($i - 1) 
+        $factor_size: pow(.95, $exp)
+        $factor_translate: pow(1.05, $exp)
+        transform: scale(1 * $factor_size) translateY(-3.5% * $exp * $factor_translate) 
+        transition-delay: .03s * $exp
+        opacity: pow(.6, $exp)
       
   &>img
     transition: all .3s ease-in-out
