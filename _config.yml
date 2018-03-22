@@ -61,7 +61,7 @@ sns:
   source code:
     url: https://github.com/jgawrylkowicz/sidebar
     icon: fa-code
-    info:
+    info: "github.com/jgawrylkowicz/sidebar"
 
 # Miscelaneous
 favicon: /img/logo-128.png

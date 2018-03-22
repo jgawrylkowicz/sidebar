@@ -455,16 +455,17 @@ ul
   box-shadow: $shadow
 
 
-.posts, .full-post
+.posts
   padding-top: 3rem
   @media only screen and (max-width: $mobile-break) 
     padding-left: .5rem
     padding-right: .5rem
 
 // container for full pages and posts
-.full-post
-  display: flex
-  justify-content: center
+// .full-post
+//   display: flex
+//   justify-content: center
+  
 
 // container for the recents posts
 .posts
@@ -513,34 +514,37 @@ ul
 
 // Page 
 .article
-  width: 100%
-  max-width: 950px
-  margin-top: 2em
-  margin-bottom: 4em
   display: flex
+  flex-direction: column
   align-items: center
   overflow: visible
+  background: #f9fcff
 
-.article__banner, .article 
+.article-container
+  max-width: 750px
+  width: 100%
+  margin: 0 auto
+  display: flex
+  flex-direction: column
+
+.article__header, .article 
   animation-duration: .3s
   animation-fill-mode: both
   animation-name: fade-in-up
   animation-timing-function: ease-in-out 
 
-.article__banner
+.article__header
   position: relative
-  width: calc(100% - 2em)
-  margin: 0 1em
-  margin-top: -20px
-  border-radius: $card-border-radius
+  width: 100%
   z-index: 20
   display: flex
   flex-direction: column
   justify-content: center
-  box-shadow: 0 2px 40px 0 rgba(0,0,0,0.15)
-  padding: 2em
+  min-height: 350px
+  padding: 1em
 
-.article__banner--title, .article__banner--title--thumbnail
+
+.article__header--title, .article__header--title--thumbnail
   position: relative
   display: flex
   align-items: baseline
@@ -551,38 +555,69 @@ ul
     font-size: $step-up-4
     margin-bottom: 0
 
-.article__banner--title
+.article__header--description
+  color: white
+  padding: 1rem 0
+
+.article__header--title
   color: #293C50
   
-.article__banner--title--thumbnail
+.article__header--title--thumbnail
   color: white
 
-.article__banner--date, .post__header--date
+.article__header--date, .post__header--date
   font-size: 1em
   margin-bottom: 0
+  color: rgba(255,255,255, 0.7)
 
-.article__banner--tags
+.article__header--tags
   padding-bottom: .5em
 
-.article__banner--footer
+.article__header--links
   padding-top: .5em
+  display: grid
+  grid-template: 1fr / repeat(auto-fill, 225px)
+  grid-gap: 1rem
+
+
+.header-link
+  display: flex
+  flex-direction: column
+  color: rgba(255,255,255, .7)
+
+
+.header-link:hover 
+  color: white !important
+
+.header-link__label
+  text-transform: uppercase
+  color: rgba(255,255,255, .7)
+  font-size: $step-up-1
+  font-family: "Colfax Medium"
+ 
+
+.header-link__description, .header-link__label
+  transition-property: color
+  transition-duration: .3s
+  transition-timing-function: ease-in-out
+
+.header-link__label:hover
+  color: white
+
 
 .article__content
-  margin-bottom: 100px  
-  max-width: 900px  
-  padding: calc(20px + 2em)
+  margin: 4rem 0
+  padding: 1em
   p
-    margin: 2em 0
+    margin: 2rem 0
     color: #293C50
   h2
     color: #6F64F2  
+    margin: 0
   img
     width: 100%
     -webkit-filter: drop-shadow(0 .5em 2em rgba(50, 50, 50, 0.3))
     filter: drop-shadow(0 .5em 2em rgba(50, 50, 50, 0.3))
- 
-  @media only screen and (max-width: $mobile-break)
-    padding: 1em
 
 
 .post:hover
@@ -728,12 +763,12 @@ ul
   font-size: $step-down-1
 
 
-.post__header--tags, .article__banner--tags
+.post__header--tags, .article__header--tags
   color: #5F7288
   a:hover
     color: black
  
-.post__header--tags--thumbnail, .article__banner--tags--thumbnail
+.post__header--tags--thumbnail, .article__header--tags--thumbnail
   color: rgba(255,255,255,.7)
   a:hover
     color: white

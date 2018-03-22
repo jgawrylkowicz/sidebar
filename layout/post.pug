@@ -1,32 +1,42 @@
 extends includes/layout.pug
 block content
-  div(class="full-post")
-    div(class="card article")
-      -let background = (page.background) ? page.background : theme.thumbnail.default;
-      -let thumbnail_modifier = (page.background) ? '--thumbnail' : '';
-      div(class="article__banner", style={background: background})
-        div(class="article__banner--title" + thumbnail_modifier)
+  div(class="article")
+    -let background = (page.background) ? page.background : theme.thumbnail.default;
+    -let thumbnail_modifier = (page.background) ? '--thumbnail' : '';
+    div(class="article__header", style={background: background})
+      div(class="article-container")
+        div(class="article__header--title" + thumbnail_modifier)
           h1= page.title
-          div(class="article__banner--date")
+          div(class="article__header--date")
             !=date(page.date, date_format)
 
         if page.tags.length > 0 
-          div(class="article__banner--tags" + thumbnail_modifier)
+          div(class="article__header--tags" + thumbnail_modifier)
             !=list_tags(page.tags, {show_count: false, class: 'tags', style: 'list', separator: ''})
 
-        div(class="article__banner--footer")
+        
+        div(class="article__header--description")
+          p=page.description
+
+        div(class="article__header--links")
           if page.github
-            a(class="button" + thumbnail_modifier, href=page.github)= 'More on Git '
-              i(class="fa fa-github fa-lg")&attributes({'aria-hidden': 'true'})
+            div(class="header-link")
+              a(class="header-link__label", href=page.github)
+                i(class="fa fa-github fa-lg nav-item__icon")&attributes({'aria-hidden': 'true'})
+                !='More on Git '
+              div(class="header-link__description")="Sourcecode & Documentation"
           if page.heroku
-            a(class="button" + thumbnail_modifier, href=page.heroku)= 'More on Heroku '
-              i(class="fa fa-cloud fa-lg")&attributes({'aria-hidden': 'true'})
-           
-      div(class="article__content")
+            div(class="header-link")
+              a(class="header-link__label", href=page.heroku)
+                i(class="fa fa-cloud fa-lg nav-item__icon")&attributes({'aria-hidden': 'true'})
+                !='More on Heroku '
+              div(class="header-link__description")="Live demo of the project"
+    div(class="article__content")
+      div(class="article-container")
         !=page.content
-                  
+                
 
 
-    
+  
 
     
