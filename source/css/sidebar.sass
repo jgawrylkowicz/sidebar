@@ -584,26 +584,34 @@ ul
   display: flex
   flex-direction: column
   color: rgba(255,255,255, .7)
+  border: 1px solid white
+  border-radius: 6px
+  padding: 1rem
+  transition: background .15s ease-in-out
+  &:hover
+    background: rgba(255,255,255,.05)
+    color: white !important
+    .header-link__icon
+      color: white !important
+    .header-link__label
+      color: white !important
+    
+.header-link__description
+  margin-left: 2rem
 
-
-.header-link:hover 
-  color: white !important
+.header-link__icon
+  width: 1rem
+  color: rgba(255,255,255,.7)
+  margin-right: 1rem
 
 .header-link__label
   text-transform: uppercase
   color: rgba(255,255,255, .7)
   font-size: $step-up-1
   font-family: "Colfax Medium"
- 
 
-.header-link__description, .header-link__label
-  transition-property: color
-  transition-duration: .3s
-  transition-timing-function: ease-in-out
-
-.header-link__label:hover
-  color: white
-
+.header-link__description, .header-link__label, .header-link__icon
+  transition: color .15s ease-in-out
 
 .article__content
   margin: 4rem 0

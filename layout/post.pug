@@ -20,15 +20,15 @@ block content
 
         div(class="article__header--links")
           if page.github
-            div(class="header-link")
-              a(class="header-link__label", href=page.github)
-                i(class="fa fa-github fa-lg nav-item__icon")&attributes({'aria-hidden': 'true'})
+            a(class="header-link", href=page.github)
+              div(class="header-link__label")
+                i(class="fa fa-github fa-lg header-link__icon")&attributes({'aria-hidden': 'true'})
                 !='More on Git '
-              div(class="header-link__description")="Sourcecode & Documentation"
+              div(class="header-link__description")="Code & Documentation"
           if page.heroku
-            div(class="header-link")
-              a(class="header-link__label", href=page.heroku)
-                i(class="fa fa-cloud fa-lg nav-item__icon")&attributes({'aria-hidden': 'true'})
+            a(class="header-link", href=page.heroku)
+              div(class="header-link__label")
+                i(class="fa fa-cloud fa-lg header-link__icon")&attributes({'aria-hidden': 'true'})
                 !='More on Heroku '
               div(class="header-link__description")="Live demo of the project"
     div(class="article__content")
