@@ -21,8 +21,8 @@ var showHeader = function(){
   }
   header.focus();
   
-  var menu = document.getElementById('menu');
-  menu.classList.add("rotated");
+  // var menu = document.getElementById('menu');
+  // menu.classList.add("rotated");
 }
 
 var hideHeader = function(){
@@ -32,8 +32,8 @@ var hideHeader = function(){
   header.classList.remove('show-header');
   main.classList.remove('main--onblur');
 
-  var menu = document.getElementById('menu');
-  menu.classList.remove("rotated");
+  // var menu = document.getElementById('menu');
+  // menu.classList.remove("rotated");
 }
 
 
@@ -60,10 +60,11 @@ header.onblur = function(e){
   if (e.explicitOriginalTarget){
     id = e.explicitOriginalTarget.id;
   }
-  //console.log(e);
+  console.log(e);
   if (id == "menu"){
     // do nothing
   } else {
+    console.log("hide");
     hideHeader();   
   }
   e.stopPropagation();  
@@ -71,6 +72,14 @@ header.onblur = function(e){
   // The header would hide before the link event would fire.
     
 }
+
+// Adding click listeners to nav elements, so the header can be hidden on a click
+var nav_items = document.getElementsByClassName("nav-item");
+for (var i = 0; i < nav_items.length; i++) {
+  nav_items[i].addEventListener('click', hideHeader, false);
+}
+
+
 
 // Close the sidebar by using Esc key
 document.addEventListener('keydown', (event) => {

@@ -498,24 +498,18 @@ ul
   height: 100vw
   position: relative
   transition: all .3s ease-in-out
-  @media only screen and (min-width: $break-s)
-    width: $post-width
-    height: $post-height
-
-.card
-  box-sizing: border-box
-  display: flex
-  flex-direction: column
   overflow: hidden
-  position: relative
   background: $card-background
   border-radius: $card-border-radius
   box-shadow: 0 6px 24px 0 rgba(50,50,50,0.2)
+  @media only screen and (min-width: $break-s)
+    width: $post-width
+    height: $post-height 
 
 // Page 
 .article
-  display: flex
-  flex-direction: column
+  // display: flex
+  // flex-direction: column
   align-items: center
   overflow: visible
   background: #f9fcff
@@ -589,7 +583,7 @@ ul
   padding: 1rem
   transition: background .15s ease-in-out
   &:hover
-    background: rgba(255,255,255,.05)
+    background: rgba(255,255,255,.05a)
     color: white !important
     .header-link__icon
       color: white !important
@@ -894,8 +888,8 @@ ul
 @keyframes fade-in-up 
   from 
     opacity: 0
-    -webkit-transform: translate3d(0, 1%, 0)
-    transform: translate3d(0, 1%, 0)
+    -webkit-transform: translate3d(0, 20px, 0)
+    transform: translate3d(0,20px, 0)
   to 
     opacity: 1
     -webkit-transform: none
