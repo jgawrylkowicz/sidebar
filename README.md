@@ -1,6 +1,6 @@
 # sidebar
 Sidebar is a simple theme for Hexo — static blog generator framework — that uses pug, sass and pjax for asynchronous loadings. 
-
+![alt text](https://github.com/jgawrylkowicz/sidebar/blob/master/img/screenshot.png "screenshot")
 
 ### TO-DO
 * Remove variables from the posts
